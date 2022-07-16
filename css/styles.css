@@ -1,0 +1,65 @@
+@import url(https://fonts.bunny.net/css?family=roboto-mono:400);@import url(https://fonts.bunny.net/css?family=roboto-mono:400);
+
+/* html {
+    height: 100vh;
+} */
+
+:root {
+    --rojo: #FF0000;
+    --blanco: white;
+}
+
+html {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+body {
+    cursor: none;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-family: 'Roboto Mono', monospace;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    align-self: flex-end;
+}
+
+#main-cursor {
+    background-color: var(--rojo);
+    border-radius: 50%;
+    height: 5px;
+    pointer-events: none;
+    position: absolute;
+    width: 5px;
+}
+
+#follow-cursor {
+    background-color: var(--rojo);
+    border-radius: 50%;
+    height: 20px;
+    pointer-events: none;
+    position: absolute;
+    transition: all 350ms ease-out;
+    width: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.link-rojo:hover {
+    background-color: var(--rojo);
+    color: var(--blanco)
+}
