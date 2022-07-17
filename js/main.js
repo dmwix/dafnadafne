@@ -7,7 +7,7 @@
 // });
 
 
-
+// CUSTOM CURSOR
 const cursor = document.getElementById("main-cursor");
 const followCursor = document.getElementById("follow-cursor");
 
@@ -18,6 +18,23 @@ document.addEventListener('mousemove', function(e) {
     followCursor.style.top = `${e.pageY - 10}px`;
 });
 
+function hideCursors() {
+    cursor.style.opacity = '0';
+    followCursor.style.opacity = '0';
+};
+
+function showCursors() {
+cursor.style.opacity = '1';
+followCursor.style.opacity = '1';
+};
+
+const links = document.querySelectorAll('a');
+links.forEach(link => {
+    link.addEventListener('mouseover', hideCursors);
+    link.addEventListener('mouseout', showCursors);
+})
+
+// DRAGGABLE PHOTOS
 const draggables = document.querySelectorAll('.draggable');
 
 draggables.forEach(draggable => {
@@ -55,6 +72,8 @@ draggables.forEach(draggable => {
         draggable.ondragstart = function() {
             return false;
           };
-    
       };
-})
+
+      draggable.addEventListener('mouseover', hideCursors);
+      draggable.addEventListener('mouseout', showCursors);
+});

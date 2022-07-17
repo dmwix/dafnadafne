@@ -7,6 +7,8 @@
 :root {
     --rojo: #FF0000;
     --blanco: white;
+    --azul: #0000FF;
+    --verde: #228B24;
 }
 
 html {
@@ -41,6 +43,7 @@ footer {
     pointer-events: none;
     position: absolute;
     width: 5px;
+    z-index: 1;
 }
 
 #follow-cursor {
@@ -49,8 +52,9 @@ footer {
     height: 20px;
     pointer-events: none;
     position: absolute;
-    transition: all 350ms ease-out;
+    transition: all 350ms ease-out, opacity 15  0ms ease-out;
     width: 20px;
+    z-index: 1; 
 }
 
 a {
@@ -60,11 +64,12 @@ a {
 
 .link-rojo:hover {
     background-color: var(--rojo);
-    color: var(--blanco)
+    color: var(--blanco);
 }
 
 .draggable {
     margin: 0 auto;
+    z-index: 2;
 }
 
 .draggable img {
