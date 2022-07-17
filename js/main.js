@@ -17,3 +17,5 @@ document.addEventListener('mousemove', function(e) {
     followCursor.style.left = `${e.pageX - 10}px`;
     followCursor.style.top = `${e.pageY - 10}px`;
 });
+
+const draggables = document.querySelectorAll('.draggable');

@@ -63,3 +63,13 @@ a {
     background-color: var(--rojo);
     color: var(--blanco)
 }
+
+.draggable img {
+    max-width: 350px;
+    max-height: 350px;
+}
+
+.main-home {
+    display: flex;
+    justify-content: space-between;
+}
