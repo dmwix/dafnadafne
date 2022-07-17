@@ -58,18 +58,28 @@ a {
     color: inherit;
 }
 
-
 .link-rojo:hover {
     background-color: var(--rojo);
     color: var(--blanco)
 }
 
+.draggable {
+    margin: 0 auto;
+}
+
 .draggable img {
     max-width: 350px;
     max-height: 350px;
+    cursor: grab;
 }
 
 .main-home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.home-photo {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }

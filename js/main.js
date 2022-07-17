@@ -19,3 +19,42 @@ document.addEventListener('mousemove', function(e) {
 });
 
 const draggables = document.querySelectorAll('.draggable');
+
+draggables.forEach(draggable => {
+    draggable.onmousedown = function(event) {
+
+        let shiftX = event.clientX - draggable.getBoundingClientRect().left;
+        let shiftY = event.clientY - draggable.getBoundingClientRect().top;
+      
+        draggable.style.position = 'absolute';
+        draggable.style.zIndex = 1000;
+        document.body.append(draggable);
+      
+        moveAt(event.pageX, event.pageY);
+      
+        // moves the draggable at (pageX, pageY) coordinates
+        // taking initial shifts into account
+        function moveAt(pageX, pageY) {
+          draggable.style.left = pageX - shiftX + 'px';
+          draggable.style.top = pageY - shiftY + 'px';
+        }
+      
+        function onMouseMove(event) {
+          moveAt(event.pageX, event.pageY);
+        }
+      
+        // move the draggable on mousemove
+        document.addEventListener('mousemove', onMouseMove);
+      
+        // drop the draggable, remove unneeded handlers
+        draggable.onmouseup = function() {
+          document.removeEventListener('mousemove', onMouseMove);
+          draggable.onmouseup = null;
+        };
+
+        draggable.ondragstart = function() {
+            return false;
+          };
+    
+      };
+})
