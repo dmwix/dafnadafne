@@ -28,7 +28,7 @@ cursor.style.opacity = '1';
 followCursor.style.opacity = '1';
 };
 
-const links = document.querySelectorAll('a');
+const links = document.querySelectorAll('.link');
 links.forEach(link => {
     link.addEventListener('mouseover', hideCursors);
     link.addEventListener('mouseout', showCursors);
