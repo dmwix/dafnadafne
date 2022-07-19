@@ -110,6 +110,7 @@ a {
 }
 
 .main-catalogo {
+    padding: 40px 100px;
     flex-grow: 2;
 }
 
@@ -121,13 +122,19 @@ a {
 }
 
 .grilla-fotos {
-    padding: 80px 20px 0px;
+    padding-top: 80px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 100px;
+    gap: 2rem;
 }
+
+/* para mejorar el comportamiento de la última fila
+.grilla-fotos::after {
+    content: "";
+    flex: auto;
+  } */
 
 .grilla-fotos img{
     max-height: 200px;
@@ -135,8 +142,18 @@ a {
 
 button {
     border: 0;
-    padding: 0;
+    padding: 7px;
     background-color: transparent;
+    cursor: pointer;
+}
+
+.current {
+    color: var(--rojo);
+}
+
+.fade-in {
+	-webkit-animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 /* ----------------------------------------------
@@ -201,6 +218,24 @@ button {
     100% {
       -webkit-transform: translate(0);
               transform: translate(0);
+    }
+  }
+  
+
+ @-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
   

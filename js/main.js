@@ -73,27 +73,25 @@ draggables.forEach(draggable => {
       draggable.addEventListener('mouseout', showCursors);
 });
 
+
+
 // CATALOGO
 
-// filterSelection("all") // Execute the function and show all columns
-// function filterSelection(c) {
-//   var x, i;
-//   x = document.getElementsByClassName("column");
-//   if (c == "all") c = "";
-//   // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-//   for (i = 0; i < x.length; i++) {
-//     w3RemoveClass(x[i], "show");
-//     if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-//   }
-// }
+const todas = document.querySelectorAll('.todas');
 
-const todas = document.querySelectorAll('.todas')
-const playa = document.querySelectorAll('.playa')
+const filters = document.querySelectorAll('.filtro');
 
-let pepito = document.querySelector('button');
-pepito.addEventListener(click, function(e) {
-  filterGallery(todas);
+filters.forEach(filter => {
+  filter.addEventListener('click', (e) => {
+    let pin = e.target.innerText;
+    document.querySelector('.current').classList.remove('current');
+    e.target.classList.add('current');
+    let selected = document.querySelectorAll(`.${pin}`);
+    filterGallery(selected);
   });
+  filter.addEventListener('mouseover', hideCursors);
+  filter.addEventListener('mouseout', showCursors);
+});
 
 function filterGallery(criterio) {
   ocultarFotos(todas);
@@ -103,11 +101,13 @@ function filterGallery(criterio) {
 function mostrarFotos(filtro) {
   filtro.forEach(foto => {
     foto.style.display = 'block';
+    // foto.classList.add('fade-in');
   });
 }
 
 function ocultarFotos(filtro) {
   filtro.forEach(foto => {
+    // foto.classList.remove('fade-in');
     foto.style.display = 'none';
   });
 }
