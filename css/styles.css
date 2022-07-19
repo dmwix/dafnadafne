@@ -171,16 +171,16 @@ button {
 }
 
 .tooltip {
-  position: fixed;
-  padding: 10px 20px;
-  border: 1px solid #b3c9ce;
+  background: var(--blanco);
   border-radius: 4px;
-  text-align: center;
+  border: 1px solid #b3c9ce;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+  color: #333;
   font-size: 12px;
   font-style: italic;
-  color: #333;
-  background: var(--blanco);
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+  padding: 10px 20px;
+  position: fixed;
+  text-align: center;
 }
 
 

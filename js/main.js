@@ -112,10 +112,6 @@ filters.forEach(filter => {
   filter.addEventListener('mouseout', showCursors);
 });
 
-
-
-let tooltipElem;
-
 // document.onmouseover = function(event) {
 //   let target = event.target;
 
@@ -152,6 +148,8 @@ let tooltipElem;
 //   }
 // };
 
+let tooltipElem;
+
 const fotis = document.querySelectorAll('img');
 
 fotis.forEach(foti => {
@@ -159,14 +157,11 @@ fotis.forEach(foti => {
     event.preventDefault();
     let target = event.target;
 
-    // if we have tooltip HTML...
-    let tooltipHtml = target.dataset.tooltip;
-    // if (!tooltipHtml) return;
-
     // ...create the tooltip element
     tooltipElem = document.createElement('div');
     tooltipElem.className = 'tooltip';
-    tooltipElem.innerHTML = tooltipHtml;
+    // tooltipElem.innerHTML = tooltipHtml;
+    tooltipElem.innerText = '© 2022 Dafna Szleifer';
     document.body.append(tooltipElem);
 
     // position it above the annotated element (top-center)
@@ -189,7 +184,7 @@ fotis.forEach(foti => {
         tooltipElem = null;
       }
     };
-    setTimeout(hideTooltip, 2000);
+    setTimeout(hideTooltip, 1600);
 
     }
   );
