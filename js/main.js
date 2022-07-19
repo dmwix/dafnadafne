@@ -78,36 +78,119 @@ draggables.forEach(draggable => {
 // CATALOGO
 
 const todas = document.querySelectorAll('.todas');
+const filters = document.querySelectorAll('.filter');
 
-const filters = document.querySelectorAll('.filtro');
+function filterGallery(criterio) {
+  hidePhotos(todas);
+  showPhotos(criterio);
+};
+
+function hidePhotos(criterio) {
+  criterio.forEach(photo => {
+    photo.style.display = 'none';
+  });
+};
+
+function showPhotos(criterio) {
+  criterio.forEach(photo => {
+    photo.style.display = 'block';
+    photo.classList.remove('reload-gallery');
+    photo.offsetHeight;
+    photo.classList.add('reload-gallery');
+  });
+};
 
 filters.forEach(filter => {
   filter.addEventListener('click', (e) => {
-    let pin = e.target.innerText;
+    let filterName = e.target.innerText;
     document.querySelector('.current').classList.remove('current');
     e.target.classList.add('current');
-    let selected = document.querySelectorAll(`.${pin}`);
+    let selected = document.querySelectorAll(`.${filterName}`);
     filterGallery(selected);
   });
   filter.addEventListener('mouseover', hideCursors);
   filter.addEventListener('mouseout', showCursors);
 });
 
-function filterGallery(criterio) {
-  ocultarFotos(todas);
-  mostrarFotos(criterio);
-};
 
-function mostrarFotos(filtro) {
-  filtro.forEach(foto => {
-    foto.style.display = 'block';
-    // foto.classList.add('fade-in');
-  });
-}
 
-function ocultarFotos(filtro) {
-  filtro.forEach(foto => {
-    // foto.classList.remove('fade-in');
-    foto.style.display = 'none';
-  });
-}
+let tooltipElem;
+
+// document.onmouseover = function(event) {
+//   let target = event.target;
+
+//   // if we have tooltip HTML...
+//   let tooltipHtml = target.dataset.tooltip;
+//   if (!tooltipHtml) return;
+
+//   // ...create the tooltip element
+
+//   tooltipElem = document.createElement('div');
+//   tooltipElem.className = 'tooltip';
+//   tooltipElem.innerHTML = tooltipHtml;
+//   document.body.append(tooltipElem);
+
+//   // position it above the annotated element (top-center)
+//   let coords = target.getBoundingClientRect();
+
+//   let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+//   if (left < 0) left = 0; // don't cross the left window edge
+
+//   let top = coords.top - tooltipElem.offsetHeight - 5;
+//   if (top < 0) { // if crossing the top window edge, show below instead
+//     top = coords.top + target.offsetHeight + 5;
+//   }
+
+//   tooltipElem.style.left = left + 'px';
+//   tooltipElem.style.top = top + 'px';
+// };
+
+// document.onclick = function(e) {
+//   if (tooltipElem) {
+//     tooltipElem.remove();
+//     tooltipElem = null;
+//   }
+// };
+
+const fotis = document.querySelectorAll('img');
+
+fotis.forEach(foti => {
+  foti.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    let target = event.target;
+
+    // if we have tooltip HTML...
+    let tooltipHtml = target.dataset.tooltip;
+    // if (!tooltipHtml) return;
+
+    // ...create the tooltip element
+    tooltipElem = document.createElement('div');
+    tooltipElem.className = 'tooltip';
+    tooltipElem.innerHTML = tooltipHtml;
+    document.body.append(tooltipElem);
+
+    // position it above the annotated element (top-center)
+    let coords = target.getBoundingClientRect();
+
+    let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+    if (left < 0) left = 0; // don't cross the left window edge
+
+    let top = coords.top - tooltipElem.offsetHeight - 5;
+    if (top < 0) { // if crossing the top window edge, show below instead
+      top = coords.top + target.offsetHeight + 5;
+    }
+
+    tooltipElem.style.left = left + 'px';
+    tooltipElem.style.top = top + 'px';
+
+    function hideTooltip() {
+      if (tooltipElem) {
+        tooltipElem.remove();
+        tooltipElem = null;
+      }
+    };
+    setTimeout(hideTooltip, 2000);
+
+    }
+  );
+});
