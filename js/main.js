@@ -16,6 +16,7 @@ document.addEventListener('mousemove', function(e) {
     cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
     followCursor.style.left = `${e.pageX - 10}px`;
     followCursor.style.top = `${e.pageY - 10}px`;
+    
 });
 
 function hideCursors() {
@@ -112,80 +113,52 @@ filters.forEach(filter => {
   filter.addEventListener('mouseout', showCursors);
 });
 
-// document.onmouseover = function(event) {
-//   let target = event.target;
 
-//   // if we have tooltip HTML...
-//   let tooltipHtml = target.dataset.tooltip;
-//   if (!tooltipHtml) return;
-
-//   // ...create the tooltip element
-
-//   tooltipElem = document.createElement('div');
-//   tooltipElem.className = 'tooltip';
-//   tooltipElem.innerHTML = tooltipHtml;
-//   document.body.append(tooltipElem);
-
-//   // position it above the annotated element (top-center)
-//   let coords = target.getBoundingClientRect();
-
-//   let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
-//   if (left < 0) left = 0; // don't cross the left window edge
-
-//   let top = coords.top - tooltipElem.offsetHeight - 5;
-//   if (top < 0) { // if crossing the top window edge, show below instead
-//     top = coords.top + target.offsetHeight + 5;
-//   }
-
-//   tooltipElem.style.left = left + 'px';
-//   tooltipElem.style.top = top + 'px';
-// };
-
-// document.onclick = function(e) {
-//   if (tooltipElem) {
-//     tooltipElem.remove();
-//     tooltipElem = null;
-//   }
-// };
-
-let tooltipElem;
+// TOOLTIP ON IMGS
 
 const fotis = document.querySelectorAll('img');
 
 fotis.forEach(foti => {
-  foti.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-    let target = event.target;
+  foti.addEventListener('contextmenu', showTooltip);
+});
 
-    // ...create the tooltip element
-    tooltipElem = document.createElement('div');
-    tooltipElem.className = 'tooltip';
-    // tooltipElem.innerHTML = tooltipHtml;
-    tooltipElem.innerText = '© 2022 Dafna Szleifer';
-    document.body.append(tooltipElem);
+function showTooltip(event) {
+  event.preventDefault();
+  let target = event.target;
 
-    // position it above the annotated element (top-center)
-    let coords = target.getBoundingClientRect();
+  // ...create the tooltip element
+  let tooltipElem = document.createElement('div');
+  tooltipElem.className = 'tooltip';
+  tooltipElem.innerText = '© 2022 Dafna Szleifer';
+  document.body.append(tooltipElem);
 
-    let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
-    if (left < 0) left = 0; // don't cross the left window edge
+  // position it above the annotated element (top-center)
+  let coords = target.getBoundingClientRect();
 
-    let top = coords.top - tooltipElem.offsetHeight - 5;
-    if (top < 0) { // if crossing the top window edge, show below instead
-      top = coords.top + target.offsetHeight + 5;
-    }
+  let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+  if (left < 0) left = 0; // don't cross the left window edge
 
-    tooltipElem.style.left = left + 'px';
-    tooltipElem.style.top = top + 'px';
+  let top = coords.top - tooltipElem.offsetHeight - 5;
+  if (top < 0) { // if crossing the top window edge, show below instead
+    top = coords.top + target.offsetHeight + 5;
+  }
 
-    function hideTooltip() {
-      if (tooltipElem) {
+  tooltipElem.style.left = left + 'px';
+  tooltipElem.style.top = top + 'px';
+
+
+  // hide tooltip
+  function hideTooltip() {
+    if (tooltipElem) {
+      setTimeout(() => {
         tooltipElem.remove();
         tooltipElem = null;
-      }
+      }, 1500)
     };
-    setTimeout(hideTooltip, 1600);
+  };
+  
+  hideTooltip();
 
-    }
-  );
-});
+};
+
+  // si existe tooltip la función no puede correr
