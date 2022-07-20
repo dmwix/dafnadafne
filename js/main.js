@@ -122,10 +122,14 @@ fotis.forEach(foti => {
   foti.addEventListener('contextmenu', showTooltip);
 });
 
+// let tooltipElem;
+
 function showTooltip(event) {
   event.preventDefault();
   let target = event.target;
 
+  if (tooltipElem) return;
+  
   // ...create the tooltip element
   let tooltipElem = document.createElement('div');
   tooltipElem.className = 'tooltip';
@@ -147,7 +151,7 @@ function showTooltip(event) {
   tooltipElem.style.top = top + 'px';
 
 
-  // hide tooltip
+  // hide tooltip automatically
   function hideTooltip() {
     if (tooltipElem) {
       setTimeout(() => {
