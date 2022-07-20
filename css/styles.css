@@ -145,6 +145,7 @@ a {
 
 .grilla-fotos img{
     max-height: 180px;
+    /* pointer-events: none; */
     /* max-width: 100%;
     min-width: 0; */
 }

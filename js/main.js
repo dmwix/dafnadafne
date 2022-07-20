@@ -114,7 +114,7 @@ filters.forEach(filter => {
 });
 
 
-// TOOLTIP ON IMGS
+// TOOLTIP ON IMGS. le falta laburo a la función todavía
 
 const fotis = document.querySelectorAll('img');
 
@@ -122,16 +122,20 @@ fotis.forEach(foti => {
   foti.addEventListener('contextmenu', showTooltip);
 });
 
-// let tooltipElem;
+let tooltipElem;
 
 function showTooltip(event) {
   event.preventDefault();
   let target = event.target;
-
-  if (tooltipElem) return;
   
+  if (document.body.contains(tooltipElem)) {
+    tooltipElem.rmemove();
+    tooltipElem = null;
+    return;
+  };
+
   // ...create the tooltip element
-  let tooltipElem = document.createElement('div');
+  tooltipElem = document.createElement('div');
   tooltipElem.className = 'tooltip';
   tooltipElem.innerText = '© 2022 Dafna Szleifer';
   document.body.append(tooltipElem);
@@ -150,10 +154,9 @@ function showTooltip(event) {
   tooltipElem.style.left = left + 'px';
   tooltipElem.style.top = top + 'px';
 
-
   // hide tooltip automatically
   function hideTooltip() {
-    if (tooltipElem) {
+    if (document.body.contains(tooltipElem)) {
       setTimeout(() => {
         tooltipElem.remove();
         tooltipElem = null;
@@ -164,5 +167,3 @@ function showTooltip(event) {
   hideTooltip();
 
 };
-
-  // si existe tooltip la función no puede correr
