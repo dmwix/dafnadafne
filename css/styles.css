@@ -114,11 +114,14 @@ a {
     flex-grow: 2;
 }
 
-.criteria {
+.filters-list {
     width: 100%;
     display: flex;
     justify-content: center;
     column-gap: 2rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .grilla-fotos {
