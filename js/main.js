@@ -118,7 +118,7 @@ function showPhotos(criterio) {
 
 const filtersList = document.querySelector('.filters-list');
 filtersList.addEventListener('click', (e) => {
-  let filter = e.target.closest('.filter')
+  let filter = e.target.closest('.filter');
   if (!filter) return;
   let filterName = filter.innerText;
     // poner clase activa al filtro seleccionado en la lista
@@ -141,24 +141,24 @@ function changeURL() {
 
 
 // TOOLTIP ON IMGS. le falta laburo a la función todavía
-const fotis = document.querySelectorAll('img');
-
-fotis.forEach(foti => {
-  foti.addEventListener('contextmenu', showTooltip);
-});
+document.body.addEventListener('contextmenu', showTooltip);
 
 let tooltipElem;
 
-function showTooltip(event) {
-  event.preventDefault();
-  let target = event.target;
 
+function showTooltip(event) {
+  let img = event.target.closest('img');
+  if (!img) return;
+  event.preventDefault();
+
+
+  // si ya hay un tooltip anterior matalo
   if (document.body.contains(tooltipElem)) {
     tooltipElem.remove();
     tooltipElem = null;
-    return;
+    // return;
   };
-
+  
   // ...create the tooltip element
   tooltipElem = document.createElement('div');
   tooltipElem.className = 'tooltip';
@@ -166,14 +166,14 @@ function showTooltip(event) {
   document.body.append(tooltipElem);
 
   // position it above the annotated element (top-center)
-  let coords = target.getBoundingClientRect();
+  let coords = img.getBoundingClientRect();
 
-  let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+  let left = coords.left + (img.offsetWidth - tooltipElem.offsetWidth) / 2;
   if (left < 0) left = 0; // don't cross the left window edge
 
   let top = coords.top - tooltipElem.offsetHeight - 5;
   if (top < 0) { // if crossing the top window edge, show below instead
-    top = coords.top + target.offsetHeight + 5;
+    top = coords.top + img.offsetHeight + 5;
   }
 
   tooltipElem.style.left = left + 'px';
@@ -181,16 +181,85 @@ function showTooltip(event) {
 
   // hide tooltip automatically
   function hideTooltip() {
-    if (document.body.contains(tooltipElem)) {
+    // if (!tooltipElem) return;
+    // else {
+      
+      setTimeout(() => {
+        tooltipElem.style.border = '2px solid red';
+      }, 1000);
       setTimeout(() => {
         tooltipElem.remove();
         tooltipElem = null;
-      }, 1500)
-    };
-  };
+      }, 2000);
+    }
+
+
+  //   if (document.body.contains(tooltipElem)) {
+  //     setTimeout(() => {
+  //       tooltipElem.remove();
+  //       tooltipElem = null;
+  //     }, 1500)
+  //   };
+  // };
 
   hideTooltip();
+};
 
-}
+
+
+
+// const fotis = document.querySelectorAll('img');
+
+// fotis.forEach(foti => {
+//   foti.addEventListener('contextmenu', showTooltip);
+// });
+
+// function showTooltip(event) {
+//   event.preventDefault();
+//   let target = event.target;
+
+//   if (document.body.contains(tooltipElem)) {
+//     tooltipElem.remove();
+//     tooltipElem = null;
+//     return;
+//   };
+
+//   // ...create the tooltip element
+//   tooltipElem = document.createElement('div');
+//   tooltipElem.className = 'tooltip';
+//   tooltipElem.innerText = '© 2022 Dafna Szleifer';
+//   document.body.append(tooltipElem);
+
+//   // position it above the annotated element (top-center)
+//   let coords = target.getBoundingClientRect();
+
+//   let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+//   if (left < 0) left = 0; // don't cross the left window edge
+
+//   let top = coords.top - tooltipElem.offsetHeight - 5;
+//   if (top < 0) { // if crossing the top window edge, show below instead
+//     top = coords.top + target.offsetHeight + 5;
+//   }
+
+//   tooltipElem.style.left = left + 'px';
+//   tooltipElem.style.top = top + 'px';
+
+//   // hide tooltip automatically
+//   function hideTooltip() {
+//     if (document.body.contains(tooltipElem)) {
+//       setTimeout(() => {
+//         tooltipElem.remove();
+//         tooltipElem = null;
+//       }, 1500)
+//     };
+//   };
+
+//   hideTooltip();
+
+// }
+
+
+
+
 
 // una función = una tarea
