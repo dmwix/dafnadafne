@@ -93,9 +93,10 @@ a {
     max-height: 350px;
     max-width: 350px;
 }
+
 .vibrar:hover {
-    -webkit-animation: vibrate-2 0.3s linear 2.5 both;
-    animation: vibrate-2 0.3s linear 2.5 both;
+    -webkit-animation: vibrate-2 0.5s linear infinite both;
+    animation: vibrate-2 0.5s linear infinite both;
 }
 
 .main-home {
@@ -146,7 +147,7 @@ a {
     flex: auto;
   } */
 
-.grilla-fotos img{
+.grilla-fotos img {
     max-height: 180px;
     /* pointer-events: none; */
     /* max-width: 100%;

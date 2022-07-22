@@ -15,7 +15,7 @@ document.addEventListener('mousemove', function(e) {
     cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
     cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
     followCursor.style.left = `${e.pageX - 10}px`;
-    followCursor.style.top = `${e.pageY - 10}px`;    
+    followCursor.style.top = `${e.pageY - 10}px`;
 });
 
 function noCursors(array) {
@@ -46,6 +46,7 @@ noCursors(draggables);
 
 draggables.forEach(draggable => {
   draggable.onmousedown = function (event) {
+    draggable.classList.remove('vibrar');
     let shiftX = event.clientX - draggable.getBoundingClientRect().left;
     let shiftY = event.clientY - draggable.getBoundingClientRect().top;
 
@@ -55,20 +56,30 @@ draggables.forEach(draggable => {
 
     moveAt(event.pageX, event.pageY);
 
+    // function moveAt(pageX, pageY) {
+    //   draggable.style.left = pageX - shiftX + 'px';
+    //   draggable.style.top = pageY - shiftY + 'px';
+    // };
+
     function moveAt(pageX, pageY) {
       draggable.style.left = pageX - shiftX + 'px';
       draggable.style.top = pageY - shiftY + 'px';
-    }
+    };
+
 
     function onMouseMove(event) {
       moveAt(event.pageX, event.pageY);
-    }
+    };
 
     document.addEventListener('mousemove', onMouseMove);
 
     draggable.onmouseup = function () {
       document.removeEventListener('mousemove', onMouseMove);
       draggable.onmouseup = null;
+    };
+
+    draggable.onmouseout = function() {
+      draggable.classList.add('vibrar');
     };
 
     draggable.ondragstart = function () {
