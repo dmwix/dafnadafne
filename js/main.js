@@ -48,20 +48,36 @@ noCursors(draggables);
 draggables.forEach(draggable => {
   draggable.onmousedown = function (event) {
     draggable.classList.remove('vibrar');
-    let shiftX = event.clientX - draggable.getBoundingClientRect().left;
-    let shiftY = event.clientY - draggable.getBoundingClientRect().top;
+
+    let coords = draggable.getBoundingClientRect();
+    let left = coords.left;
+    let top = coords.top;
+    let ancho = document.documentElement.clientWidth;
+    let alto = document.documentElement.clientHeight;
+
+    let shiftX = event.clientX - left;
+    let shiftY = event.clientY - top;
 
     draggable.style.position = 'absolute';
     draggable.style.zIndex = 1000;
     document.body.append(draggable);
-
     moveAt(event.pageX, event.pageY);
 
     function moveAt(pageX, pageY) {
-      draggable.style.left = pageX - shiftX + 'px';
-      draggable.style.top = pageY - shiftY + 'px';
-    };
+      let draggableLeft = pageX - shiftX;
+      if (draggableLeft < 0) draggableLeft = 0;
+      if (draggableLeft > (ancho - coords.width)) {
+        draggableLeft = (ancho - coords.width)
+      };
+      let draggableTop = pageY - shiftY;
+      if (draggableTop < 0) draggableTop = 0;
+      if (draggableTop > alto - coords.height) {
+        draggableTop = alto - coords.height
+      }
 
+      draggable.style.left = draggableLeft + 'px';
+      draggable.style.top = draggableTop + 'px';
+    };
 
     function onMouseMove(event) {
       moveAt(event.pageX, event.pageY);
@@ -138,25 +154,25 @@ function changeURL() {
 
 // TOOLTIP ON IMGS. le falta laburo a la función todavía
 document.body.addEventListener('contextmenu', showTooltip);
-
 let tooltipElem;
+let timerTooltip;
 
 function showTooltip(event) {
   let img = event.target.closest('img');
   if (!img) return;
   event.preventDefault();
-
-  let timer;
   removePreviousTooltip();
   createTooltip();
-  timer = setTimeout(hideTooltip, 1500);
-
+  timerTooltip = setTimeout(hideTooltip, 1500);
 
   function removePreviousTooltip() {
-    if (document.body.contains(tooltipElem)) {
+    if(timerTooltip) {
+      clearTimeout(timerTooltip);
+    };
+    while (tooltipElem) {
       tooltipElem.remove();
       tooltipElem = null;
-    }
+    };
   };
   
   function createTooltip() {
@@ -177,16 +193,9 @@ function showTooltip(event) {
   };
 
   function hideTooltip() {
-    if (tooltipElem == null) return;
-    else {
-      tooltipElem.remove();
-      tooltipElem = null;
-    }
-  };
-
+    tooltipElem.remove();
+    tooltipElem = null;
+  }
 };
-
-
-
 
 // una función = una tarea
