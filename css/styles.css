@@ -66,10 +66,15 @@ a {
 .link, .logo {
     line-height: 1;
     padding: 10px 16px;
+    z-index: 200;
 }
 
 .logo:hover {
     color: var(--verde);
+}
+
+footer {
+  z-index: 200;
 }
 
 .rojo:hover {

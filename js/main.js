@@ -6,17 +6,37 @@
 //   document.documentElement.style.setProperty('--vh', `${vh}px`);
 // });
 
+let ancho = document.documentElement.clientWidth;
+let alto = document.documentElement.clientHeight;
 
 
 // CUSTOM CURSOR
 const cursor = document.getElementById("main-cursor");
 const followCursor = document.getElementById("follow-cursor");
 
-document.addEventListener('mousemove', function(e) {
-    cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
-    cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
-    followCursor.style.left = `${e.pageX - 10}px`;
-    followCursor.style.top = `${e.pageY - 10}px`;
+document.addEventListener('mousemove', function (e) {
+  let cursorLeft = `${e.pageX - cursor.offsetWidth / 2}`;
+  if (cursorLeft > (ancho - cursor.offsetWidth)) {
+    cursorLeft = (ancho - cursor.offsetWidth)
+  };
+  let cursorTop = `${e.pageY - cursor.offsetHeight / 2}`;
+  if (cursorTop > (alto - cursor.offsetHeight)) {
+    cursorTop = (alto - cursor.offsetHeight)
+  };
+  
+  let followCursorLeft = `${e.pageX - 10}`;
+  if (followCursorLeft > (ancho - followCursor.offsetWidth)) {
+    followCursorLeft = (ancho - followCursor.offsetWidth)
+  };
+  let followCursorTop = `${e.pageY - 10}`;
+  if (followCursorTop > (alto - followCursor.offsetHeight)) {
+    followCursorTop = (alto - followCursor.offsetHeight)
+  }
+
+  cursor.style.left = cursorLeft + 'px',
+  cursor.style.top = cursorTop + 'px',
+  followCursor.style.left = followCursorLeft + 'px';
+  followCursor.style.top = followCursorTop + 'px';
 });
 
 function noCursors(array) {
@@ -52,14 +72,12 @@ draggables.forEach(draggable => {
     let coords = draggable.getBoundingClientRect();
     let left = coords.left;
     let top = coords.top;
-    let ancho = document.documentElement.clientWidth;
-    let alto = document.documentElement.clientHeight;
 
     let shiftX = event.clientX - left;
     let shiftY = event.clientY - top;
 
     draggable.style.position = 'absolute';
-    draggable.style.zIndex = 1000;
+    draggable.style.zIndex = 100;
     document.body.append(draggable);
     moveAt(event.pageX, event.pageY);
 
@@ -72,7 +90,7 @@ draggables.forEach(draggable => {
       let draggableTop = pageY - shiftY;
       if (draggableTop < 0) draggableTop = 0;
       if (draggableTop > alto - coords.height) {
-        draggableTop = alto - coords.height
+        draggableTop = alto - coords.height;
       }
 
       draggable.style.left = draggableLeft + 'px';
@@ -85,18 +103,30 @@ draggables.forEach(draggable => {
 
     document.addEventListener('mousemove', onMouseMove);
 
-    draggable.onmouseup = function() {
+    draggable.onmouseup = function () {
       document.removeEventListener('mousemove', onMouseMove);
       draggable.onmouseup = null;
     };
 
-    draggable.onmouseout = function() {
+    draggable.onmouseout = function () {
       draggable.classList.add('vibrar');
     };
 
-    draggable.ondragstart = function() {
+    draggable.ondragstart = function () {
       return false;
     };
+
+    draggable.oncontextmenu = function () {
+      return false;
+    };
+
+    document.body.addEventListener("mouseout", function (event) {
+      if (event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {
+        document.removeEventListener('mousemove', onMouseMove);
+        draggable.onmouseup = null;
+      }
+    });
+
   };
 });
 
@@ -140,7 +170,7 @@ filtersList.addEventListener('click', (e) => {
   let selected = document.querySelectorAll(`.${filterName}`);
   filterGallery(selected);
   // actualizar url FUNCIÓN APARTE??
-  let url = `/catalogo/${filterName}.html`;
+  let url = `${filterName}.html`;
   let pechuguita = `catálogo: ${filterName}`;
   history.pushState(pechuguita, '', url);
   document.title = pechuguita;
