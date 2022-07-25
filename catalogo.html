@@ -1,105 +1,94 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>catálogo | dafna szleifer</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8">
-  <title>catálogo | dafna szleifer</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.png" />
+    <!-- Place favicon.ico in the root directory -->
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/styles.css">
+    <meta name="theme-color" content="#fafafa" />
+  </head>
 
-  <meta name="theme-color" content="#fafafa">
-</head>
+  <body>
+    <!-- Add your site or application content here -->
+    <header>
+      <div class="link logo">
+        <a href="index.html"> dafna szleifer </a>
+      </div>
+      <div class="link azul">
+        <a href="#"> catálogo (acá estamos) </a>
+      </div>
+    </header>
 
-<body>
-  <!-- Add your site or application content here -->
-  <header>
-    <div class="link logo">
-      <a href="index.html">
-        dafna szleifer
-      </a>
-    </div>
-    <div class="link azul">
-      <a href="#">
-        catálogo (acá estamos)
-      </a>  
-    </div>
-  </header>
+    <main class="main-catalogo">
+      <div id="main-cursor"></div>
+      <div id="follow-cursor"></div>
 
-  <main class="main-catalogo">
-    <div id="main-cursor"></div>
-    <div id="follow-cursor"></div>
+      <ul class="filters-list">
+        <li>
+          <button type="button" class="filter current">todas</button>
+        </li>
 
-    <ul class="filters-list">
-      <li>
-        <button type="button" class="filter current">
-          todas
-        </button>  
-      </li>
+        <li>
+          <button type="button" class="filter">playa</button>
+        </li>
 
-      <li>
-        <button type="button" class="filter">
-          playa
-        </button>  
-      </li>
+        <li>
+          <button type="button" class="filter">perros</button>
+        </li>
 
-      <li>
-        <button type="button" class="filter">
-          perros
-        </button>  
-      </li>
+        <li>
+          <button type="button" class="filter">señorxs</button>
+        </li>
+      </ul>
 
-      <li>
-        <button type="button" class="filter">
-          señorxs
-        </button>  
-      </li>
-    </ul>
+      <div class="grilla-fotos fade-in">
+        <img src="images/1.png" alt="" class="todas playa" />
+        <img src="images/2.png" alt="" class="todas perros" />
+        <img src="images/3.png" alt="" class="todas playa señorxs" />
+        <img src="images/4.png" alt="" class="todas señorxs" />
+        <img src="images/5.png" alt="" class="todas señorxs perros" />
+        <img src="images/6.png" alt="" class="todas playa señorxs" />
+        <img src="images/7.png" alt="" class="todas señorxs" />
+        <img src="images/8.png" alt="" class="todas" />
+      </div>
+    </main>
 
-    <div class="grilla-fotos fade-in">
-      <img src="images/1.png" alt="" class="todas playa">
-      <img src="images/2.png" alt="" class="todas perros">
-      <img src="images/3.png" alt="" class="todas playa señorxs">
-      <img src="images/4.png" alt="" class="todas señorxs">
-      <img src="images/5.png" alt="" class="todas señorxs perros">
-      <img src="images/6.png" alt="" class="todas playa señorxs">
-      <img src="images/7.png" alt="" class="todas señorxs">
-      <img src="images/8.png" alt="" class="todas">
-    </div>
+    <footer>
+      <div class="link rojo">
+        <a href="#"> contacto </a>
+      </div>
+    </footer>
 
-  </main>
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
 
-  <footer>
-    <div class="link rojo">
-      <a href="#">
-        contacto
-      </a>
-    </div>
-
-  </footer>
-
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
-
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>
+      window.ga = function () {
+        ga.q.push(arguments);
+      };
+      ga.q = [];
+      ga.l = +new Date();
+      ga("create", "UA-XXXXX-Y", "auto");
+      ga("set", "anonymizeIp", true);
+      ga("set", "transport", "beacon");
+      ga("send", "pageview");
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async></script>
+  </body>
 </html>
