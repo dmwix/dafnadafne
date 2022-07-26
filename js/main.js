@@ -60,6 +60,7 @@ noCursors(links);
 // mostrarle a dafi como queda sin esto
 
 // DRAGGABLE PHOTOS
+// ojo que se rompe cuando pasa por los links del header
 const draggables = document.querySelectorAll(".draggable");
 noCursors(draggables);
 
@@ -81,6 +82,7 @@ draggables.forEach((draggable) => {
 
     function moveAt(pageX, pageY) {
       let draggableLeft = pageX - shiftX;
+      // OPCION QUE LOS DRAGGABLES SALGAN A LO ANCHO
       if (draggableLeft < 0) draggableLeft = 0;
       if (draggableLeft > ancho - coords.width) {
         draggableLeft = ancho - coords.width;
@@ -180,6 +182,72 @@ function changeURL() {
   console.log("holis");
 }
 
+// CAROUSEL
+const carousel = document.getElementById("carousel");
+const closeCarousel = document.getElementById("carousel-close");
+const carouselButtons = document.querySelectorAll(".carousel-button");
+noCursors(carouselButtons);
+const grid = document.querySelector(".grilla-fotos");
+const slider = document.getElementById("slider");
+let currentSlide = document.querySelector(".current-slide");
+
+grid.addEventListener("click", openCarousel);
+function openCarousel(e) {
+  // currentSlide = document.querySelector(".current-slide");
+  let img = e.target.closest("img");
+  if (!img) return;
+  carousel.classList.remove("fade-out");
+  carousel.classList.add("fade-in");
+  carousel.style.display = "block";
+  currentSlide.textContent = "";
+  // let newSlide = document.createElement("img");
+  // newSlide.src = `${img.src}`;
+  // currentSlide.append(newSlide);
+  // currentSlide.firstChild.src = `${img.src}`;
+  // currentSlide.firstChild.remove();
+  // let clone = img.cloneNode(true);
+  // currentSlide.append(clone);
+  currentSlide.append(img.cloneNode(true));
+  // const currentFilter = document.querySelector(".filter.current");
+  // const currentGallery = [
+  //   ...document.querySelectorAll(`.${currentFilter.innerText}`),
+  // ];
+  // console.log(currentGallery);
+}
+
+carouselButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const direction = button.dataset.direction === "next" ? 1 : -1;
+    const currentFilter = document.querySelector(".filter.current");
+    const currentGallery = [
+      ...document.querySelectorAll(`.${currentFilter.innerText}`),
+    ];
+    const activeSlide = currentSlide.firstChild;
+    let index = currentGallery.findIndex(
+      (image) => image.src === activeSlide.src
+    );
+    let newIndex = index + direction;
+    if (newIndex < 0) {
+      newIndex = currentGallery.length - 2;
+    }
+    if (newIndex >= currentGallery.length - 1) newIndex = 0;
+    // activeSlide.remove();
+    newActive = currentGallery[newIndex];
+    currentSlide.removeAllChildNodes;
+    activeSlide.replaceWith(newActive.cloneNode(true));
+    // currentSlide.append(newActive.cloneNode(true));
+    console.log(currentGallery);
+  });
+});
+
+closeCarousel.addEventListener("click", function () {
+  carousel.classList.add("fade-out");
+  setTimeout(() => {
+    carousel.style.display = "none";
+  }, 400);
+  currentSlide.textContent = "";
+});
+
 // TOOLTIP ON IMGS. le falta laburo a la función todavía
 document.body.addEventListener("contextmenu", showTooltip);
 let tooltipElem;
@@ -191,7 +259,7 @@ function showTooltip(event) {
   event.preventDefault();
   removePreviousTooltip();
   createTooltip();
-  timerTooltip = setTimeout(hideTooltip, 1500);
+  timerTooltip = setTimeout(hideTooltip, 2000);
 
   function removePreviousTooltip() {
     if (timerTooltip) {
