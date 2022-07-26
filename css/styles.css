@@ -204,7 +204,7 @@ button {
   z-index: 300;
 }
 
-#carousel {
+#carousel-window {
   background-color: var(--blanco);
   display: none;
   opacity: 0;
@@ -215,7 +215,7 @@ button {
   width: auto;
 }
 
-#slider {
+#carousel {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -224,18 +224,18 @@ button {
   width: auto;
 }
 
-#slider button {
+#carousel button {
   font-size: 2rem;
   padding: 2rem;
 }
 
-.current-slide {
+.slide-wrapper {
   height: 100%;
   display: flex;
   align-items: center;
 }
 
-.current-slide img {
+.slide-wrapper img {
   height: 70%;
 }
 
@@ -249,7 +249,7 @@ button {
   font-size: 3rem;
 }
 
-.carousel-button:hover {
+.carousel-navigation:hover {
   -webkit-animation: pulsate-fwd 0.7s ease-in-out infinite both;
   animation: pulsate-fwd 0.7s ease-in-out infinite both;
 }

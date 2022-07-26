@@ -183,80 +183,108 @@ function changeURL() {
 }
 
 // CAROUSEL
+const carouselWindow = document.getElementById("carousel-window");
 const carousel = document.getElementById("carousel");
-const closeCarouselBt = document.getElementById("carousel-close");
-const carouselButtons = document.querySelectorAll(".carousel-button");
-noCursors(carouselButtons);
+const carouselNavigation = document.querySelectorAll(".carousel-navigation");
+const closeCarouselButton = document.getElementById("carousel-close");
+noCursors(carouselNavigation);
 const grid = document.querySelector(".grilla-fotos");
-const slider = document.getElementById("slider");
-let currentSlide = document.querySelector(".current-slide");
+let slideWrapper = document.querySelector(".slide-wrapper");
+let currentSlide;
 
-grid.addEventListener("click", openCarousel);
 function openCarousel(e) {
-  // currentSlide = document.querySelector(".current-slide");
   let img = e.target.closest("img");
   if (!img) return;
-  carousel.classList.remove("fade-out");
-  carousel.classList.add("fade-in");
-  carousel.style.display = "block";
-  currentSlide.textContent = "";
-  // let newSlide = document.createElement("img");
-  // newSlide.src = `${img.src}`;
-  // currentSlide.append(newSlide);
-  // currentSlide.firstChild.src = `${img.src}`;
-  // currentSlide.firstChild.remove();
-  // let clone = img.cloneNode(true);
-  // currentSlide.append(clone);
-  currentSlide.append(img.cloneNode(true));
-  // const currentFilter = document.querySelector(".filter.current");
-  // const currentGallery = [
-  //   ...document.querySelectorAll(`.${currentFilter.innerText}`),
-  // ];
-  // console.log(currentGallery);
+  carouselWindow.classList.remove("fade-out");
+  carouselWindow.classList.add("fade-in");
+  carouselWindow.style.display = "block";
+  // esto x ahora no hace falta
+  // slideWrapper.textContent = "";
+  currentSlide = img.cloneNode(true);
+  // le saco la clase así no agrando la array de dicha clase sumándole un item repetido
+  currentSlide.className = "";
+  slideWrapper.append(currentSlide);
 }
-
-carouselButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const direction = button.dataset.direction === "next" ? 1 : -1;
-    const currentFilter = document.querySelector(".filter.current");
-    const currentGallery = [
-      ...document.querySelectorAll(`.${currentFilter.innerText}`),
-    ];
-    const activeSlide = currentSlide.firstChild;
-    let index = currentGallery.findIndex(
-      (image) => image.src === activeSlide.src
-    );
-    let newIndex = index + direction;
-    if (newIndex < 0) {
-      newIndex = currentGallery.length - 2;
-    }
-    if (newIndex >= currentGallery.length - 1) newIndex = 0;
-    // activeSlide.remove();
-    newActive = currentGallery[newIndex];
-    currentSlide.removeAllChildNodes;
-    activeSlide.replaceWith(newActive.cloneNode(true));
-    // currentSlide.append(newActive.cloneNode(true));
-  });
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.code == "Escape") closeCarousel(e);
-});
-
-carousel.addEventListener("click", closeCarousel);
-closeCarouselBt.addEventListener("click", closeCarousel);
 
 function closeCarousel(e) {
   let img = e.target.closest("img");
   if (img) return;
-  let arrowButton = e.target.closest(".carousel-button");
-  if (arrowButton) return;
-  carousel.classList.add("fade-out");
+  if (e.target.closest(".carousel-navigation")) return;
+  carouselWindow.classList.add("fade-out");
   setTimeout(() => {
-    carousel.style.display = "none";
+    carouselWindow.style.display = "none";
   }, 400);
-  currentSlide.textContent = "";
+  // borro la current slide
+  slideWrapper.textContent = "";
 }
+
+function navigateCarousel(e) {
+  let navigationArrow = e.target.closest(".carousel-navigation");
+  if (!navigationArrow) return;
+  const direction = navigationArrow.dataset.direction === "next" ? 1 : -1;
+  const currentFilter = document.querySelector(".filter.current");
+  const currentGallery = [
+    ...document.querySelectorAll(`.${currentFilter.innerText}`),
+  ];
+  currentSlide = slideWrapper.firstChild;
+  let index = currentGallery.findIndex(
+    (image) => image.src === currentSlide.src
+  );
+  let newIndex = index + direction;
+  if (newIndex < 0) {
+    newIndex = currentGallery.length - 1;
+  }
+  if (newIndex >= currentGallery.length) newIndex = 0;
+  slideWrapper.textContent = "";
+  currentSlide = currentGallery[newIndex];
+  newSlide = currentSlide.cloneNode(true);
+  newSlide.className = "";
+  slideWrapper.append(newSlide);
+  // PROBLEMA 1: QUIERO QUE FUNCIONE PARA LAS ARROW DEL TECLADO TAMBIÉN
+}
+
+// carouselNavigation.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     const direction = button.dataset.direction === "next" ? 1 : -1;
+//     const currentFilter = document.querySelector(".filter.current");
+//     const currentGallery = [
+//       ...document.querySelectorAll(`.${currentFilter.innerText}`),
+//     ];
+//     currentSlide = slideWrapper.firstChild;
+//     let index = currentGallery.findIndex(
+//       (image) => image.src === currentSlide.src
+//     );
+//     let newIndex = index + direction;
+//     if (newIndex < 0) {
+//       newIndex = currentGallery.length - 1;
+//     }
+//     if (newIndex >= currentGallery.length) newIndex = 0;
+//     newActive = currentGallery[newIndex];
+//     slideWrapper.removeAllChildNodes;
+//     currentSlide.replaceWith(newActive.cloneNode(true));
+//   });
+// });
+
+document.addEventListener("keydown", (e) => {
+  switch (e.key) {
+    case "Escape":
+      closeCarousel(e);
+      break;
+    case "ArrowLeft":
+      console.log("foto anterior");
+      break;
+    case "ArrowRight":
+      console.log("siguiente foto");
+      break;
+    default:
+      return;
+  }
+});
+
+grid.addEventListener("click", openCarousel);
+carousel.addEventListener("click", navigateCarousel);
+carouselWindow.addEventListener("click", closeCarousel);
+closeCarouselButton.addEventListener("click", closeCarousel);
 
 // TOOLTIP ON IMGS. le falta laburo a la función todavía
 document.body.addEventListener("contextmenu", showTooltip);
@@ -284,7 +312,7 @@ function showTooltip(event) {
   function createTooltip() {
     tooltipElem = document.createElement("div");
     tooltipElem.className = "tooltip";
-    tooltipElem.innerText = "© 2022 Dafna Szleifer";
+    tooltipElem.innerText = "© Dafna Szleifer";
     document.body.append(tooltipElem);
     // position it above the annotated element (top-center)
     let coords = img.getBoundingClientRect();
