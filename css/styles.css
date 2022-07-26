@@ -236,7 +236,9 @@ button {
 }
 
 .slide-wrapper img {
-  height: 70%;
+  max-height: 70%;
+  max-width: 100%;
+  height: auto;
 }
 
 #carousel-close {
@@ -246,7 +248,7 @@ button {
   right: 0;
   top: 0;
   z-index: 5;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .carousel-navigation:hover {
