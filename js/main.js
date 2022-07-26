@@ -187,7 +187,7 @@ const carouselWindow = document.getElementById("carousel-window");
 const carousel = document.getElementById("carousel");
 const carouselNavigation = document.querySelectorAll(".carousel-navigation");
 const closeCarouselButton = document.getElementById("carousel-close");
-noCursors(carouselNavigation);
+noCursors(carouselWindow.querySelectorAll("button"));
 const grid = document.querySelector(".grilla-fotos");
 let slideWrapper = document.querySelector(".slide-wrapper");
 let currentSlide;
@@ -240,30 +240,7 @@ function navigateCarousel(e) {
   newSlide = currentSlide.cloneNode(true);
   newSlide.className = "";
   slideWrapper.append(newSlide);
-  // PROBLEMA 1: QUIERO QUE FUNCIONE PARA LAS ARROW DEL TECLADO TAMBIÉN
 }
-
-// carouselNavigation.forEach((button) => {
-//   button.addEventListener("click", () => {
-//     const direction = button.dataset.direction === "next" ? 1 : -1;
-//     const currentFilter = document.querySelector(".filter.current");
-//     const currentGallery = [
-//       ...document.querySelectorAll(`.${currentFilter.innerText}`),
-//     ];
-//     currentSlide = slideWrapper.firstChild;
-//     let index = currentGallery.findIndex(
-//       (image) => image.src === currentSlide.src
-//     );
-//     let newIndex = index + direction;
-//     if (newIndex < 0) {
-//       newIndex = currentGallery.length - 1;
-//     }
-//     if (newIndex >= currentGallery.length) newIndex = 0;
-//     newActive = currentGallery[newIndex];
-//     slideWrapper.removeAllChildNodes;
-//     currentSlide.replaceWith(newActive.cloneNode(true));
-//   });
-// });
 
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
@@ -271,10 +248,12 @@ document.addEventListener("keydown", (e) => {
       closeCarousel(e);
       break;
     case "ArrowLeft":
-      console.log("foto anterior");
+      let previous = document.querySelector('[data-direction="previous"]');
+      previous.click();
       break;
     case "ArrowRight":
-      console.log("siguiente foto");
+      let next = document.querySelector('[data-direction="next"]');
+      next.click();
       break;
     default:
       return;
