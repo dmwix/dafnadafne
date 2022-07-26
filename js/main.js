@@ -184,7 +184,7 @@ function changeURL() {
 
 // CAROUSEL
 const carousel = document.getElementById("carousel");
-const closeCarousel = document.getElementById("carousel-close");
+const closeCarouselBt = document.getElementById("carousel-close");
 const carouselButtons = document.querySelectorAll(".carousel-button");
 noCursors(carouselButtons);
 const grid = document.querySelector(".grilla-fotos");
@@ -236,17 +236,27 @@ carouselButtons.forEach((button) => {
     currentSlide.removeAllChildNodes;
     activeSlide.replaceWith(newActive.cloneNode(true));
     // currentSlide.append(newActive.cloneNode(true));
-    console.log(currentGallery);
   });
 });
 
-closeCarousel.addEventListener("click", function () {
+document.addEventListener("keydown", (e) => {
+  if (e.code == "Escape") closeCarousel(e);
+});
+
+carousel.addEventListener("click", closeCarousel);
+closeCarouselBt.addEventListener("click", closeCarousel);
+
+function closeCarousel(e) {
+  let img = e.target.closest("img");
+  if (img) return;
+  let arrowButton = e.target.closest(".carousel-button");
+  if (arrowButton) return;
   carousel.classList.add("fade-out");
   setTimeout(() => {
     carousel.style.display = "none";
   }, 400);
   currentSlide.textContent = "";
-});
+}
 
 // TOOLTIP ON IMGS. le falta laburo a la función todavía
 document.body.addEventListener("contextmenu", showTooltip);
