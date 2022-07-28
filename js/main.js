@@ -19,9 +19,9 @@ document.addEventListener("mousemove", function (e) {
     cursorLeft = ancho - cursor.offsetWidth;
   }
   let cursorTop = `${e.pageY - cursor.offsetHeight / 2}`;
-  if (cursorTop > alto - cursor.offsetHeight) {
-    cursorTop = alto - cursor.offsetHeight;
-  }
+  // if (cursorTop > alto - cursor.offsetHeight) {
+  //   cursorTop = alto - cursor.offsetHeight;
+  // }
 
   let followCursorLeft = `${e.pageX - 10}`;
   if (followCursorLeft > ancho - followCursor.offsetWidth) {
@@ -57,7 +57,6 @@ function showCursors() {
 
 const links = document.querySelectorAll(".link");
 noCursors(links);
-// mostrarle a dafi como queda sin esto
 
 // DRAGGABLE PHOTOS
 // ojo que se rompe cuando pasa por los links del header
@@ -146,17 +145,19 @@ function filterGallery(criterio) {
 
 function hidePhotos(criterio) {
   criterio.forEach((photo) => {
-    photo.style.display = "none";
+    let imgWrapper = photo.closest(".foto");
+    imgWrapper.style.display = "none";
   });
 }
 
 function showPhotos(criterio) {
   criterio.forEach((photo) => {
-    photo.style.display = "block";
-    photo.classList.remove("reload-gallery");
+    let imgWrapper = photo.closest(".foto");
+    imgWrapper.style.display = "flex";
+    // photo.classList.remove("reload-gallery");
     // reflow for triggering animation again
-    photo.offsetHeight;
-    photo.classList.add("reload-gallery");
+    // photo.offsetHeight;
+    // photo.classList.add("reload-gallery");
   });
 }
 
@@ -172,15 +173,15 @@ filtersList.addEventListener("click", (e) => {
   let selected = document.querySelectorAll(`.${filterName}`);
   filterGallery(selected);
   // actualizar url FUNCIÓN APARTE??
-  let url = `${filterName}.html`;
-  let pechuguita = `catálogo: ${filterName}`;
-  history.pushState(pechuguita, "", url);
-  document.title = pechuguita;
+  // let url = `${filterName}.html`;
+  // let pechuguita = `catálogo: ${filterName}`;
+  // history.pushState(pechuguita, "", url);
+  // document.title = pechuguita + " | dafna szleifer";
 });
 
-function changeURL() {
-  console.log("holis");
-}
+// function changeURL() {
+//   console.log("holis");
+// }
 
 // CAROUSEL
 const carouselWindow = document.getElementById("carousel-window");
@@ -205,6 +206,7 @@ function openCarousel(e) {
   // le saco la clase así no agrando la array de dicha clase sumándole un item repetido
   currentSlide.className = "";
   slideWrapper.append(currentSlide);
+  document.body.style.overflow = "hidden";
 }
 
 function closeCarousel(e) {
@@ -217,6 +219,7 @@ function closeCarousel(e) {
   }, 400);
   // borro la current slide
   slideWrapper.textContent = "";
+  document.body.style.overflow = "auto";
 }
 
 function navigateCarousel(e) {

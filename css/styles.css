@@ -1,17 +1,27 @@
+/* ROBOTO MONO X AHORA NO
 @import url(https://fonts.bunny.net/css?family=roboto-mono:400);
-@import url(https://fonts.bunny.net/css?family=roboto-mono:400,400i);
+@import url(https://fonts.bunny.net/css?family=roboto-mono:400,400i); */
+
+@font-face {
+  font-family: "supplyregular";
+  src: url("../font/supply-regular-webfont.woff2") format("woff2"),
+    url("../font/supply-regular-webfont.woff") format("woff"),
+    url("../font/supply-regular-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* html {
     height: 100vh;
 } */
 
 :root {
+  --amarillo: #ffd300;
   --azul: #0000ff;
   --blanco: white;
   --rojo: #ff0000;
   --verde: #228b24;
   --violeta: #9b04db;
-  --amarillo: #ffd300;
 }
 
 html {
@@ -22,11 +32,12 @@ html {
 }
 
 body {
+  /* font-family: "Roboto Mono", monospace; */
   cursor: none;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  font-family: "Roboto Mono", monospace;
+  font-family: "supplyregular";
   justify-content: space-between;
   margin: 10px;
 }
@@ -42,6 +53,7 @@ header {
 
 footer {
   align-self: flex-end;
+  z-index: 200;
 }
 
 /* .main-home #main-cursor {
@@ -81,11 +93,12 @@ footer {
   background-color: transparent;
   width: 0;
   height: 0;
-  border-top: 13px solid transparent;
-  border-right: 26px solid var(--amarillo);
-  border-bottom: 13px solid transparent;
-  transform: rotate(45deg);
+  border-top: 10px solid transparent;
+  border-right: 20px solid var(--amarillo);
+  border-bottom: 10px solid transparent;
+  transform: rotate(55deg);
   border-radius: 0%;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .main-catalogo #follow-cursor {
@@ -108,8 +121,6 @@ a {
 }
 
 .logo:hover::after {
-  /* width: 200px;
-  height: 100px; */
   background: var(--verde);
   content: "";
   width: 100%;
@@ -128,23 +139,19 @@ a {
   z-index: 200;
 }
 
-/* .logo:hover {
-  color: var(--verde);
-} */
-
-footer {
-  z-index: 200;
-}
-
 .rojo:hover {
   background-color: var(--rojo);
   color: var(--blanco);
 }
 
-.azul:hover {
+.azul:hover:not(.catalogo) {
   background-color: var(--azul);
   border-radius: 40px;
   color: var(--blanco);
+}
+
+.catalogo {
+  color: var(--azul);
 }
 
 .draggable {
@@ -187,8 +194,12 @@ footer {
   column-gap: 1rem;
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 10px 0px;
   transition: color 300ms ease-in 1s;
+  position: sticky;
+  top: 0px;
+  z-index: 200;
+  background-color: var(--blanco);
 }
 
 .filter {
@@ -217,22 +228,19 @@ button {
 }
 
 .grilla-fotos {
+  -webkit-animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  padding-top: 80px;
+}
+
+/* version flexbox */
+/* .grilla-fotos {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
   justify-content: space-between;
-  padding-top: 80px;
-  -webkit-animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  /* display: grid;
-    column-gap: 2rem;
-    row-gap: 2rem;
-    align-items: center;
-    justify-items: center;
-    justify-content: space-between;
-    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); */
-}
+} */
 
 /* para mejorar el comportamiento de la última fila */
 /* .grilla-fotos::after {
@@ -240,15 +248,37 @@ button {
     flex: auto;
   } */
 
-.grilla-fotos img {
-  max-height: 180px;
-  /* pointer-events: none; */
-  /* max-width: 100%;
-    min-width: 0; */
+/* version grid */
+.grilla-fotos {
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  /* grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); */
+  grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr));
+}
+
+.foto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foto img {
+  max-width: 100%;
+  height: auto;
+  max-height: 22vh;
   cursor: cell;
 }
-/* 
-.reload-gallery {
+
+/* .grilla-fotos img {
+  max-height: 180px;
+  cursor: cell;
+} */
+
+/* .reload-gallery {
   -webkit-animation: fade-in 500ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 500ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
 } */
@@ -307,12 +337,12 @@ button {
 
 #carousel-close {
   position: absolute;
-  padding: 1rem 2rem;
-  line-height: 1;
+  padding: 10px 2rem;
+  line-height: 0.5;
   right: 0;
   top: 0;
   z-index: 5;
-  font-size: 2rem;
+  font-size: 4rem;
   color: var(--azul);
 }
 
@@ -329,6 +359,10 @@ button {
 .carousel-navigation {
   transform: rotate(90deg);
   color: var(--azul);
+}
+
+[data-direction="previous"] {
+  transform: rotate(-90deg);
 }
 
 .fade-in {
