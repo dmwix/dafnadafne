@@ -54,6 +54,8 @@ header {
 footer {
   align-self: flex-end;
   z-index: 200;
+  position: sticky;
+  bottom: 10px;
 }
 
 /* .main-home #main-cursor {
@@ -83,7 +85,7 @@ footer {
   z-index: 250;
 }
 
-.main-home #follow-cursor {
+#follow-cursor:not(.main-catalogo) {
   border-radius: 50%;
   height: 20px;
   width: 20px;
@@ -319,7 +321,7 @@ button {
 }
 
 #carousel button {
-  font-size: 6rem;
+  font-size: 3rem;
   padding: 2rem;
 }
 
@@ -373,6 +375,33 @@ button {
 .fade-out {
   -webkit-animation: fade-out 0.4s ease-out both;
   animation: fade-out 0.4s ease-out both;
+}
+
+.main-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  flex-grow: 2;
+  padding: 0 16px;
+  column-gap: 2rem;
+}
+
+.foto-bio {
+  display: flex;
+  justify-content: center;
+}
+
+.main-info img {
+  max-width: 60%;
+  height: auto;
+}
+
+#mail {
+  color: var(--verde);
+}
+
+#ig {
+  color: var(--violeta);
 }
 
 /* ----------------------------------------------
