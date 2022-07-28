@@ -189,6 +189,7 @@ const carouselNavigation = document.querySelectorAll(".carousel-navigation");
 const closeCarouselButton = document.getElementById("carousel-close");
 noCursors(carouselWindow.querySelectorAll("button"));
 const grid = document.querySelector(".grilla-fotos");
+noCursors([...grid.children]);
 let slideWrapper = document.querySelector(".slide-wrapper");
 let currentSlide;
 
@@ -291,7 +292,8 @@ function showTooltip(event) {
   function createTooltip() {
     tooltipElem = document.createElement("div");
     tooltipElem.className = "tooltip";
-    tooltipElem.innerText = "© Dafna Szleifer";
+    // © copyright
+    tooltipElem.innerText = `¯\\_(ツ)_/¯`;
     document.body.append(tooltipElem);
     // position it above the annotated element (top-center)
     let coords = img.getBoundingClientRect();

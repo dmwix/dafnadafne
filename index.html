@@ -1,82 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>dafna szleifer</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8">
-  <title>dafna szleifer</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.png" />
+    <!-- Place favicon.ico in the root directory -->
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/styles.css">
+    <meta name="theme-color" content="#fafafa" />
+  </head>
 
-  <meta name="theme-color" content="#fafafa">
-</head>
+  <body class="body-home">
+    <!-- Add your site or application content here -->
+    <header>
+      <a href="" class="link logo"> dafna szleifer </a>
+      <a href="catalogo.html" class="link azul"> catálogo </a>
+    </header>
 
-<body>
-  <!-- Add your site or application content here -->
-  <header>
-    <a href="" class="link logo">
-        dafna szleifer
-    </a>
-    <a href="catalogo.html" class="link azul">
-      catálogo
-    </a>
+    <main class="main-home">
+      <div id="main-cursor"></div>
+      <div id="follow-cursor"></div>
+      <div class="home-photo">
+        <picture class="draggable vibrar">
+          <source media="(min-width: 500px)" srcset="images/1.png" />
+          <img src="images/1.png" alt="" />
+        </picture>
+      </div>
+      <div class="home-photo">
+        <picture class="draggable vibrar">
+          <source media="(min-width: 500px)" srcset="images/2.png" />
+          <img src="images/2.png" alt="" />
+        </picture>
+      </div>
+      <div class="home-photo">
+        <picture class="draggable vibrar">
+          <source media="(min-width: 500px)" srcset="images/3.png" />
+          <img src="images/3.png" alt="" />
+        </picture>
+      </div>
+    </main>
 
-  </header>
+    <footer>
+      <div class="link rojo">
+        <a href="#"> info </a>
+      </div>
+    </footer>
 
-  <main class="main-home">
-    <div id="main-cursor"></div>
-    <div id="follow-cursor"></div>
-    <div class="home-photo">
-      <picture class="draggable vibrar">
-        <source media='(min-width: 500px)' srcset='images/1.png'/>
-        <img src="images/1.png" alt="">
-      </picture>  
-    </div>
-    <div class="home-photo">
-      <picture class="draggable vibrar">
-        <source media='(min-width: 500px)' srcset='images/2.png'/>
-        <img src="images/2.png" alt="">
-      </picture>
-    </div>
-    <div class="home-photo">
-      <picture class="draggable vibrar">
-        <source media='(min-width: 500px)' srcset='images/3.png'/>
-        <img src="images/3.png" alt="">
-      </picture>
-    </div>
-  </main>
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
 
-  <footer>
-    <div class="link rojo">
-      <a href="#">
-        info
-      </a>
-    </div>
-
-  </footer>
-
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
-
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>
+      window.ga = function () {
+        ga.q.push(arguments);
+      };
+      ga.q = [];
+      ga.l = +new Date();
+      ga("create", "UA-XXXXX-Y", "auto");
+      ga("set", "anonymizeIp", true);
+      ga("set", "transport", "beacon");
+      ga("send", "pageview");
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async></script>
+  </body>
 </html>
