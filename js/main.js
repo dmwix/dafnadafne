@@ -136,7 +136,7 @@ draggables.forEach((draggable) => {
 // CATALOGO
 const todas = document.querySelectorAll(".todas");
 const filters = document.querySelectorAll(".filter");
-noCursors(filters);
+// noCursors(filters);
 
 function filterGallery(criterio) {
   hidePhotos(todas);

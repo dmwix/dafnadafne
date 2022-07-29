@@ -39,7 +39,8 @@ body {
   flex-grow: 1;
   font-family: "supplyregular";
   justify-content: space-between;
-  margin: 10px;
+  margin: 10px 20px;
+  overflow-x: hidden;
 }
 
 .body-home {
@@ -122,8 +123,14 @@ a {
   color: var(--blanco);
 }
 
+.logo::after {
+  content: "";
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+
 .logo:hover::after {
-  background: var(--verde);
+  background-color: var(--verde);
   content: "";
   width: 100%;
   height: 100%;
@@ -132,13 +139,14 @@ a {
   left: 0;
   z-index: -1;
   transform: skew(-9deg);
+  opacity: 1;
 }
 
-.link,
-.logo {
+.link {
   line-height: 1;
   padding: 10px 16px;
   z-index: 200;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .rojo:hover {
@@ -146,9 +154,12 @@ a {
   color: var(--blanco);
 }
 
-.azul:hover:not(.catalogo) {
-  background-color: var(--azul);
+.azul {
   border-radius: 40px;
+}
+
+.azul:hover {
+  background-color: var(--azul);
   color: var(--blanco);
 }
 
@@ -197,7 +208,6 @@ a {
   list-style-type: none;
   margin: 0;
   padding: 10px 0px;
-  transition: color 300ms ease-in 1s;
   position: sticky;
   top: 0px;
   z-index: 200;
@@ -206,6 +216,7 @@ a {
 
 .filter {
   padding: 10px 16px;
+  cursor: none;
 }
 
 .filter:hover:not(.current) {
@@ -215,7 +226,7 @@ a {
 }
 
 .filter:focus-visible {
-  outline: 2px solid var(--rojo);
+  outline: 2px solid var(--violeta);
 }
 
 button {
@@ -272,13 +283,8 @@ button {
   max-width: 100%;
   height: auto;
   max-height: 22vh;
-  cursor: cell;
+  cursor: zoom-in;
 }
-
-/* .grilla-fotos img {
-  max-height: 180px;
-  cursor: cell;
-} */
 
 /* .reload-gallery {
   -webkit-animation: fade-in 500ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
