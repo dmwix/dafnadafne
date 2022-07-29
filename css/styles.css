@@ -217,11 +217,12 @@ a {
 .filter {
   padding: 10px 16px;
   cursor: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 40px;
 }
 
 .filter:hover:not(.current) {
   background-color: var(--violeta);
-  border-radius: 40px;
   color: var(--blanco);
 }
 
