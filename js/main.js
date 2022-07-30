@@ -6,6 +6,22 @@
 //   document.documentElement.style.setProperty('--vh', `${vh}px`);
 // });
 
+// HOME
+const mainHome = document.querySelector(".main-home");
+let homePhoto = document.createElement("div");
+homePhoto.classList.add("home-photo");
+let picture = document.createElement("picture");
+// function getRandomInt() {
+//   let randomNumber = Math.floor(Math.random() * 6);
+//   return randomNumber;
+// }
+// getRandomInt();
+picture.innerHTML = `<source media="(min-width: 500px)" srcset="images/${randomNumber}.png" />
+<img src="images/${randomNumber}.png" alt="" />`;
+picture.classList.add("draggable");
+homePhoto.append(picture);
+mainHome.append(homePhoto);
+
 let ancho = document.documentElement.clientWidth;
 let alto = document.documentElement.clientHeight;
 
@@ -134,6 +150,19 @@ draggables.forEach((draggable) => {
 });
 
 // CATALOGO
+// const stickyHeader = document.getElementById("sticky-header");
+// const topOfHeader = stickyHeader.offsetTop;
+// function fixNav() {
+//   if (window.scrollY >= topOfHeader + 50) {
+//     document.body.style.paddingTop = stickyHeader.offsetHeight + "px";
+//     document.body.classList.add("fixed-nav");
+//   } else {
+//     document.body.style.paddingTop = 0;
+//     document.body.classList.remove("fixed-nav");
+//   }
+// }
+// window.addEventListener("scroll", fixNav);
+
 const todas = document.querySelectorAll(".todas");
 const filters = document.querySelectorAll(".filter");
 // noCursors(filters);
