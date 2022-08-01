@@ -171,18 +171,20 @@ draggables.forEach((draggable) => {
 });
 
 // CATALOGO
-// const stickyHeader = document.getElementById("sticky-header");
-// const topOfHeader = stickyHeader.offsetTop;
-// function fixNav() {
-//   if (window.scrollY >= topOfHeader + 50) {
-//     document.body.style.paddingTop = stickyHeader.offsetHeight + "px";
-//     document.body.classList.add("fixed-nav");
-//   } else {
-//     document.body.style.paddingTop = 0;
-//     document.body.classList.remove("fixed-nav");
-//   }
-// }
-// window.addEventListener("scroll", fixNav);
+const filtersList = document.querySelector(".filters-list");
+const filtersNav = document.querySelector(".filters-nav");
+const topOfFiltersList = filtersNav.offsetTop;
+
+function fixNav() {
+  if (window.scrollY >= topOfFiltersList) {
+    document.body.style.paddingTop = filtersNav.offsetHeight + "px";
+    document.body.classList.add("fixed-nav");
+  } else {
+    document.body.style.paddingTop = 0;
+    document.body.classList.remove("fixed-nav");
+  }
+}
+window.addEventListener("scroll", fixNav);
 
 const todas = document.querySelectorAll(".todas");
 const filters = document.querySelectorAll(".filter");
@@ -211,7 +213,6 @@ function showPhotos(criterio) {
   });
 }
 
-const filtersList = document.querySelector(".filters-list");
 filtersList.addEventListener("click", (e) => {
   let filter = e.target.closest(".filter");
   if (!filter) return;

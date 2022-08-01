@@ -44,7 +44,7 @@ body {
   flex-grow: 1;
   font-family: "supplyregular";
   justify-content: space-between;
-  margin: 10px 20px;
+  margin: 10px 0px;
   overflow-x: hidden;
 }
 
@@ -55,6 +55,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
+  margin: 0 20px;
 }
 
 footer {
@@ -62,6 +63,7 @@ footer {
   z-index: 200;
   position: sticky;
   bottom: 10px;
+  margin: 0 20px;
 }
 
 /* .main-home #main-cursor {
@@ -190,6 +192,7 @@ a {
   grid-template-columns: 1fr 2fr 2fr;
   grid-template-rows: 2fr 3fr;
   gap: 1rem;
+  margin: 20px 30px;
 }
 
 .home-photo:nth-child(1) {
@@ -233,7 +236,31 @@ a {
   padding: 10px 0px;
 }
 
-/* box-shadow: 0 2px rgba(0, 0, 0, 0.1); */
+.filters-nav {
+  width: 100%;
+  z-index: 205;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding: 0 20px;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.fixed-nav .filters-nav {
+  position: fixed;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  background-color: var(--blanco);
+  top: 0px;
+}
+
+.filters-nav .logo-wrapper {
+  opacity: 0;
+}
+
+.fixed-nav .filters-nav .logo-wrapper {
+  opacity: 1;
+  transition: all 0.1s ease-in;
+}
 
 .filter {
   padding: 10px 16px;
@@ -263,7 +290,7 @@ button {
 }
 
 .grilla-fotos {
-  padding: 60px 120px;
+  padding: 60px 140px;
   display: grid;
   column-gap: 2rem;
   row-gap: 2rem;
