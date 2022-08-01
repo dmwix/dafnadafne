@@ -6,24 +6,45 @@
 //   document.documentElement.style.setProperty('--vh', `${vh}px`);
 // });
 
+const ancho = document.documentElement.clientWidth;
+const alto = document.documentElement.clientHeight;
+
 // HOME
 const mainHome = document.querySelector(".main-home");
-let homePhoto = document.createElement("div");
-homePhoto.classList.add("home-photo");
-let picture = document.createElement("picture");
-// function getRandomInt() {
-//   let randomNumber = Math.floor(Math.random() * 6);
-//   return randomNumber;
-// }
-// getRandomInt();
-picture.innerHTML = `<source media="(min-width: 500px)" srcset="images/${randomNumber}.png" />
-<img src="images/${randomNumber}.png" alt="" />`;
-picture.classList.add("draggable");
-homePhoto.append(picture);
-mainHome.append(homePhoto);
 
-let ancho = document.documentElement.clientWidth;
-let alto = document.documentElement.clientHeight;
+// shuffle array with Fisher-Yates algorithm
+function fyShuffle(arr) {
+  let i = arr.length;
+  while (--i > 0) {
+    let randIndex = Math.floor(Math.random() * (i + 1));
+    [arr[randIndex], arr[i]] = [arr[i], arr[randIndex]];
+  }
+  return arr;
+}
+
+let homeSelection = [1, 2, 3, 4, 5, 6, 7, 8];
+fyShuffle(homeSelection);
+let homePhotos = homeSelection.splice(0, 5);
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+homePhotos.forEach((photoId) => {
+  if (!document.body.contains(mainHome)) return;
+  let wrapperDiv = document.createElement("div");
+  wrapperDiv.classList.add("home-photo", "vibrar");
+  let picture = document.createElement("picture");
+  wrapperDiv.append(picture);
+  picture.innerHTML = `<source media="(min-width: 500px)" srcset="images/${photoId}.png" /> <img src="images/${photoId}.png" alt="" class="draggable" />`;
+  mainHome.prepend(wrapperDiv);
+  // let maxLeft = mainHome.offsetWidth - wrapperDiv.offsetWidth;
+  // let left = getRandomArbitrary(mainHome.offsetLeft, maxLeft);
+  // wrapperDiv.style.left = left + "px";
+  // let maxTop = mainHome.offsetHeight - wrapperDiv.offsetHeight;
+  // let top = getRandomArbitrary(mainHome.offsetTop, maxTop);
+  // wrapperDiv.style.top = top + "px";
+});
 
 // CUSTOM CURSOR
 const cursor = document.getElementById("main-cursor");
