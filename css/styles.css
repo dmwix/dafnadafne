@@ -263,7 +263,7 @@ button {
 }
 
 .grilla-fotos {
-  padding: 60px 100px;
+  padding: 60px 120px;
   display: grid;
   column-gap: 2rem;
   row-gap: 2rem;
