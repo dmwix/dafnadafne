@@ -33,7 +33,7 @@ function getRandomArbitrary(min, max) {
 homePhotos.forEach((photoId) => {
   if (!document.body.contains(mainHome)) return;
   let wrapperDiv = document.createElement("div");
-  wrapperDiv.classList.add("home-photo", "vibrar");
+  wrapperDiv.classList.add("home-photo", "tiembla");
   let picture = document.createElement("picture");
   wrapperDiv.append(picture);
   picture.innerHTML = `<source media="(min-width: 500px)" srcset="images/${photoId}.png" /> <img src="images/${photoId}.png" alt="" class="draggable" />`;
@@ -52,9 +52,9 @@ const followCursor = document.getElementById("follow-cursor");
 
 document.addEventListener("mousemove", function (e) {
   let cursorLeft = `${e.pageX - cursor.offsetWidth / 2}`;
-  if (cursorLeft > ancho - cursor.offsetWidth) {
-    cursorLeft = ancho - cursor.offsetWidth;
-  }
+  // if (cursorLeft > ancho - cursor.offsetWidth) {
+  //   cursorLeft = ancho - cursor.offsetWidth;
+  // }
   let cursorTop = `${e.pageY - cursor.offsetHeight / 2}`;
   // if (cursorTop > alto - cursor.offsetHeight) {
   //   cursorTop = alto - cursor.offsetHeight;
@@ -102,7 +102,7 @@ noCursors(draggables);
 
 draggables.forEach((draggable) => {
   draggable.onmousedown = function (event) {
-    draggable.classList.remove("vibrar");
+    draggable.classList.remove("tiembla");
 
     let coords = draggable.getBoundingClientRect();
     let left = coords.left;
@@ -145,7 +145,7 @@ draggables.forEach((draggable) => {
     };
 
     draggable.onmouseout = function () {
-      draggable.classList.add("vibrar");
+      draggable.classList.add("tiembla");
     };
 
     draggable.ondragstart = function () {
@@ -258,6 +258,8 @@ function openCarousel(e) {
   currentSlide.className = "";
   slideWrapper.append(currentSlide);
   document.body.style.overflow = "hidden";
+
+  document.addEventListener("mousemove", cursorFlechita);
 }
 
 function closeCarousel(e) {
@@ -271,6 +273,9 @@ function closeCarousel(e) {
   // borro la current slide
   slideWrapper.textContent = "";
   document.body.style.overflow = "auto";
+
+  document.removeEventListener("mousemove", cursorFlechita);
+  flecha.style.display = "none";
 }
 
 function navigateCarousel(e) {
@@ -295,6 +300,23 @@ function navigateCarousel(e) {
   newSlide = currentSlide.cloneNode(true);
   newSlide.className = "";
   slideWrapper.append(newSlide);
+}
+
+// sacar cursor en carousel
+noCursors([carouselWindow]);
+const flecha = document.querySelector(".flecha");
+
+function cursorFlechita(e) {
+  flecha.style.display = "block";
+  let flechaLeft = `${e.pageX - flecha.offsetWidth / 2}`;
+  let flechaTop = `${e.pageY - flecha.offsetHeight / 2}`;
+  flecha.style.left = flechaLeft + "px";
+  flecha.style.top = flechaTop + "px";
+  if (flechaLeft < ancho / 2) {
+    flecha.innerHTML = "&#10094;";
+  } else {
+    flecha.innerHTML = "&#10095;";
+  }
 }
 
 document.addEventListener("keydown", (e) => {
