@@ -278,10 +278,51 @@ function closeCarousel(e) {
   flecha.style.display = "none";
 }
 
-function navigateCarousel(e) {
-  let navigationArrow = e.target.closest(".carousel-navigation");
-  if (!navigationArrow) return;
-  const direction = navigationArrow.dataset.direction === "next" ? 1 : -1;
+// function navigateCarousel(e) {
+//   let navigationArrow = e.target.closest(".carousel-navigation");
+//   if (!navigationArrow) return;
+//   const direction = navigationArrow.dataset.direction === "next" ? 1 : -1;
+//   const currentFilter = document.querySelector(".filter.current");
+//   const currentGallery = [
+//     ...document.querySelectorAll(`.${currentFilter.innerText}`),
+//   ];
+//   currentSlide = slideWrapper.firstChild;
+//   let index = currentGallery.findIndex(
+//     (image) => image.src === currentSlide.src
+//   );
+//   let newIndex = index + direction;
+//   if (newIndex < 0) {
+//     newIndex = currentGallery.length - 1;
+//   }
+//   if (newIndex >= currentGallery.length) newIndex = 0;
+//   slideWrapper.textContent = "";
+//   currentSlide = currentGallery[newIndex];
+//   newSlide = currentSlide.cloneNode(true);
+//   newSlide.className = "";
+//   slideWrapper.append(newSlide);
+// }
+
+// sacar cursor en carousel
+noCursors([carouselWindow]);
+const flecha = document.querySelector(".flecha");
+
+function cursorFlechita(e) {
+  flecha.style.display = "block";
+  let flechaLeft = `${e.pageX - flecha.offsetWidth / 2}`;
+  let flechaTop = `${e.pageY - flecha.offsetHeight / 2}`;
+  flecha.style.left = flechaLeft + "px";
+  flecha.style.top = flechaTop + "px";
+  if (flechaLeft < ancho / 2) {
+    flecha.innerHTML = "&#10094;";
+    flecha.dataset.direction = "previous";
+  } else {
+    flecha.innerHTML = "&#10095;";
+    flecha.dataset.direction = "next";
+  }
+}
+
+function cursorFlechitaNavigation() {
+  const direction = flecha.dataset.direction === "next" ? 1 : -1;
   const currentFilter = document.querySelector(".filter.current");
   const currentGallery = [
     ...document.querySelectorAll(`.${currentFilter.innerText}`),
@@ -302,45 +343,43 @@ function navigateCarousel(e) {
   slideWrapper.append(newSlide);
 }
 
-// sacar cursor en carousel
-noCursors([carouselWindow]);
-const flecha = document.querySelector(".flecha");
-
-function cursorFlechita(e) {
-  flecha.style.display = "block";
-  let flechaLeft = `${e.pageX - flecha.offsetWidth / 2}`;
-  let flechaTop = `${e.pageY - flecha.offsetHeight / 2}`;
-  flecha.style.left = flechaLeft + "px";
-  flecha.style.top = flechaTop + "px";
-  if (flechaLeft < ancho / 2) {
-    flecha.innerHTML = "&#10094;";
-  } else {
-    flecha.innerHTML = "&#10095;";
-  }
-}
-
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "Escape":
       closeCarousel(e);
       break;
     case "ArrowLeft":
-      let previous = document.querySelector('[data-direction="previous"]');
-      previous.click();
+      flecha.dataset.direction = "previous";
+      carouselWindow.click();
       break;
     case "ArrowRight":
-      let next = document.querySelector('[data-direction="next"]');
-      next.click();
+      flecha.dataset.direction = "next";
+      carouselWindow.click();
       break;
     default:
       return;
   }
 });
 
+function noFlechita(el) {
+  function hideFlechita() {
+    flecha.style.opacity = "0";
+  }
+
+  function showFlechita() {
+    flecha.style.opacity = "1";
+  }
+
+  el.addEventListener("mouseover", hideFlechita);
+  el.addEventListener("mouseout", showFlechita);
+}
+
 grid.addEventListener("click", openCarousel);
-carousel.addEventListener("click", navigateCarousel);
-carouselWindow.addEventListener("click", closeCarousel);
+carouselWindow.addEventListener("click", cursorFlechitaNavigation);
+// carouselWindow.addEventListener("click", closeCarousel);
+// carousel.addEventListener("click", navigateCarousel);
 closeCarouselButton.addEventListener("click", closeCarousel);
+noFlechita(closeCarouselButton);
 
 // TOOLTIP ON IMGS. le falta laburo a la función todavía
 document.body.addEventListener("contextmenu", showTooltip);
