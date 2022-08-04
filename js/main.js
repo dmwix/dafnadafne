@@ -22,7 +22,7 @@ function fyShuffle(arr) {
   return arr;
 }
 
-let homeSelection = [1, 2, 3, 4, 5, 6, 7, 8];
+let homeSelection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 fyShuffle(homeSelection);
 let homePhotos = homeSelection.splice(0, 5);
 
@@ -206,10 +206,8 @@ function showPhotos(criterio) {
   criterio.forEach((photo) => {
     let imgWrapper = photo.closest(".foto");
     imgWrapper.style.display = "flex";
-    // photo.classList.remove("reload-gallery");
     // reflow for triggering animation again
     // photo.offsetHeight;
-    // photo.classList.add("reload-gallery");
   });
 }
 
@@ -380,6 +378,13 @@ carouselWindow.addEventListener("click", cursorFlechitaNavigation);
 // carousel.addEventListener("click", navigateCarousel);
 closeCarouselButton.addEventListener("click", closeCarousel);
 noFlechita(closeCarouselButton);
+
+let closeCarouselButtonCounter = 0;
+closeCarouselButton.addEventListener("mouseover", () => {
+  closeCarouselButtonCounter += 1;
+  let rotationDeg = 90 * closeCarouselButtonCounter;
+  closeCarouselButton.style.transform = `rotate(${rotationDeg}deg)`;
+});
 
 // TOOLTIP ON IMGS. le falta laburo a la función todavía
 document.body.addEventListener("contextmenu", showTooltip);
