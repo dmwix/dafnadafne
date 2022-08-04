@@ -326,12 +326,11 @@ button {
   cursor: zoom-in;
 }
 
-.tooltip {
+/* .tooltip {
   background: var(--blanco);
   border-radius: 4px;
   border: 1px solid black;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
-  /* color: #333; */
   color: black;
   font-size: 12px;
   font-style: italic;
@@ -339,6 +338,26 @@ button {
   position: fixed;
   text-align: center;
   z-index: 300;
+} */
+
+.shrug {
+  font-size: 2em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--azul);
+  padding: 10px 0;
+  position: fixed;
+  text-align: center;
+  z-index: 300;
+  animation: recorrer-ancho 5.5s linear;
+}
+
+@keyframes recorrer-ancho {
+  from {
+    transform: translateX(35vw);
+  }
+  to {
+    transform: translateX(-65vw);
+  }
 }
 
 #carousel-window {
@@ -383,7 +402,8 @@ button {
   background-size: 2rem;
   cursor: pointer;
   height: 2rem;
-  padding: 2rem;
+  padding: 1rem;
+  margin: 1rem;
   position: absolute;
   right: 0;
   top: 0;

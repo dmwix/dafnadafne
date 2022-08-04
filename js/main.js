@@ -255,8 +255,8 @@ function openCarousel(e) {
   // le saco la clase así no agrando la array de dicha clase sumándole un item repetido
   currentSlide.className = "";
   slideWrapper.append(currentSlide);
-  document.body.style.overflow = "hidden";
-
+  document.body.style.overflowY = "hidden";
+  cursor.style.display = "none";
   document.addEventListener("mousemove", cursorFlechita);
 }
 
@@ -270,10 +270,11 @@ function closeCarousel(e) {
   }, 400);
   // borro la current slide
   slideWrapper.textContent = "";
-  document.body.style.overflow = "auto";
+  document.body.style.overflowY = "auto";
 
   document.removeEventListener("mousemove", cursorFlechita);
   flecha.style.display = "none";
+  cursor.style.display = "block";
 }
 
 // function navigateCarousel(e) {
@@ -300,8 +301,6 @@ function closeCarousel(e) {
 //   slideWrapper.append(newSlide);
 // }
 
-// sacar cursor en carousel
-noCursors([carouselWindow]);
 const flecha = document.querySelector(".flecha");
 
 function cursorFlechita(e) {
@@ -387,51 +386,96 @@ closeCarouselButton.addEventListener("mouseover", () => {
 });
 
 // TOOLTIP ON IMGS. le falta laburo a la función todavía
-document.body.addEventListener("contextmenu", showTooltip);
-let tooltipElem;
-let timerTooltip;
+// document.body.addEventListener("contextmenu", showTooltip);
+// let tooltipElem;
+// let timerTooltip;
 
-function showTooltip(event) {
+// function showTooltip(event) {
+//   let img = event.target.closest("img");
+//   if (!img) return;
+//   event.preventDefault();
+//   removePreviousTooltip();
+//   createTooltip();
+//   timerTooltip = setTimeout(hideTooltip, 2000);
+
+//   function removePreviousTooltip() {
+//     if (timerTooltip) {
+//       clearTimeout(timerTooltip);
+//     }
+//     while (tooltipElem) {
+//       tooltipElem.remove();
+//       tooltipElem = null;
+//     }
+//   }
+
+//   function createTooltip() {
+//     tooltipElem = document.createElement("div");
+//     tooltipElem.className = "tooltip";
+//     // © copyright
+//     tooltipElem.innerText = `¯\\_(ツ)_/¯`;
+//     document.body.append(tooltipElem);
+//     // position it above the annotated element (top-center)
+//     let coords = img.getBoundingClientRect();
+//     let left = coords.left + (img.offsetWidth - tooltipElem.offsetWidth) / 2;
+//     if (left < 0) left = 0; // don't cross the left window edge
+//     let top = coords.top - tooltipElem.offsetHeight - 5;
+//     if (top < 0) {
+//       // if crossing the top window edge, show below instead
+//       top = coords.top + img.offsetHeight + 5;
+//     }
+//     tooltipElem.style.left = left + "px";
+//     tooltipElem.style.top = top + "px";
+//   }
+
+//   function hideTooltip() {
+//     tooltipElem.remove();
+//     tooltipElem = null;
+//   }
+// }
+
+// SHRUG
+document.body.addEventListener("contextmenu", shrug);
+let shrugDiv;
+let timerShrug;
+
+function shrug(event) {
   let img = event.target.closest("img");
   if (!img) return;
   event.preventDefault();
-  removePreviousTooltip();
-  createTooltip();
-  timerTooltip = setTimeout(hideTooltip, 2000);
+  removePreviousShrug();
+  createShrug();
+  timerShrug = setTimeout(hideShrug, 5500);
 
-  function removePreviousTooltip() {
-    if (timerTooltip) {
-      clearTimeout(timerTooltip);
+  function removePreviousShrug() {
+    if (timerShrug) {
+      clearTimeout(timerShrug);
     }
-    while (tooltipElem) {
-      tooltipElem.remove();
-      tooltipElem = null;
+    while (shrugDiv) {
+      shrugDiv.remove();
+      shrugDiv = null;
     }
   }
 
-  function createTooltip() {
-    tooltipElem = document.createElement("div");
-    tooltipElem.className = "tooltip";
-    // © copyright
-    tooltipElem.innerText = `¯\\_(ツ)_/¯`;
-    document.body.append(tooltipElem);
+  function createShrug() {
+    shrugDiv = document.createElement("div");
+    shrugDiv.className = "shrug";
+    shrugDiv.innerText = `¯\\_(ツ)_/¯`;
+    document.body.append(shrugDiv);
     // position it above the annotated element (top-center)
     let coords = img.getBoundingClientRect();
-    let left = coords.left + (img.offsetWidth - tooltipElem.offsetWidth) / 2;
+    let left = coords.left + (img.offsetWidth - shrugDiv.offsetWidth) / 2;
     if (left < 0) left = 0; // don't cross the left window edge
-    let top = coords.top - tooltipElem.offsetHeight - 5;
+    let top = coords.top - shrugDiv.offsetHeight;
     if (top < 0) {
       // if crossing the top window edge, show below instead
-      top = coords.top + img.offsetHeight + 5;
+      top = coords.top + img.offsetHeight;
     }
-    tooltipElem.style.left = left + "px";
-    tooltipElem.style.top = top + "px";
+    shrugDiv.style.left = left + "px";
+    shrugDiv.style.top = top + "px";
   }
 
-  function hideTooltip() {
-    tooltipElem.remove();
-    tooltipElem = null;
+  function hideShrug() {
+    shrugDiv.remove();
+    shrugDiv = null;
   }
 }
-
-// una función = una tarea
