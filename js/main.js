@@ -7,7 +7,7 @@
 // });
 
 const ancho = document.documentElement.clientWidth;
-const alto = document.documentElement.clientHeight;
+let alto = document.documentElement.scrollHeight;
 
 // HOME
 const mainHome = document.querySelector(".main-home");
@@ -56,8 +56,8 @@ document.addEventListener("mousemove", function (e) {
   //   cursorLeft = ancho - cursor.offsetWidth;
   // }
   let cursorTop = `${e.pageY - cursor.offsetHeight / 2}`;
-  // if (cursorTop > alto - cursor.offsetHeight) {
-  //   cursorTop = alto - cursor.offsetHeight;
+  // if (cursorTop > document.documentElement.scrollHeight - cursor.offsetHeight) {
+  //   cursorTop = document.documentElement.scrollHeight - cursor.offsetHeight;
   // }
 
   let followCursorLeft = `${e.pageX - 10}`;
@@ -260,6 +260,13 @@ function openCarousel(e) {
   document.addEventListener("mousemove", cursorFlechita);
 }
 
+slideWrapper.addEventListener("mouseenter", function () {
+  flecha.classList.add("over-photo");
+});
+slideWrapper.addEventListener("mouseleave", function () {
+  flecha.classList.remove("over-photo");
+});
+
 function closeCarousel(e) {
   let img = e.target.closest("img");
   if (img) return;
@@ -444,7 +451,7 @@ function shrug(event) {
   event.preventDefault();
   removePreviousShrug();
   createShrug();
-  timerShrug = setTimeout(hideShrug, 5500);
+  timerShrug = setTimeout(hideShrug, 2000);
 
   function removePreviousShrug() {
     if (timerShrug) {
