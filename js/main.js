@@ -6,8 +6,15 @@
 //   document.documentElement.style.setProperty('--vh', `${vh}px`);
 // });
 
-const ancho = document.documentElement.clientWidth;
-let alto = document.documentElement.scrollHeight;
+let ancho = document.documentElement.clientWidth;
+let alto = document.documentElement.clientWidth;
+
+function currentWindowSize() {
+  alto = document.documentElement.clientWidth;
+  ancho = document.documentElement.clientWidth;
+}
+
+window.onresize = currentWindowSize;
 
 // HOME
 const mainHome = document.querySelector(".main-home");
@@ -46,19 +53,19 @@ homePhotos.forEach((photoId) => {
   // wrapperDiv.style.top = top + "px";
 });
 
-// CUSTOM CURSOR
+// CUSTOM CURSORS
 const cursor = document.getElementById("main-cursor");
 const followCursor = document.getElementById("follow-cursor");
 
 document.addEventListener("mousemove", function (e) {
   let cursorLeft = `${e.pageX - cursor.offsetWidth / 2}`;
-  // if (cursorLeft > ancho - cursor.offsetWidth) {
-  //   cursorLeft = ancho - cursor.offsetWidth;
-  // }
+  if (cursorLeft > ancho - cursor.offsetWidth) {
+    cursorLeft = ancho - cursor.offsetWidth;
+  }
   let cursorTop = `${e.pageY - cursor.offsetHeight / 2}`;
-  // if (cursorTop > document.documentElement.scrollHeight - cursor.offsetHeight) {
-  //   cursorTop = document.documentElement.scrollHeight - cursor.offsetHeight;
-  // }
+  if (cursorTop > alto - cursor.offsetHeight) {
+    cursorTop = alto - cursor.offsetHeight;
+  }
 
   let followCursorLeft = `${e.pageX - 10}`;
   if (followCursorLeft > ancho - followCursor.offsetWidth) {
@@ -174,8 +181,11 @@ draggables.forEach((draggable) => {
 const filtersList = document.querySelector(".filters-list");
 const filtersNav = document.querySelector(".filters-nav");
 const topOfFiltersList = filtersNav.offsetTop;
+const grid = document.querySelector(".grilla-fotos");
+noCursors([...grid.children]);
 
 function fixNav() {
+  if (!document.body.contains(grid)) return;
   if (window.scrollY >= topOfFiltersList) {
     document.body.style.paddingTop = filtersNav.offsetHeight + "px";
     document.body.classList.add("fixed-nav");
@@ -211,26 +221,55 @@ function showPhotos(criterio) {
   });
 }
 
+const previousTitle = document.title;
+
+function activeFilter(filter) {
+  document.querySelector(".current").classList.remove("current");
+  filter.classList.add("current");
+}
+
 filtersList.addEventListener("click", (e) => {
   let filter = e.target.closest(".filter");
   if (!filter) return;
   let filterName = filter.innerText;
   // poner clase activa al filtro seleccionado en la lista
-  document.querySelector(".current").classList.remove("current");
-  filter.classList.add("current");
+  // document.querySelector(".current").classList.remove("current");
+  // filter.classList.add("current");
+  activeFilter(filter);
   // aplicar filterGallery al seleccionado
   let selected = document.querySelectorAll(`.${filterName}`);
   filterGallery(selected);
-  // actualizar url FUNCIÓN APARTE??
-  // let url = `${filterName}.html`;
-  // let pechuguita = `catálogo: ${filterName}`;
-  // history.pushState(pechuguita, "", url);
-  // document.title = pechuguita + " | dafna szleifer";
+
+  // actualizar url
+  let url = filterName + ".html";
+  let titulo = `catálogo: ${filterName}`;
+  if (filterName == "todas") {
+    document.title = previousTitle;
+  } else {
+    document.title = titulo + " | dafna szleifer";
+  }
+
+  changeUrl(url, filterName);
+
+  window.onpopstate = (e) => {
+    if (e.state != null) {
+      filterGallery(document.querySelectorAll(`.${e.state}`));
+
+      activeFilter(todasTag);
+      // console.log(
+      //   `location: ${document.location}, state: ${JSON.stringify(e.state)}`
+      // );
+    } else {
+      filterGallery(todas);
+      let todasTag = document.querySelector(".filter");
+      activeFilter(todasTag);
+    }
+  };
 });
 
-// function changeURL() {
-//   console.log("holis");
-// }
+function changeUrl(url, filterName) {
+  history.pushState(filterName, "", url);
+}
 
 // CAROUSEL
 const carouselWindow = document.getElementById("carousel-window");
@@ -238,8 +277,6 @@ const carousel = document.getElementById("carousel");
 const carouselNavigation = document.querySelectorAll(".carousel-navigation");
 const closeCarouselButton = document.getElementById("carousel-close");
 noCursors(carouselWindow.querySelectorAll("button"));
-const grid = document.querySelector(".grilla-fotos");
-noCursors([...grid.children]);
 let slideWrapper = document.querySelector(".slide-wrapper");
 let currentSlide;
 
@@ -259,13 +296,6 @@ function openCarousel(e) {
   cursor.style.display = "none";
   document.addEventListener("mousemove", cursorFlechita);
 }
-
-slideWrapper.addEventListener("mouseenter", function () {
-  flecha.classList.add("over-photo");
-});
-slideWrapper.addEventListener("mouseleave", function () {
-  flecha.classList.remove("over-photo");
-});
 
 function closeCarousel(e) {
   let img = e.target.closest("img");
@@ -379,6 +409,9 @@ function noFlechita(el) {
 }
 
 grid.addEventListener("click", openCarousel);
+grid.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+});
 carouselWindow.addEventListener("click", cursorFlechitaNavigation);
 // carouselWindow.addEventListener("click", closeCarousel);
 // carousel.addEventListener("click", navigateCarousel);
@@ -441,7 +474,7 @@ closeCarouselButton.addEventListener("mouseover", () => {
 // }
 
 // SHRUG
-document.body.addEventListener("contextmenu", shrug);
+slideWrapper.addEventListener("contextmenu", shrug);
 let shrugDiv;
 let timerShrug;
 
