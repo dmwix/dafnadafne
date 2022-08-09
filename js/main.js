@@ -228,6 +228,19 @@ function activeFilter(filter) {
   filter.classList.add("current");
 }
 
+function updateTitle(filterName) {
+  let titulo = `catálogo: ${filterName}`;
+  if (filterName == "todas") {
+    document.title = previousTitle;
+  } else {
+    document.title = titulo + " | dafna szleifer";
+  }
+}
+
+function changeUrl(url, filterName) {
+  history.pushState(filterName, "", url);
+}
+
 filtersList.addEventListener("click", (e) => {
   let filter = e.target.closest(".filter");
   if (!filter) return;
@@ -240,36 +253,27 @@ filtersList.addEventListener("click", (e) => {
   let selected = document.querySelectorAll(`.${filterName}`);
   filterGallery(selected);
 
-  // actualizar url
+  // actualizar url y actualizar el título del sitio
   let url = filterName + ".html";
-  let titulo = `catálogo: ${filterName}`;
-  if (filterName == "todas") {
-    document.title = previousTitle;
-  } else {
-    document.title = titulo + " | dafna szleifer";
-  }
-
+  updateTitle(filterName);
   changeUrl(url, filterName);
 
   window.onpopstate = (e) => {
     if (e.state != null) {
       filterGallery(document.querySelectorAll(`.${e.state}`));
-
-      activeFilter(todasTag);
-      // console.log(
-      //   `location: ${document.location}, state: ${JSON.stringify(e.state)}`
-      // );
+      const match = [...filters].find((element) => {
+        return element.textContent.includes(e.state);
+      });
+      activeFilter(match);
+      updateTitle(e.state);
     } else {
       filterGallery(todas);
       let todasTag = document.querySelector(".filter");
       activeFilter(todasTag);
+      updateTitle("todas");
     }
   };
 });
-
-function changeUrl(url, filterName) {
-  history.pushState(filterName, "", url);
-}
 
 // CAROUSEL
 const carouselWindow = document.getElementById("carousel-window");
