@@ -163,6 +163,14 @@ draggables.forEach((draggable) => {
       return false;
     };
 
+    // prevenir que se rompa el mecanismo cuando el cursor hoverea en los links
+    links.forEach((link) => {
+      link.addEventListener("mouseover", function () {
+        document.removeEventListener("mousemove", onMouseMove);
+      });
+    });
+
+    // prevenir que se rompa el mecanismo cuando el cursor sale del documento
     document.body.addEventListener("mouseout", function (event) {
       if (
         event.clientY <= 0 ||
