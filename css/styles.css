@@ -28,7 +28,6 @@ html {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  max-width: 100vw;
 }
 
 ::selection {
@@ -46,6 +45,7 @@ body {
   justify-content: space-between;
   margin: 0.8em 0;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .body-home {
@@ -126,7 +126,7 @@ footer {
 }
 
 #follow-cursor {
-  transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s ease-in-out;
+  transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.2s ease-in-out;
 }
 
 #follow-cursor:not(.main-catalogo) {
@@ -238,12 +238,6 @@ main:not(.main-catalogo) {
   gap: 1em;
 }
 
-@media (orientation: portrait) {
-  .main-home {
-    display: none;
-  }
-}
-
 .home-photo:nth-child(1) {
   grid-column: 1/3;
   justify-self: center;
@@ -267,7 +261,7 @@ main:not(.main-catalogo) {
 
 .home-photo:nth-child(5) {
   justify-self: end;
-  align-self: center;
+  align-self: end;
 }
 
 .main-catalogo {
@@ -282,13 +276,14 @@ main:not(.main-catalogo) {
   list-style-type: none;
   margin: 0;
   padding: 1em 0;
+  flex-wrap: wrap;
 }
 
 .filters-nav {
   width: 100%;
   z-index: 205;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
   padding: 0 1em;
   align-items: center;
   transition: box-shadow 0.3s ease;
@@ -348,15 +343,6 @@ button {
   grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr));
   -webkit-animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-@media (orientation: portrait) {
-  .grilla-fotos {
-    padding: 4em 4em;
-  }
-  footer {
-    margin: 0px 0.5em 0.5em;
-  }
 }
 
 .foto {
@@ -544,5 +530,66 @@ button {
   }
   100% {
     opacity: 0;
+  }
+}
+
+@media (orientation: portrait) {
+  .home-photo,
+  #main-cursor,
+  #follow-cursor {
+    display: none;
+  }
+
+  header {
+    margin: 0px 0.5em;
+  }
+
+  .main-home {
+    display: block;
+  }
+
+  footer {
+    margin: 0px 0.5em 0.5em;
+  }
+
+  .main-catalogo {
+    padding: 3.5em 0;
+  }
+
+  .filters-nav .logo-wrapper {
+    display: none;
+  }
+
+  .filters-nav {
+    display: block;
+    width: auto;
+  }
+
+  .filters-list {
+    column-gap: 0.5rem;
+  }
+
+  .grilla-fotos {
+    padding: 4em 4em;
+  }
+
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: 1em;
+  }
+
+  .main-info img {
+    max-width: 100%;
+  }
+
+  main:not(.main-catalogo) {
+    margin: 1em 1.5em;
+    padding: 0;
+  }
+
+  #bio {
+    order: 2;
   }
 }
