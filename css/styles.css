@@ -593,3 +593,9 @@ button {
     order: 2;
   }
 }
+
+@media (orientation: landscape) {
+  .main-home iframe {
+    display: none;
+  }
+}
