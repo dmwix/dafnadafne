@@ -262,7 +262,7 @@ filtersList.addEventListener("click", (e) => {
   filterGallery(selected);
 
   // actualizar url y actualizar el título del sitio
-  let url = filterName + ".html";
+  let url = filterName;
   updateTitle(filterName);
   changeUrl(url, filterName);
 
