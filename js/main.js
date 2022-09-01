@@ -29,6 +29,7 @@ function fyShuffle(arr) {
   return arr;
 }
 
+// ESTA ES LA BRANCH
 let homeSelection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 fyShuffle(homeSelection);
 let homePhotos = homeSelection.splice(0, 5);
