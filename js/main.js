@@ -29,7 +29,6 @@ function fyShuffle(arr) {
   return arr;
 }
 
-// ESTA ES LA BRANCH
 let landscapeHomeSelection = photos.filter(
   (p) => p.home_orientation == "landscape"
 );
