@@ -30,30 +30,36 @@ function fyShuffle(arr) {
 }
 
 // ESTA ES LA BRANCH
-let homeSelection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-fyShuffle(homeSelection);
-let homePhotos = homeSelection.splice(0, 5);
+let landscapeHomeSelection = photos.filter(
+  (p) => p.home_orientation == "landscape"
+);
+fyShuffle(landscapeHomeSelection);
+landscapeHomeSelection = landscapeHomeSelection.splice(0, 3);
 
-// HOY ES JUEVES
+let portraitHomeSelection = photos.filter(
+  (p) => p.home_orientation == "portrait"
+);
+fyShuffle(portraitHomeSelection);
+portraitHomeSelection = portraitHomeSelection.splice(0, 2);
 
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
-}
+let homePhotos = [
+  landscapeHomeSelection[0],
+  landscapeHomeSelection[1],
+  portraitHomeSelection[0],
+  portraitHomeSelection[1],
+  landscapeHomeSelection[2],
+];
 
-homePhotos.forEach((photoId) => {
+homePhotos.reverse();
+
+homePhotos.forEach((photo) => {
   if (!document.body.contains(mainHome)) return;
   let wrapperDiv = document.createElement("div");
   wrapperDiv.classList.add("home-photo", "tiembla");
   let picture = document.createElement("picture");
   wrapperDiv.append(picture);
-  picture.innerHTML = `<source media="(min-width: 500px)" srcset="images/${photoId}.png" /> <img src="images/${photoId}.png" alt="" class="draggable" />`;
+  picture.innerHTML = `<source media="(min-width: 500px)" srcset="${photo.src.large}" /> <img src="${photo.src.large}" alt="${photo.title}" class="draggable" />`;
   mainHome.prepend(wrapperDiv);
-  // let maxLeft = mainHome.offsetWidth - wrapperDiv.offsetWidth;
-  // let left = getRandomArbitrary(mainHome.offsetLeft, maxLeft);
-  // wrapperDiv.style.left = left + "px";
-  // let maxTop = mainHome.offsetHeight - wrapperDiv.offsetHeight;
-  // let top = getRandomArbitrary(mainHome.offsetTop, maxTop);
-  // wrapperDiv.style.top = top + "px";
 });
 
 // CUSTOM CURSORS
@@ -102,8 +108,9 @@ function showCursors() {
   followCursor.style.opacity = "1";
 }
 
+const linkcitos = document.querySelectorAll("a");
 const links = document.querySelectorAll(".link");
-noCursors(links);
+noCursors(linkcitos);
 
 // DRAGGABLE PHOTOS
 // ojo que se rompe cuando pasa por los links del header
@@ -209,7 +216,7 @@ window.addEventListener("scroll", fixNav);
 
 const todas = document.querySelectorAll(".todas");
 const filters = document.querySelectorAll(".filter");
-// noCursors(filters);
+noCursors(filters);
 
 function filterGallery(criterio) {
   hidePhotos(todas);
@@ -249,7 +256,7 @@ function updateTitle(filterName) {
 }
 
 function changeUrl(url, filterName) {
-  history.pushState(filterName, "", url);
+  history.pushState(filterName, "", location.origin + url);
 }
 
 filtersList.addEventListener("click", (e) => {
@@ -265,7 +272,7 @@ filtersList.addEventListener("click", (e) => {
   filterGallery(selected);
 
   // actualizar url y actualizar el título del sitio
-  let url = filterName;
+  let url = `/catalogo/${filterName}`;
   updateTitle(filterName);
   changeUrl(url, filterName);
 
