@@ -1,4 +1,17 @@
 <ifModule mod_rewrite.c>
-  RewriteEngine On RewriteBase / RewriteCond %{REQUEST_FILENAME} !-f RewriteCond
-  %{REQUEST_FILENAME} !-d RewriteRule (.*) /index.html [QSA,L]
+    # reemplazar /dafnaszleifer/ por /
+    RewriteEngine On
+    RewriteBase /
+
+    # add trailing slash
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+    
+    # ^ = url empieza on
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^catalogo/ catalogo.html [QSA,L]
+    RewriteRule ^bio/ bio.html [QSA,L]
+
+    ErrorDocument 404 /404.html
 </ifModule>
