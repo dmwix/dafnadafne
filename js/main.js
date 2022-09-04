@@ -112,7 +112,6 @@ const links = document.querySelectorAll(".link");
 noCursors(linkcitos);
 
 // DRAGGABLE PHOTOS
-// ojo que se rompe cuando pasa por los links del header
 const draggables = document.querySelectorAll(".draggable");
 noCursors(draggables);
 
@@ -199,7 +198,6 @@ const filtersList = document.querySelector(".filters-list");
 const filtersNav = document.querySelector(".filters-nav");
 const topOfFiltersList = filtersNav.offsetTop;
 const grid = document.querySelector(".grilla-fotos");
-noCursors([...grid.children]);
 
 function fixNav() {
   if (!document.body.contains(grid)) return;
@@ -213,7 +211,21 @@ function fixNav() {
 }
 window.addEventListener("scroll", fixNav);
 
-const todas = document.querySelectorAll(".todas");
+photos.forEach((photo) => {
+  let photoDiv = document.createElement("div");
+  photoDiv.classList.add("foto");
+  let img = document.createElement("img");
+  // poner small la foto
+  photoDiv.innerHTML = `<img src="${photo.src.large}" alt="${
+    photo.title
+  }" class="${photo.tags.join(" ")}">`;
+  photoDiv.append(img);
+  grid.append(photoDiv);
+});
+
+noCursors([...grid.children]);
+
+const todas = document.querySelectorAll("img");
 const filters = document.querySelectorAll(".filter");
 noCursors(filters);
 
@@ -222,19 +234,17 @@ function filterGallery(criterio) {
   showPhotos(criterio);
 }
 
-function hidePhotos(criterio) {
-  criterio.forEach((photo) => {
+function hidePhotos(arr) {
+  arr.forEach((photo) => {
     let imgWrapper = photo.closest(".foto");
     imgWrapper.style.display = "none";
   });
 }
 
-function showPhotos(criterio) {
-  criterio.forEach((photo) => {
+function showPhotos(arr) {
+  arr.forEach((photo) => {
     let imgWrapper = photo.closest(".foto");
     imgWrapper.style.display = "flex";
-    // reflow for triggering animation again
-    // photo.offsetHeight;
   });
 }
 
