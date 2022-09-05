@@ -215,12 +215,10 @@ window.addEventListener("scroll", fixNav);
 photos.forEach((photo) => {
   let photoDiv = document.createElement("div");
   photoDiv.classList.add("foto");
-  let img = document.createElement("img");
   // poner small la foto
   photoDiv.innerHTML = `<img src="${photo.src.large}" alt="${
     photo.title
   }" class="${photo.tags.join(" ")}">`;
-  photoDiv.append(img);
   grid.append(photoDiv);
 });
 
