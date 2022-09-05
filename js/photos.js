@@ -76,4 +76,88 @@ const photos = [
     slug: "wells-fargo",
     home_orientation: "landscape",
   },
+
+  {
+    src: {
+      small: "",
+      medium: "",
+      large: "images/1.png",
+      webp: "",
+    },
+    tags: ["todas", "compañia", "balnearias"],
+    title: "surfers abrazadxs",
+    slug: "surfers-abrazadxs",
+  },
+
+  {
+    src: {
+      small: "",
+      medium: "",
+      large: "images/2.png",
+      webp: "",
+    },
+    tags: ["todas", "balnearias"],
+    title: "panchos rocco",
+    slug: "panchos-rocco",
+  },
+
+  {
+    src: {
+      small: "",
+      medium: "",
+      large: "images/4.png",
+      webp: "",
+    },
+    tags: ["todas", "señorxs", "balnearias"],
+    title: "pelirroja en escalera",
+    slug: "pelirroja-escalera",
+  },
+
+  {
+    src: {
+      small: "",
+      medium: "",
+      large: "images/5.png",
+      webp: "",
+    },
+    tags: ["todas", "autos"],
+    title: "auto rojo",
+    slug: "auto-rojo",
+  },
+
+  {
+    src: {
+      small: "",
+      medium: "",
+      large: "images/6.png",
+      webp: "",
+    },
+    tags: ["todas", "señorxs", "balnearias"],
+    title: "tomando sol en las piedras",
+    slug: "sol-en-piedras",
+  },
+
+  {
+    src: {
+      small: "",
+      medium: "",
+      large: "images/7.png",
+      webp: "",
+    },
+    tags: ["todas", "señorxs"],
+    title: "carolina",
+    slug: "carolina",
+  },
+
+  {
+    src: {
+      small: "",
+      medium: "",
+      large: "images/10.png",
+      webp: "",
+    },
+    tags: ["todas", "rincones"],
+    title: "sombrilla azul",
+    slug: "sombrilla-azul",
+  },
 ];
