@@ -211,6 +211,7 @@ function fixNav() {
 }
 window.addEventListener("scroll", fixNav);
 
+// llenar grilla con fotos
 photos.forEach((photo) => {
   let photoDiv = document.createElement("div");
   photoDiv.classList.add("foto");
@@ -248,12 +249,12 @@ function showPhotos(arr) {
   });
 }
 
-const previousTitle = document.title;
-
 function activeFilter(filter) {
   document.querySelector(".current").classList.remove("current");
   filter.classList.add("current");
 }
+
+const previousTitle = document.title;
 
 function updateTitle(filterName) {
   let titulo = `catálogo: ${filterName}`;
