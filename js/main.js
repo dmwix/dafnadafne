@@ -274,8 +274,6 @@ filtersList.addEventListener("click", (e) => {
   if (!filter) return;
   let filterName = filter.innerText;
   // poner clase activa al filtro seleccionado en la lista
-  // document.querySelector(".current").classList.remove("current");
-  // filter.classList.add("current");
   activeFilter(filter);
   // aplicar filterGallery al seleccionado
   let selected = document.querySelectorAll(`.${filterName}`);
