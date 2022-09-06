@@ -449,7 +449,7 @@ grid.addEventListener("click", openCarousel);
 grid.addEventListener("contextmenu", function (e) {
   e.preventDefault();
 });
-carouselWindow.addEventListener("click", cursorFlechitaNavigation);
+carousel.addEventListener("click", cursorFlechitaNavigation);
 // carouselWindow.addEventListener("click", closeCarousel);
 // carousel.addEventListener("click", navigateCarousel);
 closeCarouselButton.addEventListener("click", closeCarousel);
