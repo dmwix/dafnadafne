@@ -522,8 +522,8 @@ button {
 }
 
 .fade-out {
-  -webkit-animation: fade-out 0.4s ease-out both;
-  animation: fade-out 0.4s ease-out both;
+  -webkit-animation: fade-out 0.2s ease-out both;
+  animation: fade-out 0.2s ease-out both;
 }
 
 .main-info {
