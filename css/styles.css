@@ -492,7 +492,7 @@ button {
 }
 
 #carousel-close {
-  background: url(../close-carousel.svg) center no-repeat;
+  background: url(/images/close-carousel.svg) center no-repeat;
   background-size: 1.3rem;
   cursor: pointer;
   height: 1.3rem;
