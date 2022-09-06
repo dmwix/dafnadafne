@@ -57,7 +57,7 @@ homePhotos.forEach((photo) => {
   wrapperDiv.classList.add("home-photo", "tiembla");
   let picture = document.createElement("picture");
   wrapperDiv.append(picture);
-  picture.innerHTML = `<source media="(min-width: 500px)" srcset="/${photo.src.large}" /> <img src=/"${photo.src.large}" alt="${photo.title}" class="draggable" />`;
+  picture.innerHTML = `<source media="(min-width: 500px)" srcset=${photo.src.large} /> <img src=${photo.src.large} alt="${photo.title}" class="draggable" />`;
   mainHome.prepend(wrapperDiv);
 });
 
@@ -216,7 +216,7 @@ photos.forEach((photo) => {
   let photoDiv = document.createElement("div");
   photoDiv.classList.add("foto");
   // poner small la foto
-  photoDiv.innerHTML = `<img src="/${photo.src.large}" alt="${
+  photoDiv.innerHTML = `<img src="${photo.src.large}" alt="${
     photo.title
   }" class="${photo.tags.join(" ")}">`;
   grid.append(photoDiv);
@@ -318,7 +318,7 @@ function openCarousel(e) {
   // slideWrapper.textContent = "";
   let name = img.alt;
   let foti = photos.find((p) => p.title == name);
-  slideWrapper.innerHTML = `<img src="/${foti.src.large}" alt="${foti.title}">`;
+  slideWrapper.innerHTML = `<img src="${foti.src.large}" alt="${foti.title}">`;
   // le saco la clase así no agrando la array de dicha clase sumándole un item repetido
   // currentSlide.className = "";
   // slideWrapper.append(currentSlide);
@@ -406,7 +406,7 @@ function cursorFlechitaNavigation() {
   // slideWrapper.textContent = "";
   currentSlide = currentGallery[newIndex];
   // console.log(currentSlide);
-  slideWrapper.innerHTML = `<img src="/${currentSlide.src.large}" alt="${currentSlide.title}">`;
+  slideWrapper.innerHTML = `<img src="${currentSlide.src.large}" alt="${currentSlide.title}">`;
   // newSlide = currentSlide.cloneNode(true);
   // newSlide.className = "";
   // slideWrapper.append(newSlide);
