@@ -123,13 +123,17 @@ footer {
 } */
 
 .flecha {
-  color: black;
+  /* color: black; */
   display: none;
-  font-size: 2rem;
+  /* font-size: 1rem; */
   pointer-events: none;
   position: absolute;
   transition: color 0.1s ease-in;
   z-index: 250;
+}
+
+.flecha img {
+  height: 1.3rem;
 }
 
 #follow-cursor {
