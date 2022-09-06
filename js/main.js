@@ -377,10 +377,12 @@ function cursorFlechita(e) {
   flecha.style.left = flechaLeft + "px";
   flecha.style.top = flechaTop + "px";
   if (flechaLeft < ancho / 2) {
-    flecha.innerHTML = "&#10094;";
+    // flecha.innerHTML = "&#10094;";
+    flecha.innerHTML = `<img src="/images/previous.svg">`;
     flecha.dataset.direction = "previous";
   } else {
-    flecha.innerHTML = "&#10095;";
+    flecha.innerHTML = `<img src="/images/next.svg">`;
+    // flecha.innerHTML = "&#10095;";
     flecha.dataset.direction = "next";
   }
 }
