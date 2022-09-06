@@ -57,7 +57,7 @@ homePhotos.forEach((photo) => {
   wrapperDiv.classList.add("home-photo", "tiembla");
   let picture = document.createElement("picture");
   wrapperDiv.append(picture);
-  picture.innerHTML = `<source media="(min-width: 500px)" srcset="${photo.src.large}" /> <img src="${photo.src.large}" alt="${photo.title}" class="draggable" />`;
+  picture.innerHTML = `<source media="(min-width: 500px)" srcset="${photo.src.large}" /> <img src=/"${photo.src.large}" alt="${photo.title}" class="draggable" />`;
   mainHome.prepend(wrapperDiv);
 });
 
@@ -216,7 +216,7 @@ photos.forEach((photo) => {
   let photoDiv = document.createElement("div");
   photoDiv.classList.add("foto");
   // poner small la foto
-  photoDiv.innerHTML = `<img src="${photo.src.large}" alt="${
+  photoDiv.innerHTML = `<img src="/${photo.src.large}" alt="${
     photo.title
   }" class="${photo.tags.join(" ")}">`;
   grid.append(photoDiv);
@@ -316,10 +316,12 @@ function openCarousel(e) {
   carouselWindow.style.display = "block";
   // esto x ahora no hace falta
   // slideWrapper.textContent = "";
-  currentSlide = img.cloneNode(true);
+  let name = img.alt;
+  let foti = photos.find((p) => p.title == name);
+  slideWrapper.innerHTML = `<img src="/${foti.src.large}" alt="${foti.title}">`;
   // le saco la clase así no agrando la array de dicha clase sumándole un item repetido
-  currentSlide.className = "";
-  slideWrapper.append(currentSlide);
+  // currentSlide.className = "";
+  // slideWrapper.append(currentSlide);
   document.body.style.overflowY = "hidden";
   cursor.style.display = "none";
   document.addEventListener("mousemove", cursorFlechita);
@@ -332,9 +334,9 @@ function closeCarousel(e) {
   carouselWindow.classList.add("fade-out");
   setTimeout(() => {
     carouselWindow.style.display = "none";
-  }, 400);
+  }, 200);
   // borro la current slide
-  slideWrapper.textContent = "";
+  // slideWrapper.textContent = "";
   document.body.style.overflowY = "auto";
 
   document.removeEventListener("mousemove", cursorFlechita);
@@ -386,23 +388,28 @@ function cursorFlechita(e) {
 function cursorFlechitaNavigation() {
   const direction = flecha.dataset.direction === "next" ? 1 : -1;
   const currentFilter = document.querySelector(".filter.current");
-  const currentGallery = [
-    ...document.querySelectorAll(`.${currentFilter.innerText}`),
-  ];
+  // const currentGallery = [
+  //   ...document.querySelectorAll(`.${currentFilter.innerText}`),
+  // ];
+  const currentGallery = photos.filter((p) =>
+    p.tags.includes(currentFilter.innerText)
+  );
   currentSlide = slideWrapper.firstChild;
   let index = currentGallery.findIndex(
-    (image) => image.src === currentSlide.src
+    (image) => image.title === currentSlide.alt
   );
   let newIndex = index + direction;
   if (newIndex < 0) {
     newIndex = currentGallery.length - 1;
   }
   if (newIndex >= currentGallery.length) newIndex = 0;
-  slideWrapper.textContent = "";
+  // slideWrapper.textContent = "";
   currentSlide = currentGallery[newIndex];
-  newSlide = currentSlide.cloneNode(true);
-  newSlide.className = "";
-  slideWrapper.append(newSlide);
+  // console.log(currentSlide);
+  slideWrapper.innerHTML = `<img src="/${currentSlide.src.large}" alt="${currentSlide.title}">`;
+  // newSlide = currentSlide.cloneNode(true);
+  // newSlide.className = "";
+  // slideWrapper.append(newSlide);
 }
 
 document.addEventListener("keydown", (e) => {
