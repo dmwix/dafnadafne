@@ -421,11 +421,11 @@ document.addEventListener("keydown", (e) => {
       break;
     case "ArrowLeft":
       flecha.dataset.direction = "previous";
-      carouselWindow.click();
+      carousel.click();
       break;
     case "ArrowRight":
       flecha.dataset.direction = "next";
-      carouselWindow.click();
+      carousel.click();
       break;
     default:
       return;
