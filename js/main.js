@@ -462,54 +462,6 @@ closeCarouselButton.addEventListener("mouseover", () => {
   closeCarouselButton.style.transform = `rotate(${rotationDeg}deg)`;
 });
 
-// TOOLTIP ON IMGS. le falta laburo a la función todavía
-// document.body.addEventListener("contextmenu", showTooltip);
-// let tooltipElem;
-// let timerTooltip;
-
-// function showTooltip(event) {
-//   let img = event.target.closest("img");
-//   if (!img) return;
-//   event.preventDefault();
-//   removePreviousTooltip();
-//   createTooltip();
-//   timerTooltip = setTimeout(hideTooltip, 2000);
-
-//   function removePreviousTooltip() {
-//     if (timerTooltip) {
-//       clearTimeout(timerTooltip);
-//     }
-//     while (tooltipElem) {
-//       tooltipElem.remove();
-//       tooltipElem = null;
-//     }
-//   }
-
-//   function createTooltip() {
-//     tooltipElem = document.createElement("div");
-//     tooltipElem.className = "tooltip";
-//     // © copyright
-//     tooltipElem.innerText = `¯\\_(ツ)_/¯`;
-//     document.body.append(tooltipElem);
-//     // position it above the annotated element (top-center)
-//     let coords = img.getBoundingClientRect();
-//     let left = coords.left + (img.offsetWidth - tooltipElem.offsetWidth) / 2;
-//     if (left < 0) left = 0; // don't cross the left window edge
-//     let top = coords.top - tooltipElem.offsetHeight - 5;
-//     if (top < 0) {
-//       // if crossing the top window edge, show below instead
-//       top = coords.top + img.offsetHeight + 5;
-//     }
-//     tooltipElem.style.left = left + "px";
-//     tooltipElem.style.top = top + "px";
-//   }
-
-//   function hideTooltip() {
-//     tooltipElem.remove();
-//     tooltipElem = null;
-//   }
-// }
-
 // SHRUG
 slideWrapper.addEventListener("contextmenu", shrug);
 let shrugDiv;
