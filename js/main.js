@@ -127,7 +127,7 @@ draggables.forEach((draggable) => {
     let shiftY = event.clientY - top;
 
     draggable.style.position = "absolute";
-    draggable.style.zIndex = 100;
+    draggable.style.zIndex = 3;
     document.body.append(draggable);
     moveAt(event.pageX, event.pageY);
 
@@ -202,7 +202,8 @@ const grid = document.querySelector(".grilla-fotos");
 function fixNav() {
   if (!document.body.contains(grid)) return;
   if (window.scrollY >= topOfFiltersList) {
-    document.body.style.paddingTop = filtersNav.offsetHeight + "px";
+    // document.body.style.paddingTop = filtersNav.offsetHeight + "px";
+    // esto le suma lo que le sacás de pxs cuando volves fijo el nav, pero como le puse static no ocupa espacio ahora
     document.body.classList.add("fixed-nav");
   } else {
     document.body.style.paddingTop = 0;
@@ -267,6 +268,8 @@ function changeUrl(url, filterName) {
   history.pushState(filterName, "", location.origin + url);
 }
 
+let acco = document.querySelector(".accordion");
+
 filtersList.addEventListener("click", (e) => {
   let filter = e.target.closest(".filter");
   if (!filter) return;
@@ -276,6 +279,7 @@ filtersList.addEventListener("click", (e) => {
   // aplicar filterGallery al seleccionado
   let selected = document.querySelectorAll(`.${filterName}`);
   filterGallery(selected);
+  acco.click();
 
   // actualizar url y actualizar el título del sitio
   let url = `/catalogo/${filterName}`;
@@ -508,3 +512,29 @@ function shrug(event) {
     shrugDiv = null;
   }
 }
+
+const overlay = document.getElementById("overlay");
+const acc = document.querySelectorAll(".accordion");
+let i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function () {
+    this.classList.toggle("active");
+    overlay.classList.toggle("hidden");
+    let panel = this.nextElementSibling;
+    panel.classList.toggle("abierto");
+    // if (panel.style.maxHeight) {
+    //   panel.style.maxHeight = null;
+    // } else {
+    //   // panel.style.maxHeight = panel.scrollHeight + "px";
+    //   // panel.style.maxHeight = panel.clientHeight + "px";
+    //   panel.style.maxHeight = "100%";
+    // }
+  });
+}
+
+noCursors(acc);
+
+overlay.addEventListener("click", () => {
+  acco.click();
+});
