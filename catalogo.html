@@ -25,11 +25,13 @@
   <body>
     <header>
       <div class="logo-wrapper">
-        <a href="index.html" class="link logo" id="desktop"> dafna szleifer </a>
-        <a href="index.html" class="link logo" id="mobile"> dafna </a>
+        <a href="/index.html" class="link logo" id="desktop">
+          dafna szleifer
+        </a>
+        <a href="/index.html" class="link logo" id="mobile"> dafna </a>
       </div>
       <div class="link azul catalogo">
-        <a href="/#"> fotos</a>
+        <a href="#"> fotos</a>
       </div>
     </header>
 
@@ -38,47 +40,53 @@
       <div id="follow-cursor"></div>
 
       <div class="filters-nav">
-        <div class="logo-wrapper">
+        <!-- <div class="logo-wrapper">
           <a href="/index.html" class="link logo"> dafna szleifer </a>
+        </div> -->
+        <div class="tags">
+          <button class="accordion">filtrar</button>
+
+          <ul class="filters-list">
+            <li>
+              <button type="button" class="filter current">todas</button>
+            </li>
+
+            <li>
+              <button type="button" class="filter">compañía</button>
+            </li>
+
+            <li>
+              <button type="button" class="filter">fucsia</button>
+            </li>
+
+            <li>
+              <button type="button" class="filter">perros</button>
+            </li>
+
+            <li>
+              <button type="button" class="filter">señorxs</button>
+            </li>
+
+            <li>
+              <button type="button" class="filter">balnearias</button>
+            </li>
+
+            <li>
+              <button type="button" class="filter">posiciones</button>
+            </li>
+
+            <li>
+              <button type="button" class="filter">rincones</button>
+            </li>
+
+            <li>
+              <button type="button" class="filter">autos</button>
+            </li>
+          </ul>
         </div>
-        <ul class="filters-list">
-          <li>
-            <button type="button" class="filter current">todas</button>
-          </li>
-
-          <li>
-            <button type="button" class="filter">compañía</button>
-          </li>
-
-          <li>
-            <button type="button" class="filter">fucsia</button>
-          </li>
-
-          <li>
-            <button type="button" class="filter">perros</button>
-          </li>
-
-          <li>
-            <button type="button" class="filter">señorxs</button>
-          </li>
-
-          <li>
-            <button type="button" class="filter">balnearias</button>
-          </li>
-
-          <li>
-            <button type="button" class="filter">posiciones</button>
-          </li>
-
-          <li>
-            <button type="button" class="filter">rincones</button>
-          </li>
-
-          <li>
-            <button type="button" class="filter">autos</button>
-          </li>
-        </ul>
       </div>
+
+      <div id="overlay" class="hidden"></div>
 
       <div class="grilla-fotos"></div>
     </main>
