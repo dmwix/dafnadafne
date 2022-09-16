@@ -1,3 +1,5 @@
+/* ---------------------------- GENERAL ---------------------------- */
+
 @font-face {
   font-family: "supplyregular";
   src: url("../font/supply-regular-webfont.woff2") format("woff2"),
@@ -38,24 +40,21 @@ body {
   flex-grow: 1;
   font-family: "supplyregular";
   justify-content: space-between;
-  margin: 0.8em 0;
   overflow-x: hidden;
   width: 100%;
-}
-
-.body-home {
-  overflow: hidden;
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  margin: 0px 0.5em;
+  padding: 0.8em 0.5em 0;
+  z-index: 1;
+  background-color: var(--blanco);
 }
 
 @media screen and (min-width: 480px) {
   header {
-    margin: 0 1.5em;
+    padding: 0.8em 1.5em 0;
   }
 }
 
@@ -67,7 +66,7 @@ footer {
   line-height: 1;
   padding: 0.8em 0.5em 0.8em;
   position: sticky;
-  z-index: 200;
+  z-index: 4;
 }
 
 @media screen and (min-width: 480px) {
@@ -106,53 +105,12 @@ footer {
   color: var(--blanco);
 }
 
-/* #main-cursor,
-#follow-cursor {
-  background-color: var(--rojo);
-  border-radius: 50%;
-  display: none;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  position: absolute;
-  z-index: 250;
-} */
-
-/* #main-cursor {
-  height: 7px;
-  width: 7px;
-} */
-
-.flecha {
-  /* color: black; */
-  display: none;
-  /* font-size: 1rem; */
-  pointer-events: none;
-  position: absolute;
-  transition: color 0.1s ease-in;
-  z-index: 250;
-}
-
-.flecha img {
-  height: 1.3rem;
-}
-
-#follow-cursor {
-  transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.2s ease-in-out;
-}
-
-#follow-cursor:not(.main-catalogo) {
-  height: 20px;
-  width: 20px;
-}
-
-/* .main-catalogo */
 #main-cursor {
   display: none;
   mix-blend-mode: normal;
   pointer-events: none;
   position: absolute;
   z-index: 250;
-
   background-color: transparent;
   border-bottom: 10px solid transparent;
   border-radius: 0%;
@@ -164,15 +122,9 @@ footer {
 }
 
 @media screen and (min-width: 480px) {
-  #main-cursor,
-  #follow-cursor {
+  #main-cursor {
     display: block;
   }
-}
-
-/* .main-catalogo */
-#follow-cursor {
-  display: none;
 }
 
 a {
@@ -246,6 +198,16 @@ a {
   color: var(--azul);
 }
 
+/* ---------------------------- HOME ---------------------------- */
+
+.body-home {
+  overflow: hidden;
+}
+
+.body-home header {
+  background-color: transparent;
+}
+
 .body-home img {
   cursor: grab;
   max-height: 16em;
@@ -281,15 +243,15 @@ a {
   display: none;
 }
 
-/* .home-photo img {
-  border-radius: 10px;
-} */
-
 @media screen and (min-width: 480px) {
   .home-photo {
     display: block;
   }
 }
+
+/* .home-photo img {
+  border-radius: 10px;
+} */
 
 .home-photo:nth-child(1) {
   align-self: center;
@@ -326,80 +288,110 @@ a {
   grid-row: 3/5;
 }
 
+/* ---------------------------- FOTOS ---------------------------- */
+
 .main-catalogo {
   flex-grow: 2;
-  padding: 3.5em 0;
+  padding: 2.5em 0;
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (min-width: 480px) {
   .main-catalogo {
-    padding: 2.5em 0;
+    /* padding: 3.5em 0; */
+    padding: 0;
   }
+}
+
+.tags {
+  /* padding: 0.5em 1em; */
+  background-color: var(--blanco);
+  border-radius: 40px;
+  border: 2px solid black;
+}
+
+.accordion {
+  line-height: 1em;
+  padding: 1em 2em;
+}
+
+.active {
+  padding-bottom: 2em;
+  margin: 0 3em;
+  transition: margin 250ms ease-out;
+}
+
+@media screen and (min-width: 480px) {
+  .active {
+    margin: 0 5em;
+  }
+}
+
+.accordion::before {
+  background: url(/images/filter-icon.svg) center no-repeat;
+  background-size: 1em;
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  content: "";
+  vertical-align: middle;
+  padding-right: 1.3em;
 }
 
 .filters-list {
   display: flex;
-  column-gap: 0.5rem;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   list-style-type: none;
   margin: 0;
-  padding: 0.5em 0;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  text-align: center;
 }
 
-@media screen and (min-width: 480px) {
-  .filters-list {
-    column-gap: 0.4rem;
-    padding: 1em 0;
-  }
+.abierto {
+  max-height: 1000px;
+  transition: max-height 1s ease-out;
+  padding-bottom: 1em;
 }
 
 .filters-nav {
-  display: block;
-  padding: 0 1em;
-  transition: box-shadow 0.3s ease;
-  width: auto;
-  z-index: 205;
-}
-
-@media screen and (min-width: 480px) {
-  .filters-nav {
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr 4fr 1fr;
-    width: 100%;
-  }
+  background-color: transparent;
+  /* display: flex;
+  width: 100%; */
+  position: absolute;
+  justify-content: center;
+  z-index: 7;
+  padding-top: 1em;
 }
 
 .fixed-nav .filters-nav {
-  /* box-shadow: 0 1px rgba(0, 0, 0, 0.1); */
-  background-color: var(--blanco);
   position: fixed;
-  top: 0px;
-}
-
-.filters-nav .logo-wrapper {
-  display: none;
-  opacity: 0;
+  top: 1em;
+  padding: 0;
 }
 
 @media screen and (min-width: 480px) {
-  .filters-nav .logo-wrapper {
-    display: block;
+  .fixed-nav .filters-nav {
+    width: auto;
   }
 }
 
-.fixed-nav .filters-nav .logo-wrapper {
-  opacity: 1;
-  transition: all 0.1s ease-in;
+.filter {
+  padding: 0.7em 0;
+  margin: 0;
 }
 
-.filter {
-  border-radius: 40px;
-  cursor: pointer;
-  padding: 0.6em 1em;
-  transition: background-color 0.1s ease, color 0.1s ease;
-  margin: 0.2em 0;
+@media screen and (min-width: 480px) {
+  .filter {
+    border-radius: 40px;
+    cursor: pointer;
+    padding: 0.6em 1em;
+    transition: background-color 0.1s ease, color 0.1s ease;
+    margin: 0.2em 0;
+  }
 }
 
 .filter:hover:not(.current) {
@@ -409,6 +401,25 @@ a {
 
 .filter:focus-visible {
   outline: 2px solid var(--violeta);
+}
+
+#overlay {
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.6);
+  /* animation: fade-in 1s ease-in 1s; */
+  /* opacity: 1;
+  transition: opacity 2s ease-in-out; */
+  animation: fade-in 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) 0.1s both;
+}
+
+#overlay .hidden {
+  display: none;
 }
 
 button {
@@ -426,18 +437,19 @@ button {
   display: grid;
   align-items: center;
   column-gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));
   justify-content: space-between;
   justify-items: center;
-  padding: 4em 1.5em;
+  padding: 6em 1.5em;
   row-gap: 2rem;
   -webkit-animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  width: 100%;
 }
 
 @media screen and (min-width: 480px) {
   .grilla-fotos {
-    padding: 4em 9em;
+    padding: 8em 10em;
   }
 }
 
@@ -450,14 +462,28 @@ button {
 .foto img {
   cursor: zoom-in;
   height: auto;
-  max-height: 18em;
+  max-height: 20em;
   max-width: 100%;
 }
 
 @media screen and (min-width: 480px) {
   .foto img {
-    max-height: 10em;
+    max-height: 12em;
   }
+}
+
+/* ---------------------------- CAROUSEL ---------------------------- */
+
+.flecha {
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  /* transition: color 0.1s ease-in; */
+  z-index: 250;
+}
+
+.flecha img {
+  height: 1.3rem;
 }
 
 .shrug {
@@ -531,15 +557,7 @@ button {
   color: var(--azul);
 }
 
-.fade-in {
-  -webkit-animation: fade-in 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-.fade-out {
-  -webkit-animation: fade-out 0.2s ease-out both;
-  animation: fade-out 0.2s ease-out both;
-}
+/* ---------------------------- INFO ---------------------------- */
 
 .main-info {
   display: flex;
@@ -556,7 +574,7 @@ button {
     display: grid;
     align-items: center;
     column-gap: 2rem;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 2fr 2fr;
     margin: 1em 2.5em;
   }
 }
@@ -569,6 +587,14 @@ button {
 #bio a:hover {
   text-decoration: underline 2px;
   text-underline-offset: 5px;
+}
+
+#mail {
+  color: var(--verde);
+}
+
+#ig {
+  color: var(--violeta);
 }
 
 .foto-bio {
@@ -584,22 +610,26 @@ button {
 }
 
 .main-info img {
-  max-width: 80%;
+  max-width: 100%;
 }
 
 @media screen and (min-width: 480px) {
   .main-info img {
-    max-width: 40%;
+    max-width: 60%;
   }
 }
 
-#mail {
-  color: var(--verde);
+.fade-in {
+  -webkit-animation: fade-in 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
-#ig {
-  color: var(--violeta);
+.fade-out {
+  -webkit-animation: fade-out 0.2s ease-out both;
+  animation: fade-out 0.2s ease-out both;
 }
+
+/* ---------------------------- ANIMACIONES ---------------------------- */
 
 @keyframes tiembla {
   0%,
@@ -649,14 +679,4 @@ button {
   100% {
     opacity: 0;
   }
-}
-
-@media screen and (min-width: 480px) {
-  .main-home iframe {
-    display: none;
-  }
-}
-
-.ytplayer {
-  pointer-events: none;
 }
