@@ -382,10 +382,10 @@ function cursorFlechita(e) {
   flecha.style.top = flechaTop + "px";
   if (flechaLeft < ancho / 2) {
     // flecha.innerHTML = "&#10094;";
-    flecha.innerHTML = `<img src="/images/previous.svg">`;
+    flecha.innerHTML = `<img src="images/previous.svg">`;
     flecha.dataset.direction = "previous";
   } else {
-    flecha.innerHTML = `<img src="/images/next.svg">`;
+    flecha.innerHTML = `<img src="images/next.svg">`;
     // flecha.innerHTML = "&#10095;";
     flecha.dataset.direction = "next";
   }
@@ -537,4 +537,11 @@ noCursors(acc);
 
 overlay.addEventListener("click", () => {
   acco.click();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (overlay.classList.contains("hidden")) return;
+  else if (e.code == "Escape") {
+    acco.click();
+  }
 });
