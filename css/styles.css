@@ -47,7 +47,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  padding: 0.8em 0.5em 0;
+  padding: 0.8em 0.5em;
   z-index: 1;
   background-color: var(--blanco);
 }
@@ -205,14 +205,21 @@ a {
 }
 
 .body-home header {
-  background-color: transparent;
+  z-index: 4;
+}
+
+@media screen and (min-width: 480px) {
+  .body-home header {
+    background-color: transparent;
+  }
 }
 
 .main-home video {
   pointer-events: none;
   display: block;
-  height: 100%;
+  height: auto;
   width: 100%;
+  object-fit: cover;
 }
 
 @media screen and (min-width: 480px) {
@@ -578,7 +585,7 @@ button {
   flex-direction: column;
   flex-grow: 2;
   gap: 1em;
-  margin: 1em 1.5em;
+  margin: 0 1.5em 2em;
   padding: 0;
 }
 
