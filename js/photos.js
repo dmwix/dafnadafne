@@ -3,8 +3,8 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0001.jpg",
-      webp: "/images/0001.webp",
+      large: "images/0001.jpg",
+      webp: "images/0001.webp",
     },
     tags: ["todas", "balnearias", "señorxs", "compañía"],
     title: "señoras de espalda",
@@ -16,7 +16,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0002.jpg",
+      large: "images/0002.jpg",
       webp: "",
     },
     tags: ["todas", "balnearias", "señorxs"],
@@ -29,7 +29,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0003.jpg",
+      large: "images/0003.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "fucsia", "compañía"],
@@ -42,7 +42,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0004.jpg",
+      large: "images/0004.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "fucsia"],
@@ -55,7 +55,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0005.jpg",
+      large: "images/0005.jpg",
       webp: "",
     },
     tags: ["todas", "autos", "balnearias"],
@@ -68,7 +68,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0006.jpg",
+      large: "images/0006.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs"],
@@ -81,7 +81,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0007.jpg",
+      large: "images/0007.jpg",
       webp: "",
     },
     tags: ["todas", "balnearias", "señorxs", "compañía"],
@@ -94,7 +94,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0008.jpg",
+      large: "images/0008.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "balnearias"],
@@ -107,7 +107,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0009.jpg",
+      large: "images/0009.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "balnearias"],
@@ -120,7 +120,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0010.jpg",
+      large: "images/0010.jpg",
       webp: "",
     },
     tags: ["todas", "balnearias", "señorxs", "compañía"],
@@ -133,7 +133,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0011.jpg",
+      large: "images/0011.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "fucsia"],
@@ -146,7 +146,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0012.jpg",
+      large: "images/0012.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "balnearias"],
@@ -159,7 +159,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0013.jpg",
+      large: "images/0013.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "rincones"],
@@ -172,7 +172,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0014.jpg",
+      large: "images/0014.jpg",
       webp: "",
     },
     tags: ["todas", "balnearias"],
@@ -185,7 +185,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0015.jpg",
+      large: "images/0015.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "balnearias"],
@@ -198,7 +198,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0016.jpg",
+      large: "images/0016.jpg",
       webp: "",
     },
     tags: ["todas", "autos"],
@@ -211,7 +211,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0017.jpg",
+      large: "images/0017.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "balnearias"],
@@ -224,7 +224,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0018.jpg",
+      large: "images/0018.jpg",
       webp: "",
     },
     tags: ["todas"],
@@ -237,7 +237,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0019.jpg",
+      large: "images/0019.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "fucsia", "balnearias"],
@@ -250,7 +250,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0020.jpg",
+      large: "images/0020.jpg",
       webp: "",
     },
     tags: ["todas"],
@@ -263,7 +263,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0021.jpg",
+      large: "images/0021.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "balnearias"],
@@ -276,7 +276,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0022.jpg",
+      large: "images/0022.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "balnearias"],
@@ -289,7 +289,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0023.jpg",
+      large: "images/0023.jpg",
       webp: "",
     },
     tags: ["todas", "perros", "fucsia"],
@@ -302,7 +302,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0024.jpg",
+      large: "images/0024.jpg",
       webp: "",
     },
     tags: ["todas", "señorxs", "compañía"],
@@ -315,7 +315,7 @@ const photos = [
     src: {
       small: "",
       medium: "",
-      large: "/images/0025.jpg",
+      large: "images/0025.jpg",
       webp: "",
     },
     tags: ["todas", "autos"],
