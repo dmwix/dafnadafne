@@ -208,6 +208,19 @@ a {
   background-color: transparent;
 }
 
+.main-home video {
+  pointer-events: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 480px) {
+  .main-home video {
+    display: none;
+  }
+}
+
 .body-home img {
   cursor: grab;
   max-height: 16em;
@@ -218,19 +231,15 @@ a {
   animation: tiembla 0.5s ease-out 0s 1 normal forwards;
 }
 
+.main-home {
+  display: block;
+  margin: 0 1.5em;
+  flex-grow: 2;
+}
+
 @media screen and (min-width: 480px) {
   .main-home {
     margin: 10px;
-  }
-}
-
-.main-home {
-  display: block;
-}
-
-@media screen and (min-width: 480px) {
-  .main-home {
-    flex-grow: 2;
     display: grid;
     gap: 1em;
     grid-template-columns: repeat(6, 1fr);
@@ -333,7 +342,7 @@ a {
 }
 
 .accordion::before {
-  background: url(/images/filter-icon.svg) center no-repeat;
+  background: url(../images/filter-icon.svg) center no-repeat;
   background-size: 1em;
   display: inline-block;
   height: 1em;
@@ -537,7 +546,7 @@ button {
 }
 
 #carousel-close {
-  background: url(/images/close-carousel.svg) center no-repeat;
+  background: url(../images/close-carousel.svg) center no-repeat;
   background-size: 1.3rem;
   cursor: pointer;
   height: 1.3rem;
