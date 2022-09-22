@@ -63,7 +63,6 @@ homePhotos.forEach((photo) => {
 
 // CUSTOM CURSORS
 const cursor = document.getElementById("main-cursor");
-const followCursor = document.getElementById("follow-cursor");
 
 document.addEventListener("mousemove", function (e) {
   let cursorLeft = `${e.pageX - cursor.offsetWidth / 2}`;
@@ -75,19 +74,8 @@ document.addEventListener("mousemove", function (e) {
     cursorTop = alto - cursor.offsetHeight;
   }
 
-  let followCursorLeft = `${e.pageX - 10}`;
-  if (followCursorLeft > ancho - followCursor.offsetWidth) {
-    followCursorLeft = ancho - followCursor.offsetWidth;
-  }
-  let followCursorTop = `${e.pageY - 10}`;
-  if (followCursorTop > alto - followCursor.offsetHeight) {
-    followCursorTop = alto - followCursor.offsetHeight;
-  }
-
-  (cursor.style.left = cursorLeft + "px"),
-    (cursor.style.top = cursorTop + "px"),
-    (followCursor.style.left = followCursorLeft + "px");
-  followCursor.style.top = followCursorTop + "px";
+  cursor.style.left = cursorLeft + "px";
+  cursor.style.top = cursorTop + "px";
 });
 
 function noCursors(array) {
@@ -99,12 +87,10 @@ function noCursors(array) {
 
 function hideCursors(e) {
   cursor.style.opacity = "0";
-  followCursor.style.opacity = "0";
 }
 
 function showCursors() {
   cursor.style.opacity = "1";
-  followCursor.style.opacity = "1";
 }
 
 const linkcitos = document.querySelectorAll("a");
