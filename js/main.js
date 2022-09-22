@@ -501,6 +501,7 @@ function shrug(event) {
 
 const overlay = document.getElementById("overlay");
 const acc = document.querySelectorAll(".accordion");
+const tags = document.querySelector(".tags");
 let i;
 
 for (i = 0; i < acc.length; i++) {
@@ -509,6 +510,7 @@ for (i = 0; i < acc.length; i++) {
     overlay.classList.toggle("hidden");
     let panel = this.nextElementSibling;
     panel.classList.toggle("abierto");
+    tags.classList.toggle("sombra");
     // if (panel.style.maxHeight) {
     //   panel.style.maxHeight = null;
     // } else {
