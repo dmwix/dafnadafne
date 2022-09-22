@@ -179,7 +179,7 @@ draggables.forEach((draggable) => {
   };
 });
 
-// CATALOGO
+// FOTOS
 const filtersList = document.querySelector(".filters-list");
 const filtersNav = document.querySelector(".filters-nav");
 const topOfFiltersList = filtersNav.offsetTop;
@@ -268,7 +268,7 @@ filtersList.addEventListener("click", (e) => {
   acco.click();
 
   // actualizar url y actualizar el título del sitio
-  let url = `/catalogo/${filterName}`;
+  let url = `/fotos/${filterName}`;
   updateTitle(filterName);
   changeUrl(url, filterName);
 

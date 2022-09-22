@@ -130,7 +130,7 @@ footer {
 
   .logo:hover,
   .rojo:hover,
-  .azul:hover:not(.catalogo) {
+  .azul:hover:not(.fotos) {
     color: var(--blanco);
   }
 
@@ -151,7 +151,7 @@ footer {
     background-color: var(--rojo);
   }
 
-  .azul:hover:not(.catalogo) {
+  .azul:hover:not(.fotos) {
     background-color: var(--azul);
   }
 }
@@ -304,11 +304,11 @@ a {
 
 /* ---------------------------- FOTOS ---------------------------- */
 
-.catalogo {
+.fotos {
   color: var(--azul);
 }
 
-.main-catalogo {
+.main-fotos {
   flex-grow: 2;
   padding: 2.5em 0;
   display: flex;
@@ -316,7 +316,7 @@ a {
 }
 
 @media screen and (min-width: 480px) {
-  .main-catalogo {
+  .main-fotos {
     /* padding: 3.5em 0; */
     padding: 0;
   }
