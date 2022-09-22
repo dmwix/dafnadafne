@@ -338,6 +338,10 @@ a {
   box-shadow: 5px 5px black;
 }
 
+.sombra {
+  box-shadow: 5px 5px black;
+}
+
 .active {
   padding-bottom: 2em;
   margin: 0 3em;
@@ -457,10 +461,10 @@ button {
 
 .grilla-fotos {
   display: grid;
+  align-content: start;
   align-items: center;
   column-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));
-  justify-content: space-between;
   justify-items: center;
   padding: 6em 1.5em;
   row-gap: 2rem;
