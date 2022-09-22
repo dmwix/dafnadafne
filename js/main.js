@@ -61,7 +61,7 @@ homePhotos.forEach((photo) => {
   mainHome.prepend(wrapperDiv);
 });
 
-// CUSTOM CURSORS
+// CUSTOM CURSOR
 const cursor = document.getElementById("main-cursor");
 
 document.addEventListener("mousemove", function (e) {
