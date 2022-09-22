@@ -65,11 +65,11 @@ homePhotos.forEach((photo) => {
 const cursor = document.getElementById("main-cursor");
 
 document.addEventListener("mousemove", function (e) {
-  let cursorLeft = `${e.pageX - cursor.offsetWidth / 2}`;
+  let cursorLeft = `${e.clientX - cursor.offsetWidth / 2}`;
   if (cursorLeft > ancho - cursor.offsetWidth) {
     cursorLeft = ancho - cursor.offsetWidth;
   }
-  let cursorTop = `${e.pageY - cursor.offsetHeight / 2}`;
+  let cursorTop = `${e.clientY - cursor.offsetHeight / 2}`;
   if (cursorTop > alto - cursor.offsetHeight) {
     cursorTop = alto - cursor.offsetHeight;
   }
