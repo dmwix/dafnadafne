@@ -308,7 +308,7 @@ function openCarousel(e) {
   // slideWrapper.textContent = "";
   let name = img.alt;
   let foti = photos.find((p) => p.title == name);
-  slideWrapper.innerHTML = `<img src="${foti.src.large}" alt="${foti.title}">`;
+  slideWrapper.innerHTML = `<img src="/${foti.src.large}" alt="${foti.title}">`;
   // le saco la clase así no agrando la array de dicha clase sumándole un item repetido
   // currentSlide.className = "";
   // slideWrapper.append(currentSlide);
