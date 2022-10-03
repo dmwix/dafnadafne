@@ -57,7 +57,7 @@ homePhotos.forEach((photo) => {
   wrapperDiv.classList.add("home-photo", "tiembla");
   let picture = document.createElement("picture");
   wrapperDiv.append(picture);
-  picture.innerHTML = `<source media="(min-width: 500px)" srcset=${photo.src.large} /> <img src=${photo.src.large} alt="${photo.title}" class="draggable" />`;
+  picture.innerHTML = `<source media="(min-width: 500px)" srcset=${photo.src.large} /> <img src=${photo.src.large} alt="${photo.title}" class="draggable ${photo.home_orientation}" />`;
   mainHome.prepend(wrapperDiv);
 });
 
