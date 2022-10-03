@@ -212,18 +212,31 @@ a {
   }
 }
 
-.main-home video {
-  pointer-events: none;
+.video-wrapper {
   display: block;
-  height: auto;
+  height: 100%;
   width: 100%;
-  object-fit: cover;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 480px) {
-  .main-home video {
+  .main-home .video-wrapper {
     display: none;
   }
+}
+
+.main-home video {
+  pointer-events: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+
+  /* max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden; */
 }
 
 .body-home img {
@@ -231,6 +244,16 @@ a {
   max-height: 16em;
   max-width: 16em;
 }
+
+/* .portrait {
+  max-height: 16em;
+  width: auto;
+}
+
+.landscape {
+  max-width: 50%;
+  height: auto;
+} */
 
 .tiembla:hover {
   animation: tiembla 0.5s ease-out 0s 1 normal forwards;
