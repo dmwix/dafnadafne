@@ -15,9 +15,9 @@
     <link rel="apple-touch-icon" href="icon.png" />
     <link rel="icon" href="icon.svg" type="image/svg+xml" />
 
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
 
     <meta name="theme-color" content="#fafafa" />
   </head>
@@ -29,7 +29,7 @@
         <a href="index.html" class="link logo" id="mobile"> dafna </a>
       </div>
       <div class="link azul fotos">
-        <a href="#"> fotos</a>
+        <a href="#todas"> fotos</a>
       </div>
     </header>
 
@@ -45,39 +45,57 @@
 
           <ul class="filters-list">
             <li>
-              <button type="button" class="filter current">todas</button>
+              <button type="button" class="filter current" data-filter="todas">
+                todas
+              </button>
             </li>
 
             <li>
-              <button type="button" class="filter">compañía</button>
+              <button type="button" class="filter" data-filter="compania">
+                compañía
+              </button>
             </li>
 
             <li>
-              <button type="button" class="filter">fucsia</button>
+              <button type="button" class="filter" data-filter="fucsia">
+                fucsia
+              </button>
             </li>
 
             <li>
-              <button type="button" class="filter">perros</button>
+              <button type="button" class="filter" data-filter="perros">
+                perros
+              </button>
             </li>
 
             <li>
-              <button type="button" class="filter">señorxs</button>
+              <button type="button" class="filter" data-filter="senorxs">
+                señorxs
+              </button>
             </li>
 
             <li>
-              <button type="button" class="filter">balnearias</button>
+              <button type="button" class="filter" data-filter="balnearias">
+                balnearias
+              </button>
             </li>
 
             <li>
-              <button type="button" class="filter">posiciones</button>
+              <button type="button" class="filter" data-filter="posiciones">
+                posiciones
+              </button>
             </li>
 
             <li>
-              <button type="button" class="filter">rincones</button>
+              <button type="button" class="filter" data-filter="rincones">
+                rincones
+              </button>
             </li>
 
             <li>
-              <button type="button" class="filter">autos</button>
+              <button type="button" class="filter" data-filter="autos">
+                autos
+              </button>
             </li>
           </ul>
         </div>
@@ -109,10 +127,11 @@
       <a href="#" class="link ingles">EN</a>
     </footer>
 
-    <script src="js/photos.js"></script>
-    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/route.js"></script>
+    <script src="/js/photos.js"></script>
+    <script src="/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
     <script>

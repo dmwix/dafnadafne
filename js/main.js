@@ -6,15 +6,30 @@
 //   document.documentElement.style.setProperty('--vh', `${vh}px`);
 // });
 
-let ancho = document.documentElement.clientWidth;
-let alto = document.documentElement.clientWidth;
+document.addEventListener("DOMContentLoaded", ready);
+
+function ready() {
+  currentWindowSize();
+  window.onresize = currentWindowSize;
+  window.onpopstate = onPopState;
+  if (slugFiltro) {
+    changeFilter(slugFiltro);
+  }
+  let filterElements = document.querySelectorAll(`[href='#todas']`);
+  filterElements.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      e.preventDefault();
+      changeFilter("todas");
+    });
+  });
+}
+
+let ancho, alto;
 
 function currentWindowSize() {
   alto = document.documentElement.clientWidth;
   ancho = document.documentElement.clientWidth;
 }
-
-window.onresize = currentWindowSize;
 
 // HOME
 const mainHome = document.querySelector(".main-home");
@@ -205,14 +220,14 @@ photos.forEach((photo) => {
   // poner small la foto
   photoDiv.innerHTML = `<img src="${photo.src.large}" alt="${
     photo.title
-  }" class="${photo.tags.join(" ")}">`;
+  }" class="${photo.filters.join(" ")}">`;
   grid.append(photoDiv);
 });
 
 noCursors([...grid.children]);
 
 const todas = document.querySelectorAll("img");
-const filters = document.querySelectorAll(".filter");
+const filters = document.querySelectorAll("[data-filter]");
 noCursors(filters);
 
 function filterGallery(criterio) {
@@ -242,7 +257,7 @@ function activeFilter(filter) {
 const previousTitle = document.title;
 
 function updateTitle(filterName) {
-  let titulo = `catálogo: ${filterName}`;
+  let titulo = `fotos: ${filterName}`;
   if (filterName == "todas") {
     document.title = previousTitle;
   } else {
@@ -259,35 +274,52 @@ let acco = document.querySelector(".accordion");
 filtersList.addEventListener("click", (e) => {
   let filter = e.target.closest(".filter");
   if (!filter) return;
-  let filterName = filter.innerText;
+  let filterName = filter.dataset.filter;
+  changeFilter(filterName);
+});
+
+function changeFilter(filterName) {
+  let filter = document.querySelector(`[data-filter="${filterName}"]`);
+  if (filter == null) {
+    history.replaceState({}, "", "/fotos");
+    console.log(`el filtro ${filterName.toUpperCase()} no existe`);
+    return;
+  }
+
   // poner clase activa al filtro seleccionado en la lista
   activeFilter(filter);
+
+  // comportamiento para "todas"
+  filterName = filterName == "todas" ? "" : filterName;
+  let selected = filterName
+    ? document.querySelectorAll(`.${filterName}`)
+    : todas;
+
   // aplicar filterGallery al seleccionado
-  let selected = document.querySelectorAll(`.${filterName}`);
   filterGallery(selected);
-  acco.click();
+  closeAccordion();
 
   // actualizar url y actualizar el título del sitio
   let url = `/fotos/${filterName}`;
-  updateTitle(filterName);
+  updateTitle(filter.innerText);
   changeUrl(url, filterName);
+}
 
-  window.onpopstate = (e) => {
-    if (e.state != null) {
-      filterGallery(document.querySelectorAll(`.${e.state}`));
-      const match = [...filters].find((element) => {
-        return element.textContent.includes(e.state);
-      });
-      activeFilter(match);
-      updateTitle(e.state);
-    } else {
-      filterGallery(todas);
-      let todasTag = document.querySelector(".filter");
-      activeFilter(todasTag);
-      updateTitle("todas");
-    }
-  };
-});
+function onPopState(e) {
+  if (e.state != null) {
+    filterGallery(document.querySelectorAll(`.${e.state}`));
+    const match = [...filters].find((element) => {
+      return element.textContent.includes(e.state);
+    });
+    activeFilter(match);
+    updateTitle(e.state);
+  } else {
+    filterGallery(todas);
+    let todasTag = document.querySelector(".filter");
+    activeFilter(todasTag);
+    updateTitle("todas");
+  }
+}
 
 // CAROUSEL
 const carouselWindow = document.getElementById("carousel-window");
@@ -308,7 +340,7 @@ function openCarousel(e) {
   // slideWrapper.textContent = "";
   let name = img.alt;
   let foti = photos.find((p) => p.title == name);
-  slideWrapper.innerHTML = `<img src="/${foti.src.large}" alt="${foti.title}">`;
+  slideWrapper.innerHTML = `<img src="${foti.src.large}" alt="${foti.title}">`;
   // le saco la clase así no agrando la array de dicha clase sumándole un item repetido
   // currentSlide.className = "";
   // slideWrapper.append(currentSlide);
@@ -368,10 +400,10 @@ function cursorFlechita(e) {
   flecha.style.top = flechaTop + "px";
   if (flechaLeft < ancho / 2) {
     // flecha.innerHTML = "&#10094;";
-    flecha.innerHTML = `<img src="images/previous.svg">`;
+    flecha.innerHTML = `<img src="/images/previous.svg">`;
     flecha.dataset.direction = "previous";
   } else {
-    flecha.innerHTML = `<img src="images/next.svg">`;
+    flecha.innerHTML = `<img src="/images/next.svg">`;
     // flecha.innerHTML = "&#10095;";
     flecha.dataset.direction = "next";
   }
@@ -384,7 +416,7 @@ function cursorFlechitaNavigation() {
   //   ...document.querySelectorAll(`.${currentFilter.innerText}`),
   // ];
   const currentGallery = photos.filter((p) =>
-    p.tags.includes(currentFilter.innerText)
+    p.filters.includes(currentFilter.innerText)
   );
   currentSlide = slideWrapper.firstChild;
   let index = currentGallery.findIndex(
@@ -500,36 +532,42 @@ function shrug(event) {
 }
 
 const overlay = document.getElementById("overlay");
-const acc = document.querySelectorAll(".accordion");
+const acc = document.querySelector(".accordion");
 const tags = document.querySelector(".tags");
 let i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    overlay.classList.toggle("hidden");
-    let panel = this.nextElementSibling;
-    panel.classList.toggle("abierto");
-    tags.classList.toggle("sombra");
-    // if (panel.style.maxHeight) {
-    //   panel.style.maxHeight = null;
-    // } else {
-    //   // panel.style.maxHeight = panel.scrollHeight + "px";
-    //   // panel.style.maxHeight = panel.clientHeight + "px";
-    //   panel.style.maxHeight = "100%";
-    // }
-  });
+const buttons = document.querySelectorAll("button");
+noCursors(buttons);
+
+acc.addEventListener("click", toggleAccordion);
+overlay.addEventListener("click", closeAccordion);
+
+function closeAccordion(e) {
+  acc.classList.remove("active");
+  overlay.classList.add("hidden");
+  filtersList.classList.remove("abierto");
+  tags.classList.remove("sombra");
 }
 
-noCursors(acc);
+function openAccordion(e) {
+  acc.classList.add("active");
+  overlay.classList.remove("hidden");
+  filtersList.classList.add("abierto");
+  tags.classList.add("sombra");
+}
 
-overlay.addEventListener("click", () => {
-  acco.click();
-});
+function toggleAccordion(e) {
+  let isActive = acc.classList.contains("active");
+  if (isActive) {
+    closeAccordion();
+  } else {
+    openAccordion();
+  }
+}
 
 document.addEventListener("keydown", (e) => {
   if (overlay.classList.contains("hidden")) return;
   else if (e.code == "Escape") {
-    acco.click();
+    closeAccordion();
   }
 });
