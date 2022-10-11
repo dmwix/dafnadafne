@@ -93,28 +93,28 @@ document.addEventListener("mousemove", function (e) {
   cursor.style.top = cursorTop + "px";
 });
 
-function noCursors(array) {
+function noCursor(array) {
   array.forEach((el) => {
-    el.addEventListener("mouseover", hideCursors);
-    el.addEventListener("mouseout", showCursors);
+    el.addEventListener("mouseover", hideCursor);
+    el.addEventListener("mouseout", showCursor);
   });
 }
 
-function hideCursors(e) {
+function hideCursor(e) {
   cursor.style.opacity = "0";
 }
 
-function showCursors() {
+function showCursor() {
   cursor.style.opacity = "1";
 }
 
 const linkcitos = document.querySelectorAll("a");
 const links = document.querySelectorAll(".link");
-noCursors(linkcitos);
+noCursor(linkcitos);
 
 // DRAGGABLE PHOTOS
 const draggables = document.querySelectorAll(".draggable");
-noCursors(draggables);
+noCursor(draggables);
 
 draggables.forEach((draggable) => {
   draggable.onmousedown = function (event) {
@@ -224,11 +224,11 @@ photos.forEach((photo) => {
   grid.append(photoDiv);
 });
 
-noCursors([...grid.children]);
+noCursor([...grid.children]);
 
 const todas = document.querySelectorAll("img");
 const filters = document.querySelectorAll("[data-filter]");
-noCursors(filters);
+noCursor(filters);
 
 function filterGallery(criterio) {
   hidePhotos(todas);
@@ -259,7 +259,7 @@ const previousTitle = document.title;
 function updateTitle(filterName) {
   let titulo = `fotos: ${filterName}`;
   if (filterName == "todas") {
-    document.title = previousTitle;
+    document.title = `fotos | dafna szleifer`;
   } else {
     document.title = titulo + " | dafna szleifer";
   }
@@ -309,10 +309,11 @@ function onPopState(e) {
   if (e.state != null) {
     filterGallery(document.querySelectorAll(`.${e.state}`));
     const match = [...filters].find((element) => {
-      return element.textContent.includes(e.state);
+      return element.dataset.filter.includes(e.state);
     });
     activeFilter(match);
-    updateTitle(e.state);
+    // match no anda y el titulo actualiza mal
+    updateTitle(match.innerText);
   } else {
     filterGallery(todas);
     let todasTag = document.querySelector(".filter");
@@ -326,7 +327,7 @@ const carouselWindow = document.getElementById("carousel-window");
 const carousel = document.getElementById("carousel");
 const carouselNavigation = document.querySelectorAll(".carousel-navigation");
 const closeCarouselButton = document.getElementById("carousel-close");
-noCursors(carouselWindow.querySelectorAll("button"));
+noCursor(carouselWindow.querySelectorAll("button"));
 let slideWrapper = document.querySelector(".slide-wrapper");
 let currentSlide;
 
@@ -399,12 +400,10 @@ function cursorFlechita(e) {
   flecha.style.left = flechaLeft + "px";
   flecha.style.top = flechaTop + "px";
   if (flechaLeft < ancho / 2) {
-    // flecha.innerHTML = "&#10094;";
     flecha.innerHTML = `<img src="/images/previous.svg">`;
     flecha.dataset.direction = "previous";
   } else {
     flecha.innerHTML = `<img src="/images/next.svg">`;
-    // flecha.innerHTML = "&#10095;";
     flecha.dataset.direction = "next";
   }
 }
@@ -437,6 +436,11 @@ function cursorFlechitaNavigation() {
 }
 
 document.addEventListener("keydown", (e) => {
+  let carouselWindowDisplay = window.getComputedStyle(
+    carouselWindow,
+    null
+  ).display;
+  if (carouselWindowDisplay == "none") return;
   switch (e.key) {
     case "Escape":
       closeCarousel(e);
@@ -537,7 +541,7 @@ const tags = document.querySelector(".tags");
 let i;
 
 const buttons = document.querySelectorAll("button");
-noCursors(buttons);
+noCursor(buttons);
 
 acc.addEventListener("click", toggleAccordion);
 overlay.addEventListener("click", closeAccordion);
