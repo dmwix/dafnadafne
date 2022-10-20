@@ -276,7 +276,13 @@ filtersList.addEventListener("click", (e) => {
   if (!filter) return;
   let filterName = filter.dataset.filter;
   changeFilter(filterName);
+  changeButtonText(filter);
 });
+
+function changeButtonText(filter) {
+  let name = filter.innerText;
+  filtersButton.innerText = name;
+}
 
 function changeFilter(filterName) {
   let filter = document.querySelector(`[data-filter="${filterName}"]`);
@@ -321,6 +327,8 @@ function onPopState(e) {
     updateTitle("todas");
   }
 }
+
+const filtersButton = document.getElementById("filters-button");
 
 // CAROUSEL
 const carouselWindow = document.getElementById("carousel-window");
