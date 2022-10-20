@@ -415,11 +415,11 @@ function cursorFlechitaNavigation() {
   //   ...document.querySelectorAll(`.${currentFilter.innerText}`),
   // ];
   const currentGallery = photos.filter((p) =>
-    p.filters.includes(currentFilter.innerText)
+    p.filters.includes(currentFilter.dataset.filter)
   );
   currentSlide = slideWrapper.firstChild;
   let index = currentGallery.findIndex(
-    (image) => image.title === currentSlide.alt
+    (image) => image.title == currentSlide.alt
   );
   let newIndex = index + direction;
   if (newIndex < 0) {
@@ -428,7 +428,6 @@ function cursorFlechitaNavigation() {
   if (newIndex >= currentGallery.length) newIndex = 0;
   // slideWrapper.textContent = "";
   currentSlide = currentGallery[newIndex];
-  // console.log(currentSlide);
   slideWrapper.innerHTML = `<img src="${currentSlide.src.large}" alt="${currentSlide.title}">`;
   // newSlide = currentSlide.cloneNode(true);
   // newSlide.className = "";
