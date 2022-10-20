@@ -254,7 +254,7 @@ function activeFilter(filter) {
   filter.classList.add("current");
 }
 
-const previousTitle = document.title;
+// const previousTitle = document.title;
 
 function updateTitle(filterName) {
   let titulo = `fotos: ${filterName}`;
