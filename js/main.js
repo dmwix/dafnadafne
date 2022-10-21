@@ -276,7 +276,7 @@ filtersList.addEventListener("click", (e) => {
   if (!filter) return;
   let filterName = filter.dataset.filter;
   changeFilter(filterName);
-  changeButtonText(filter);
+  // changeButtonText(filter);
 });
 
 function changeButtonText(filter) {
@@ -300,6 +300,8 @@ function changeFilter(filterName) {
   let selected = filterName
     ? document.querySelectorAll(`.${filterName}`)
     : todas;
+
+  changeButtonText(filter);
 
   // aplicar filterGallery al seleccionado
   filterGallery(selected);
