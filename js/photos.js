@@ -50,7 +50,7 @@ const photos = [
     filters: ["todas", "senorxs", "fucsia"],
     title: "Señora con bolsos y vestido fucsia",
     slug: "0004",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -154,7 +154,7 @@ const photos = [
     filters: ["todas", "senorxs"],
     title: "Señora en un Mc Donalds",
     slug: "0012",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -167,7 +167,7 @@ const photos = [
     filters: ["todas", "senorxs", "balnearias"],
     title: "Señora con algodones en los ojos",
     slug: "0013",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -180,7 +180,7 @@ const photos = [
     filters: ["todas", "autos"],
     title: "Auto verde",
     slug: "0014",
-    home_orientation: "",
+    home_orientation: "portrait",
   },
 
   {
@@ -206,7 +206,7 @@ const photos = [
     filters: ["todas", "senorxs"],
     title: "Peluquero leyendo el diario",
     slug: "0016",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -219,7 +219,7 @@ const photos = [
     filters: ["todas", "senorxs", "balnearias", "compania"],
     title: "Señoras con sombreros sentadas en la rambla",
     slug: "0017",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -232,7 +232,7 @@ const photos = [
     filters: ["todas", "senorxs", "balnearias", "compania"],
     title: "Señoras con sombrero panamá",
     slug: "0018",
-    home_orientation: "",
+    home_orientation: "portrait",
   },
 
   {
@@ -245,7 +245,7 @@ const photos = [
     filters: ["todas", "balnearias"],
     title: "Pirulines",
     slug: "0019",
-    home_orientation: "",
+    home_orientation: "portrait",
   },
 
   {
@@ -271,7 +271,7 @@ const photos = [
     filters: ["todas", "senorxs", "balnearias", "compania", "posiciones"],
     title: "Dos señoras en malla con brazos en jarra",
     slug: "0021",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -401,6 +401,747 @@ const photos = [
     filters: ["todas", "rincones"],
     title: "Changuitos",
     slug: "0032",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0033_small.jpg",
+      medium: "/images/fotos_medium/0033_medium.jpg",
+      large: "/images/fotos_large/0033_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias"],
+    title: "Señor en andador mirando el celular junto al mar",
+    slug: "0033",
+    home_orientation: "landscape",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0034_small.jpg",
+      medium: "/images/fotos_medium/0034_medium.jpg",
+      large: "/images/fotos_large/0034_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "fucsia", "senorxs", "balnearias"],
+    title: "Señor mirando el mar",
+    slug: "0034",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0035_small.jpg",
+      medium: "/images/fotos_medium/0035_medium.jpg",
+      large: "/images/fotos_large/0035_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Señor jugando al tejo",
+    slug: "0035",
+    home_orientation: "portrait",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0036_small.jpg",
+      medium: "/images/fotos_medium/0036_medium.jpg",
+      large: "/images/fotos_large/0036_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "balnearias", "senorxs"],
+    title: "Vendedor en la playa",
+    slug: "0036",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0037_small.jpg",
+      medium: "/images/fotos_medium/0037_medium.jpg",
+      large: "/images/fotos_large/0037_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones", "balnearias"],
+    title: "Sombrilla junto al río",
+    slug: "0037",
+    home_orientation: "landscape",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0038_small.jpg",
+      medium: "/images/fotos_medium/0038_medium.jpg",
+      large: "/images/fotos_large/0038_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Piso con patrón",
+    slug: "0038",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0039_small.jpg",
+      medium: "/images/fotos_medium/0039_medium.jpg",
+      large: "/images/fotos_large/0039_large.jpg",
+      webp: "",
+    },
+    filters: ["todas"],
+    title: "Hombres con chroma junto a lago",
+    slug: "0039",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0040_small.jpg",
+      medium: "/images/fotos_medium/0040_medium.jpg",
+      large: "/images/fotos_large/0040_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "rincones"],
+    title: "Señor jugando al pool",
+    slug: "0040",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0041_small.jpg",
+      medium: "/images/fotos_medium/0041_medium.jpg",
+      large: "/images/fotos_large/0041_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs"],
+    title: "señor sentado junto a un pool",
+    slug: "0041",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0042_small.jpg",
+      medium: "/images/fotos_medium/0042_medium.jpg",
+      large: "/images/fotos_large/0042_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias"],
+    title: "señora tomando sol junto al río",
+    slug: "0042",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0043_small.jpg",
+      medium: "/images/fotos_medium/0043_medium.jpg",
+      large: "/images/fotos_large/0043_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Máquina de hielo",
+    slug: "0043",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0044_small.jpg",
+      medium: "/images/fotos_medium/0044_medium.jpg",
+      large: "/images/fotos_large/0044_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones", "balnearias"],
+    title: "Pileta vacía",
+    slug: "0044",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0045_small.jpg",
+      medium: "/images/fotos_medium/0045_medium.jpg",
+      large: "/images/fotos_large/0045_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "compania", "balnearias"],
+    title: "Señoras tomando mate junto a castillo de arena",
+    slug: "0045",
+    home_orientation: "landscape",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0046_small.jpg",
+      medium: "/images/fotos_medium/0046_medium.jpg",
+      large: "/images/fotos_large/0046_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias", "fucsia"],
+    title: "Señora tomando sol en escalera",
+    slug: "0046",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0047_small.jpg",
+      medium: "/images/fotos_medium/0047_medium.jpg",
+      large: "/images/fotos_large/0047_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "compania", "balnearias"],
+    title: "Señoras rubias charlando",
+    slug: "0047",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0048_small.jpg",
+      medium: "/images/fotos_medium/0048_medium.jpg",
+      large: "/images/fotos_large/0048_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "compania", "balnearias"],
+    title: "Pareja en reposeras",
+    slug: "0048",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0049_small.jpg",
+      medium: "/images/fotos_medium/0049_medium.jpg",
+      large: "/images/fotos_large/0049_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "perros"],
+    title: "Señora con caniche y camperas puffy",
+    slug: "0049",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0050_small.jpg",
+      medium: "/images/fotos_medium/0050_medium.jpg",
+      large: "/images/fotos_large/0050_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs"],
+    title: "Sesión de masajes en el Barrio Chino",
+    slug: "0050",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0051_small.jpg",
+      medium: "/images/fotos_medium/0051_medium.jpg",
+      large: "/images/fotos_large/0051_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias", "fucsia"],
+    title: "Señora tomando sol en escalera de espaldas",
+    slug: "0051",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0052_small.jpg",
+      medium: "/images/fotos_medium/0052_medium.jpg",
+      large: "/images/fotos_large/0052_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias", "fucsia"],
+    title: "Señora tomando sol en escalera con palmera de fondo",
+    slug: "0052",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0053_small.jpg",
+      medium: "/images/fotos_medium/0053_medium.jpg",
+      large: "/images/fotos_large/0053_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias"],
+    title: "Dos señores tomando sol en Mar del Plata",
+    slug: "0053",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0054_small.jpg",
+      medium: "/images/fotos_medium/0054_medium.jpg",
+      large: "/images/fotos_large/0054_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias"],
+    title: "Partido de tejo",
+    slug: "0054",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0055_small.jpg",
+      medium: "/images/fotos_medium/0055_medium.jpg",
+      large: "/images/fotos_large/0055_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Mirador",
+    slug: "0055",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0056_small.jpg",
+      medium: "/images/fotos_medium/0056_medium.jpg",
+      large: "/images/fotos_large/0056_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs"],
+    title: "Señor en un café en la montaña",
+    slug: "0056",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0057_small.jpg",
+      medium: "/images/fotos_medium/0057_medium.jpg",
+      large: "/images/fotos_large/0057_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "autos"],
+    title: "Auto celeste con escarcha",
+    slug: "0057",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0058_small.jpg",
+      medium: "/images/fotos_medium/0058_medium.jpg",
+      large: "/images/fotos_large/0058_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias"],
+    title: "Señor tomando sol en las piedras junto al mar",
+    slug: "0058",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0059_small.jpg",
+      medium: "/images/fotos_medium/0059_medium.jpg",
+      large: "/images/fotos_large/0059_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs"],
+    title: "Kioskero de diarios",
+    slug: "0059",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0060_small.jpg",
+      medium: "/images/fotos_medium/0060_medium.jpg",
+      large: "/images/fotos_large/0060_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias", "compania"],
+    title: "Cinco señoras en reposeras de colores",
+    slug: "0060",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0061_small.jpg",
+      medium: "/images/fotos_medium/0061_medium.jpg",
+      large: "/images/fotos_large/0061_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias"],
+    title: "Partido de tejo en la playa",
+    slug: "0061",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0062_small.jpg",
+      medium: "/images/fotos_medium/0062_medium.jpg",
+      large: "/images/fotos_large/0062_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias", "compania"],
+    title: "Dos señoras junto a restorán",
+    slug: "0062",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0063_small.jpg",
+      medium: "/images/fotos_medium/0063_medium.jpg",
+      large: "/images/fotos_large/0063_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias"],
+    title: "Señora de espaldas, foto velada",
+    slug: "0063",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0064_small.jpg",
+      medium: "/images/fotos_medium/0064_medium.jpg",
+      large: "/images/fotos_large/0064_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Pileta de natación",
+    slug: "0064",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0065_small.jpg",
+      medium: "/images/fotos_medium/0065_medium.jpg",
+      large: "/images/fotos_large/0065_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Gradas junto a pileta de natación",
+    slug: "0065",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0066_small.jpg",
+      medium: "/images/fotos_medium/0066_medium.jpg",
+      large: "/images/fotos_large/0066_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Nadador sentado en gradas",
+    slug: "0066",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0067_small.jpg",
+      medium: "/images/fotos_medium/0067_medium.jpg",
+      large: "/images/fotos_large/0067_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Ventanas junto pileta de natación",
+    slug: "0067",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0068_small.jpg",
+      medium: "/images/fotos_medium/0068_medium.jpg",
+      large: "/images/fotos_large/0068_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "autos"],
+    title: "Auto naranja",
+    slug: "0068",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0069_small.jpg",
+      medium: "/images/fotos_medium/0069_medium.jpg",
+      large: "/images/fotos_large/0069_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "autos"],
+    title: "Fitito rojo",
+    slug: "0069",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0070_small.jpg",
+      medium: "/images/fotos_medium/0070_medium.jpg",
+      large: "/images/fotos_large/0070_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "autos"],
+    title: "Escarabajo rojo en Barrio Los Andes",
+    slug: "0070",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0071_small.jpg",
+      medium: "/images/fotos_medium/0071_medium.jpg",
+      large: "/images/fotos_large/0071_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "autos", "rincones"],
+    title: "Auto rojo en lava-autos",
+    slug: "0071",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0072_small.jpg",
+      medium: "/images/fotos_medium/0072_medium.jpg",
+      large: "/images/fotos_large/0072_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Balanza fábrica de pastas",
+    slug: "0072",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0073_small.jpg",
+      medium: "/images/fotos_medium/0073_medium.jpg",
+      large: "/images/fotos_large/0073_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones"],
+    title: "Techo de fábrica de pastas",
+    slug: "0073",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0074_small.jpg",
+      medium: "/images/fotos_medium/0074_medium.jpg",
+      large: "/images/fotos_large/0074_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "perros"],
+    title: "Señora paseando dos perros",
+    slug: "0074",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0075_small.jpg",
+      medium: "/images/fotos_medium/0075_medium.jpg",
+      large: "/images/fotos_large/0075_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "balnearias"],
+    title: "Mar del Plata ciudad feliz",
+    slug: "0075",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0076_small.jpg",
+      medium: "/images/fotos_medium/0076_medium.jpg",
+      large: "/images/fotos_large/0076_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "compania"],
+    title: "Dos señoras con lentes de sol",
+    slug: "0076",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0077_small.jpg",
+      medium: "/images/fotos_medium/0077_medium.jpg",
+      large: "/images/fotos_large/0077_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "compania"],
+    title: "Dos señorxs caminando en la rambla",
+    slug: "0077",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0078_small.jpg",
+      medium: "/images/fotos_medium/0078_medium.jpg",
+      large: "/images/fotos_large/0078_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "perros"],
+    title: "Perro con colitas de pelo",
+    slug: "0078",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0079_small.jpg",
+      medium: "/images/fotos_medium/0079_medium.jpg",
+      large: "/images/fotos_large/0079_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "perros"],
+    title: "Perro con colitas de pelo de costado",
+    slug: "0079",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0080_small.jpg",
+      medium: "/images/fotos_medium/0080_medium.jpg",
+      large: "/images/fotos_large/0080_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "compania"],
+    title: "Señoras con andador en bingo",
+    slug: "0080",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0081_small.jpg",
+      medium: "/images/fotos_medium/0081_medium.jpg",
+      large: "/images/fotos_large/0081_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "fucsia"],
+    title: "Señoras en el faena",
+    slug: "0081",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0082_small.jpg",
+      medium: "/images/fotos_medium/0082_medium.jpg",
+      large: "/images/fotos_large/0082_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "compania", "rincones"],
+    title: "Señoras en Bar Mickey",
+    slug: "0082",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0083_small.jpg",
+      medium: "/images/fotos_medium/0083_medium.jpg",
+      large: "/images/fotos_large/0083_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones", "balnearias"],
+    title: "Pochoclos Alf",
+    slug: "0083",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0084_small.jpg",
+      medium: "/images/fotos_medium/0084_medium.jpg",
+      large: "/images/fotos_large/0084_large.jpg",
+      webp: "",
+    },
+    filters: ["todas"],
+    title: "Consejero matrimonial",
+    slug: "0084",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0085_small.jpg",
+      medium: "/images/fotos_medium/0085_medium.jpg",
+      large: "/images/fotos_large/0085_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "fucsia", "compania"],
+    title: "Señoras caminando sobre alfombra fucsia",
+    slug: "0085",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0086_small.jpg",
+      medium: "/images/fotos_medium/0086_medium.jpg",
+      large: "/images/fotos_large/0086_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs"],
+    title: "Señora en sillon de masajes",
+    slug: "0086",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0087_small.jpg",
+      medium: "/images/fotos_medium/0087_medium.jpg",
+      large: "/images/fotos_large/0087_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs"],
+    title: "Señora con la cara apoyada en el sillon de masajes",
+    slug: "0087",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0088_small.jpg",
+      medium: "/images/fotos_medium/0088_medium.jpg",
+      large: "/images/fotos_large/0088_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "rincones", "autos"],
+    title: "Garage con piso a cuadros",
+    slug: "0088",
+    home_orientation: "",
+  },
+
+  {
+    src: {
+      small: "/images/fotos_small/0089_small.jpg",
+      medium: "/images/fotos_medium/0089_medium.jpg",
+      large: "/images/fotos_large/0089_large.jpg",
+      webp: "",
+    },
+    filters: ["todas", "senorxs", "compania"],
+    title: "Señoras caminando en Recoleta",
+    slug: "0089",
     home_orientation: "",
   },
 ];
