@@ -72,7 +72,7 @@ homePhotos.forEach((photo) => {
   wrapperDiv.classList.add("home-photo", "tiembla");
   let picture = document.createElement("picture");
   wrapperDiv.append(picture);
-  picture.innerHTML = `<source media="(min-width: 500px)" srcset=${photo.src.large} /> <img src=${photo.src.large} alt="${photo.title}" class="draggable ${photo.home_orientation}" />`;
+  picture.innerHTML = `<source media="(min-width: 500px)" srcset=${photo.src.small} /> <img src=${photo.src.small} alt="${photo.title}" class="draggable ${photo.home_orientation}" />`;
   mainHome.prepend(wrapperDiv);
 });
 
@@ -218,7 +218,7 @@ photos.forEach((photo) => {
   let photoDiv = document.createElement("div");
   photoDiv.classList.add("foto");
   // poner small la foto
-  photoDiv.innerHTML = `<img src="${photo.src.large}" alt="${
+  photoDiv.innerHTML = `<img src="${photo.src.small}" alt="${
     photo.title
   }" class="${photo.filters.join(" ")}">`;
   grid.append(photoDiv);
