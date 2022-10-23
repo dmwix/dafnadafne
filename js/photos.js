@@ -388,7 +388,7 @@ const photos = [
     filters: ["todas", "balnearias", "perros"],
     title: "Caniches bajo una sombrilla",
     slug: "0031",
-    home_orientation: "",
+    home_orientation: "portrait",
   },
 
   {
@@ -414,7 +414,7 @@ const photos = [
     filters: ["todas", "senorxs", "balnearias"],
     title: "Señor en andador mirando el celular junto al mar",
     slug: "0033",
-    home_orientation: "landscape",
+    home_orientation: "",
   },
 
   {
@@ -427,7 +427,7 @@ const photos = [
     filters: ["todas", "fucsia", "senorxs", "balnearias"],
     title: "Señor mirando el mar",
     slug: "0034",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -466,7 +466,7 @@ const photos = [
     filters: ["todas", "rincones", "balnearias"],
     title: "Sombrilla junto al río",
     slug: "0037",
-    home_orientation: "landscape",
+    home_orientation: "portrait",
   },
 
   {
@@ -570,7 +570,7 @@ const photos = [
     filters: ["todas", "senorxs", "compania", "balnearias"],
     title: "Señoras tomando mate junto a castillo de arena",
     slug: "0045",
-    home_orientation: "landscape",
+    home_orientation: "",
   },
 
   {
@@ -687,7 +687,7 @@ const photos = [
     filters: ["todas", "senorxs", "balnearias"],
     title: "Partido de tejo",
     slug: "0054",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -726,7 +726,7 @@ const photos = [
     filters: ["todas", "autos"],
     title: "Auto celeste con escarcha",
     slug: "0057",
-    home_orientation: "",
+    home_orientation: "portrait",
   },
 
   {
@@ -765,7 +765,7 @@ const photos = [
     filters: ["todas", "senorxs", "balnearias", "compania"],
     title: "Cinco señoras en reposeras de colores",
     slug: "0060",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -817,7 +817,7 @@ const photos = [
     filters: ["todas", "rincones"],
     title: "Pileta de natación",
     slug: "0064",
-    home_orientation: "",
+    home_orientation: "portrait",
   },
 
   {
@@ -869,7 +869,7 @@ const photos = [
     filters: ["todas", "autos"],
     title: "Auto naranja",
     slug: "0068",
-    home_orientation: "",
+    home_orientation: "portrait",
   },
 
   {
@@ -960,7 +960,7 @@ const photos = [
     filters: ["todas", "senorxs", "balnearias"],
     title: "Mar del Plata ciudad feliz",
     slug: "0075",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
@@ -1051,7 +1051,7 @@ const photos = [
     filters: ["todas", "senorxs", "compania", "rincones"],
     title: "Señoras en Bar Mickey",
     slug: "0082",
-    home_orientation: "",
+    home_orientation: "landscape",
   },
 
   {
