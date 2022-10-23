@@ -437,7 +437,7 @@ const photos = [
       large: "/images/fotos_large/0035_large.jpg",
       webp: "",
     },
-    filters: ["todas", "rincones"],
+    filters: ["todas", "senorxs", "balnearias", "compania"],
     title: "Señor jugando al tejo",
     slug: "0035",
     home_orientation: "portrait",
