@@ -255,16 +255,6 @@ a {
   width: auto;
 }
 
-/* .portrait {
-  max-height: 16em;
-  width: auto;
-}
-
-.landscape {
-  max-width: 50%;
-  height: auto;
-} */
-
 .tiembla:hover {
   animation: tiembla 0.5s ease-out 0s 1 normal forwards;
 }
