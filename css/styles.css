@@ -241,8 +241,18 @@ a {
 
 .body-home img {
   cursor: grab;
-  max-height: 16em;
-  max-width: 16em;
+  /* max-height: 16em;
+  max-width: 16em; */
+}
+
+.landscape {
+  max-width: 18vw;
+  height: auto;
+}
+
+.portrait {
+  max-height: 18vw;
+  width: auto;
 }
 
 /* .portrait {
