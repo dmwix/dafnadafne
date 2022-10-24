@@ -70,9 +70,9 @@ homePhotos.forEach((photo) => {
   if (!document.body.contains(mainHome)) return;
   let wrapperDiv = document.createElement("div");
   wrapperDiv.classList.add("home-photo", "tiembla");
-  let picture = document.createElement("picture");
-  wrapperDiv.append(picture);
-  picture.innerHTML = `<source media="(min-width: 500px)" srcset=${photo.src.small} /> <img src=${photo.src.small} alt="${photo.title}" class="draggable ${photo.home_orientation}" />`;
+  let img = document.createElement("img");
+  wrapperDiv.append(img);
+  img.outerHTML = `<img src=${photo.src.small} alt="${photo.title}" class="draggable ${photo.home_orientation}" />`;
   mainHome.prepend(wrapperDiv);
 });
 
