@@ -276,7 +276,6 @@ filtersList.addEventListener("click", (e) => {
   if (!filter) return;
   let filterName = filter.dataset.filter;
   changeFilter(filterName);
-  // changeButtonText(filter);
 });
 
 function changeButtonText(filter) {
@@ -358,6 +357,9 @@ function openCarousel(e) {
   document.body.style.overflowY = "hidden";
   cursor.style.display = "none";
   document.addEventListener("mousemove", cursorFlechita);
+  let photoUrl = `/foto/${foti.slug}`;
+
+  changeUrl(photoUrl, name);
 }
 
 function closeCarousel(e) {
@@ -375,6 +377,12 @@ function closeCarousel(e) {
   document.removeEventListener("mousemove", cursorFlechita);
   flecha.style.display = "none";
   cursor.style.display = "block";
+
+  // FALTA COMPORTAMIENTO PARA TODAS
+  const currentFilter = document.querySelector(".filter.current");
+  const filterSlug = currentFilter.dataset.filter;
+  let url = `/fotos/${filterSlug}`;
+  changeUrl(url, filterSlug);
 }
 
 // function navigateCarousel(e) {
@@ -421,9 +429,6 @@ function cursorFlechita(e) {
 function cursorFlechitaNavigation() {
   const direction = flecha.dataset.direction === "next" ? 1 : -1;
   const currentFilter = document.querySelector(".filter.current");
-  // const currentGallery = [
-  //   ...document.querySelectorAll(`.${currentFilter.innerText}`),
-  // ];
   const currentGallery = photos.filter((p) =>
     p.filters.includes(currentFilter.dataset.filter)
   );
@@ -436,12 +441,12 @@ function cursorFlechitaNavigation() {
     newIndex = currentGallery.length - 1;
   }
   if (newIndex >= currentGallery.length) newIndex = 0;
-  // slideWrapper.textContent = "";
   currentSlide = currentGallery[newIndex];
   slideWrapper.innerHTML = `<img src="${currentSlide.src.large}" alt="${currentSlide.title}">`;
-  // newSlide = currentSlide.cloneNode(true);
-  // newSlide.className = "";
-  // slideWrapper.append(newSlide);
+
+  let foto = photos.find((p) => p.title == currentSlide.title);
+  let fotoSlug = `/foto/${foto.slug}`;
+  changeUrl(fotoSlug, `${foto.slug}`);
 }
 
 document.addEventListener("keydown", (e) => {
