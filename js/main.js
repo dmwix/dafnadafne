@@ -12,9 +12,12 @@ function ready() {
   currentWindowSize();
   window.onresize = currentWindowSize;
   window.onpopstate = onPopState;
-  if (slugFiltro) {
-    changeFilter(slugFiltro);
+  if (slugSection == "foto") {
+    onPopState({ state: { photo: slugFiltro } });
+  } else if (slugFiltro) {
+    onPopState({ state: { filter: slugFiltro } });
   }
+
   let filterElements = document.querySelectorAll(`[href='#todas']`);
   filterElements.forEach((element) => {
     element.addEventListener("click", (e) => {
@@ -220,7 +223,7 @@ photos.forEach((photo) => {
   // poner small la foto
   photoDiv.innerHTML = `<img src="${photo.src.small}" alt="${
     photo.title
-  }" class="${photo.filters.join(" ")}">`;
+  }" class="${photo.filters.join(" ")}" data-slug=${photo.slug}>`;
   grid.append(photoDiv);
 });
 
@@ -265,8 +268,9 @@ function updateTitle(filterName) {
   }
 }
 
-function changeUrl(url, filterName) {
-  history.pushState(filterName, "", location.origin + url);
+function changeUrl(url, state) {
+  console.log(url);
+  history.pushState(state, "", location.origin + url);
 }
 
 let acco = document.querySelector(".accordion");
@@ -274,9 +278,9 @@ let acco = document.querySelector(".accordion");
 filtersList.addEventListener("click", (e) => {
   let filter = e.target.closest(".filter");
   if (!filter) return;
+  e.preventDefault();
   let filterName = filter.dataset.filter;
   changeFilter(filterName);
-  // changeButtonText(filter);
 });
 
 function changeButtonText(filter) {
@@ -284,13 +288,15 @@ function changeButtonText(filter) {
   filtersButton.innerText = name;
 }
 
-function changeFilter(filterName) {
+function changeFilter(filterName, preventnavegation) {
   let filter = document.querySelector(`[data-filter="${filterName}"]`);
   if (filter == null) {
     history.replaceState({}, "", "/fotos");
     console.log(`el filtro ${filterName.toUpperCase()} no existe`);
     return;
   }
+
+  closeCarousel(false);
 
   // poner clase activa al filtro seleccionado en la lista
   activeFilter(filter);
@@ -310,24 +316,21 @@ function changeFilter(filterName) {
   // actualizar url y actualizar el título del sitio
   let url = `/fotos/${filterName}`;
   updateTitle(filter.innerText);
-  changeUrl(url, filterName);
+  if (preventnavegation == true) {
+    return;
+  }
+  changeUrl(url, { filter: filterName });
 }
 
 function onPopState(e) {
-  if (e.state != null) {
-    filterGallery(document.querySelectorAll(`.${e.state}`));
-    const match = [...filters].find((element) => {
-      return element.dataset.filter.includes(e.state);
-    });
-    activeFilter(match);
-    // match no anda y el titulo actualiza mal
-    updateTitle(match.innerText);
-  } else {
-    filterGallery(todas);
-    let todasTag = document.querySelector(".filter");
-    activeFilter(todasTag);
-    updateTitle("todas");
+  if (e.state == null) {
+    changeFilter("todas", true);
+  } else if (e.state.filter) {
+    changeFilter(e.state.filter, true);
+  } else if (e.state.photo) {
+    openCarousel(e.state.photo, true);
   }
+  // changeFilter(filterName, true);
 }
 
 const filtersButton = document.getElementById("filters-button");
@@ -341,40 +344,49 @@ noCursor(carouselWindow.querySelectorAll("button"));
 let slideWrapper = document.querySelector(".slide-wrapper");
 let currentSlide;
 
-function openCarousel(e) {
-  let img = e.target.closest("img");
-  if (!img) return;
+function openCarousel(slug, preventnavegation) {
+  let currentPhoto = photos.find((p) => p.slug == slug) || false;
+  if (!currentPhoto) return;
   carouselWindow.classList.remove("fade-out");
   carouselWindow.classList.add("fade-in");
   carouselWindow.style.display = "block";
   // esto x ahora no hace falta
   // slideWrapper.textContent = "";
-  let name = img.alt;
-  let foti = photos.find((p) => p.title == name);
-  slideWrapper.innerHTML = `<img src="${foti.src.large}" alt="${foti.title}">`;
+  slideWrapper.innerHTML = `<img src="${currentPhoto.src.large}" alt="${currentPhoto.title}" data-slug=${currentPhoto.slug}>`;
   // le saco la clase así no agrando la array de dicha clase sumándole un item repetido
   // currentSlide.className = "";
   // slideWrapper.append(currentSlide);
   document.body.style.overflowY = "hidden";
   cursor.style.display = "none";
   document.addEventListener("mousemove", cursorFlechita);
+  let photoUrl = `/foto/${currentPhoto.slug}`;
+
+  if (preventnavegation == true) return;
+  changeUrl(photoUrl, { photo: currentPhoto.slug });
 }
 
 function closeCarousel(e) {
-  let img = e.target.closest("img");
-  if (img) return;
-  if (e.target.closest(".carousel-navigation")) return;
+  if (e) {
+    if (e.target.closest(".carousel-navigation")) return;
+  }
   carouselWindow.classList.add("fade-out");
   setTimeout(() => {
     carouselWindow.style.display = "none";
   }, 200);
-  // borro la current slide
-  // slideWrapper.textContent = "";
   document.body.style.overflowY = "auto";
 
   document.removeEventListener("mousemove", cursorFlechita);
   flecha.style.display = "none";
   cursor.style.display = "block";
+
+  const currentFilter = document.querySelector(".filter.current");
+  const filterSlug = currentFilter.dataset.filter;
+
+  if (e) {
+    console.log("buenas");
+    let url = `/fotos/${filterSlug}`;
+    changeUrl(url, { filter: filterSlug });
+  }
 }
 
 // function navigateCarousel(e) {
@@ -421,9 +433,6 @@ function cursorFlechita(e) {
 function cursorFlechitaNavigation() {
   const direction = flecha.dataset.direction === "next" ? 1 : -1;
   const currentFilter = document.querySelector(".filter.current");
-  // const currentGallery = [
-  //   ...document.querySelectorAll(`.${currentFilter.innerText}`),
-  // ];
   const currentGallery = photos.filter((p) =>
     p.filters.includes(currentFilter.dataset.filter)
   );
@@ -436,12 +445,12 @@ function cursorFlechitaNavigation() {
     newIndex = currentGallery.length - 1;
   }
   if (newIndex >= currentGallery.length) newIndex = 0;
-  // slideWrapper.textContent = "";
   currentSlide = currentGallery[newIndex];
   slideWrapper.innerHTML = `<img src="${currentSlide.src.large}" alt="${currentSlide.title}">`;
-  // newSlide = currentSlide.cloneNode(true);
-  // newSlide.className = "";
-  // slideWrapper.append(newSlide);
+
+  let foto = photos.find((p) => p.title == currentSlide.title);
+  let fotoSlug = `/foto/${foto.slug}`;
+  changeUrl(fotoSlug, { photo: foto.slug });
 }
 
 document.addEventListener("keydown", (e) => {
@@ -480,7 +489,13 @@ function noFlechita(el) {
   el.addEventListener("mouseout", showFlechita);
 }
 
-grid.addEventListener("click", openCarousel);
+grid.addEventListener("click", (e) => {
+  let img = e.target.closest("img");
+  if (!img) return;
+  let slug = img.dataset.slug;
+
+  openCarousel(slug);
+});
 grid.addEventListener("contextmenu", function (e) {
   e.preventDefault();
 });

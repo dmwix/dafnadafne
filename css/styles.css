@@ -400,6 +400,10 @@ a {
   text-align: center;
 }
 
+.filters-list li {
+  padding: 0.5em 0;
+}
+
 .abierto {
   max-height: 1000px;
   transition: max-height 1s ease-out;

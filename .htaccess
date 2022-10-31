@@ -12,6 +12,7 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^fotos/ fotos.html [QSA,L]
     RewriteRule ^info/ info.html [QSA,L]
+    RewriteRule ^foto/ fotos.html [QSA,L]
 
     ErrorDocument 404 /404.html
 </ifModule>
