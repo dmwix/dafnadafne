@@ -240,8 +240,6 @@ a {
 
 .body-home img {
   cursor: grab;
-  /* max-height: 16em;
-  max-width: 16em; */
 }
 
 .landscape {
@@ -354,8 +352,10 @@ a {
   padding: 1em 2em;
 }
 
+@media (hover: hover) and (pointer: fine) { 
 .tags:hover {
   box-shadow: 5px 5px black;
+}
 }
 
 .sombra {
