@@ -44,9 +44,8 @@ body {
   width: 100%;
 }
 
-#main-cursor {
+#custom-cursor {
   display: none;
-  mix-blend-mode: normal;
   pointer-events: none;
   position: fixed;
   z-index: 250;
@@ -61,7 +60,7 @@ body {
 }
 
 @media screen and (min-width: 480px) {
-  #main-cursor {
+  #custom-cursor {
     display: block;
   }
 }
