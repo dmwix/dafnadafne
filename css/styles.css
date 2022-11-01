@@ -531,12 +531,17 @@ button {
   display: none;
   pointer-events: none;
   position: absolute;
-  /* transition: color 0.1s ease-in; */
   z-index: 250;
 }
 
 .flecha img {
-  height: 1.3rem;
+  height: 0;
+}
+
+@media screen and (min-width: 480px) {
+  .flecha img {
+    height: 1.3rem;
+  }
 }
 
 .shrug {
