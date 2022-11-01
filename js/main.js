@@ -351,10 +351,9 @@ function openCarousel(slug, preventnavegation) {
   carouselWindow.style.display = "block";
   slideWrapper.innerHTML = `<img src="${currentPhoto.src.large}" alt="${currentPhoto.title}" data-slug=${currentPhoto.slug}>`;
   document.body.style.overflowY = "hidden";
-  // cursor.style.display = "none";
+  cursor.style.display = "none";
 
   document.addEventListener("mousemove", cursorFlechita);
-  hideCursor();
   let photoUrl = `/foto/${currentPhoto.slug}`;
 
   if (preventnavegation == true) return;
@@ -373,8 +372,10 @@ function closeCarousel(e) {
 
   document.removeEventListener("mousemove", cursorFlechita);
   flecha.style.display = "none";
-  // cursor.style.display = "block";
-  showCursor();
+  const mediaQuery = window.matchMedia('(min-width: 480px)');
+  if (mediaQuery.matches) {
+    cursor.style.display = "block";
+  }
 
   const currentFilter = document.querySelector(".filter.current");
   const filterSlug = currentFilter.dataset.filter;
