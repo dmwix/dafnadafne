@@ -80,7 +80,7 @@ homePhotos.forEach((photo) => {
 });
 
 // CUSTOM CURSOR
-const cursor = document.getElementById("main-cursor");
+const cursor = document.getElementById("custom-cursor");
 
 document.addEventListener("mousemove", function (e) {
   let cursorLeft = `${e.clientX - cursor.offsetWidth / 2}`;
@@ -103,7 +103,7 @@ function noCursor(array) {
   });
 }
 
-function hideCursor(e) {
+function hideCursor() {
   cursor.style.opacity = "0";
 }
 
@@ -269,7 +269,6 @@ function updateTitle(filterName) {
 }
 
 function changeUrl(url, state) {
-  console.log(url);
   history.pushState(state, "", location.origin + url);
 }
 
@@ -350,15 +349,12 @@ function openCarousel(slug, preventnavegation) {
   carouselWindow.classList.remove("fade-out");
   carouselWindow.classList.add("fade-in");
   carouselWindow.style.display = "block";
-  // esto x ahora no hace falta
-  // slideWrapper.textContent = "";
   slideWrapper.innerHTML = `<img src="${currentPhoto.src.large}" alt="${currentPhoto.title}" data-slug=${currentPhoto.slug}>`;
-  // le saco la clase así no agrando la array de dicha clase sumándole un item repetido
-  // currentSlide.className = "";
-  // slideWrapper.append(currentSlide);
   document.body.style.overflowY = "hidden";
-  cursor.style.display = "none";
+  // cursor.style.display = "none";
+
   document.addEventListener("mousemove", cursorFlechita);
+  hideCursor();
   let photoUrl = `/foto/${currentPhoto.slug}`;
 
   if (preventnavegation == true) return;
@@ -377,13 +373,13 @@ function closeCarousel(e) {
 
   document.removeEventListener("mousemove", cursorFlechita);
   flecha.style.display = "none";
-  cursor.style.display = "block";
+  // cursor.style.display = "block";
+  showCursor();
 
   const currentFilter = document.querySelector(".filter.current");
   const filterSlug = currentFilter.dataset.filter;
 
   if (e) {
-    console.log("buenas");
     let url = `/fotos/${filterSlug}`;
     changeUrl(url, { filter: filterSlug });
   }
@@ -499,9 +495,8 @@ grid.addEventListener("click", (e) => {
 grid.addEventListener("contextmenu", function (e) {
   e.preventDefault();
 });
+
 carousel.addEventListener("click", cursorFlechitaNavigation);
-// carouselWindow.addEventListener("click", closeCarousel);
-// carousel.addEventListener("click", navigateCarousel);
 closeCarouselButton.addEventListener("click", closeCarousel);
 noFlechita(closeCarouselButton);
 
