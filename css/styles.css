@@ -66,11 +66,11 @@ body {
 }
 
 header {
+  background-color: var(--blanco);
   display: flex;
   justify-content: space-between;
   padding: 0.8em 0.5em;
   z-index: 1;
-  background-color: var(--blanco);
 }
 
 @media screen and (min-width: 480px) {
@@ -105,8 +105,8 @@ footer {
 
 .ingles::after {
   content: "";
-  transition: opacity 0.2s ease;
   opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
 @media (hover: hover) {
@@ -167,8 +167,8 @@ a {
 
 .logo::after {
   content: "";
-  transition: opacity 0.2s ease;
   opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
 #desktop {
@@ -245,8 +245,8 @@ a {
 }
 
 .landscape {
-  max-width: 18vw;
   height: auto;
+  max-width: 18vw;
 }
 
 .portrait {
@@ -260,17 +260,17 @@ a {
 
 .main-home {
   display: block;
-  margin: 0 1.5em;
   flex-grow: 2;
+  margin: 0 1.5em;
 }
 
 @media screen and (min-width: 480px) {
   .main-home {
-    margin: 10px;
     display: grid;
     gap: 1em;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(4, 1fr);
+    margin: 10px;
     max-height: 100%;
   }
 }
@@ -331,21 +331,19 @@ a {
 }
 
 .main-fotos {
-  flex-grow: 2;
-  padding: 2.5em 0;
   display: flex;
+  flex-grow: 2;
   justify-content: center;
+  padding: 2.5em 0;
 }
 
 @media screen and (min-width: 480px) {
   .main-fotos {
-    /* padding: 3.5em 0; */
     padding: 0;
   }
 }
 
 .tags {
-  /* padding: 0.5em 1em; */
   background-color: var(--blanco);
   border-radius: 40px;
   border: 2px solid black;
@@ -379,12 +377,12 @@ a {
 .accordion::before {
   background: url(../images/filter-icon.svg) center no-repeat;
   background-size: 1em;
+  content: "";
   display: inline-block;
   height: 1em;
-  width: 1em;
-  content: "";
-  vertical-align: middle;
   padding-right: 1.3em;
+  vertical-align: middle;
+  width: 1em;
 }
 
 .filters-list {
@@ -393,9 +391,9 @@ a {
   justify-content: center;
   list-style-type: none;
   margin: 0;
-  padding: 0;
   max-height: 0;
   overflow: hidden;
+  padding: 0;
   text-align: center;
 }
 
@@ -405,24 +403,22 @@ a {
 
 .abierto {
   max-height: 1000px;
-  transition: max-height 1s ease-out;
   padding-bottom: 1em;
+  transition: max-height 1s ease-out;
 }
 
 .filters-nav {
   background-color: transparent;
-  /* display: flex;
-  width: 100%; */
-  position: absolute;
   justify-content: center;
-  z-index: 7;
   padding-top: 1em;
+  position: absolute;
+  z-index: 7;
 }
 
 .fixed-nav .filters-nav {
   position: fixed;
-  top: 1em;
   padding: 0;
+  top: 1em;
 }
 
 @media screen and (min-width: 480px) {
@@ -432,17 +428,17 @@ a {
 }
 
 .filter {
-  padding: 0.7em 0;
   margin: 0;
+  padding: 0.7em 0;
 }
 
 @media screen and (min-width: 480px) {
   .filter {
     border-radius: 40px;
     cursor: pointer;
+    margin: 0.2em 0;
     padding: 0.6em 1em;
     transition: background-color 0.1s ease, color 0.1s ease;
-    margin: 0.2em 0;
   }
 }
 
@@ -456,18 +452,18 @@ a {
 }
 
 #overlay {
-  position: fixed;
+  animation: fade-in 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) 0.1s both;
+  background: rgba(0, 0, 0, 0.6);
+  bottom: 0;
   display: block;
   left: 0;
-  top: 0;
+  position: fixed;
   right: 0;
-  bottom: 0;
+  top: 0;
   z-index: 5;
-  background: rgba(0, 0, 0, 0.6);
   /* animation: fade-in 1s ease-in 1s; */
   /* opacity: 1;
   transition: opacity 2s ease-in-out; */
-  animation: fade-in 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) 0.1s both;
 }
 
 #overlay .hidden {
@@ -475,10 +471,10 @@ a {
 }
 
 button {
-  border: 0;
-  padding: 7px;
   background-color: transparent;
+  border: 0;
   cursor: pointer;
+  padding: 7px;
 }
 
 .current {
@@ -494,9 +490,9 @@ button {
   justify-items: center;
   padding: 6em 1.5em;
   row-gap: 2rem;
+  width: 100%;
   -webkit-animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  width: 100%;
 }
 
 @media screen and (min-width: 480px) {
@@ -566,7 +562,6 @@ button {
 
 #carousel {
   display: flex;
-  /* gap: 3rem; */
   align-items: center;
   height: 100%;
   justify-content: center;
