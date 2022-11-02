@@ -352,10 +352,10 @@ a {
   padding: 1em 2em;
 }
 
-@media (hover: hover) and (pointer: fine) { 
-.tags:hover {
-  box-shadow: 5px 5px black;
-}
+@media (hover: hover) and (pointer: fine) {
+  .tags:hover {
+    box-shadow: 5px 5px black;
+  }
 }
 
 .sombra {
