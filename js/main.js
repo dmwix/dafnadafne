@@ -364,7 +364,7 @@ function closeCarousel(e) {
 
   document.removeEventListener("mousemove", cursorFlechita);
   flecha.style.display = "none";
-  const mediaQuery = window.matchMedia('(min-width: 480px)');
+  const mediaQuery = window.matchMedia("(min-width: 480px)");
   if (mediaQuery.matches) {
     cursor.style.display = "block";
   }
