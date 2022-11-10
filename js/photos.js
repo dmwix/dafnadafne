@@ -1,5 +1,3 @@
-// NO USAR EL MISMO TITLE PARA DOS FOTOS DISTINTAS
-
 const photos = [
   {
     src: {
