@@ -189,6 +189,26 @@ draggables.forEach((draggable) => {
   };
 });
 
+// VIDEO
+const videoWrapper = document.querySelector(".video-wrapper");
+const homeVideos = fyShuffle(videos);
+let count = 0;
+
+function loadVideo() {
+  if (!document.body.contains(mainHome)) return;
+  videoWrapper.innerHTML = `<video autoplay muted> <source src="${homeVideos[count].src}" type="video/mp4"/> </video>`;
+  const video = document.querySelector("video");
+  count++;
+  if (count === homeVideos.length) {
+    count = 0;
+  }
+  video.addEventListener("ended", (e) => {
+    loadVideo(count);
+  });
+}
+
+loadVideo();
+
 // FOTOS
 const filtersList = document.querySelector(".filters-list");
 const filtersNav = document.querySelector(".filters-nav");
@@ -546,6 +566,8 @@ function shrug(event) {
     shrugDiv = null;
   }
 }
+
+// OVERLAY & ACCORDION
 
 const overlay = document.getElementById("overlay");
 const acc = document.querySelector(".accordion");
