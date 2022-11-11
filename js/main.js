@@ -331,6 +331,12 @@ function changeFilter(filterName, preventnavegation) {
     return;
   }
   changeUrl(url, { filter: filterName });
+
+  scrollToTop();
+}
+
+function scrollToTop() {
+  window.scroll({ top: 0, left: 0, behavior: "smooth" });
 }
 
 function onPopState(e) {
