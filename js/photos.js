@@ -16,7 +16,7 @@ const photos = [
     src: {
       small: "/images/fotos_small/0002_small.jpg",
       medium: "/images/fotos_medium/0002_medium.jpg",
-      large: "/images/fotos_large/0002_large.jpg",
+      large: "/images/fotos_large/0003_large.jpg",
       webp: "",
     },
     filters: ["todas", "senorxs", "fucsia", "compania"],
