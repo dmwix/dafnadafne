@@ -461,9 +461,6 @@ a {
   right: 0;
   top: 0;
   z-index: 5;
-  /* animation: fade-in 1s ease-in 1s; */
-  /* opacity: 1;
-  transition: opacity 2s ease-in-out; */
 }
 
 #overlay .hidden {
@@ -473,6 +470,7 @@ a {
 button {
   background-color: transparent;
   border: 0;
+  color: inherit;
   cursor: pointer;
   padding: 7px;
 }
