@@ -124,18 +124,30 @@ draggables.forEach((draggable) => {
 const videoWrapper = document.querySelector(".video-wrapper");
 const homeVideos = fyShuffle(videos);
 let count = 0;
+let countNext = 1;
+
+// function createVideo() {
+//   videoWrapper.innerHTML = `<video autoplay muted playsinline data-count="${count}"> <source src="${homeVideos[count].src}" type="video/mp4"/> </video>`;
+// }
+
+// createVideo();
+
+const video = document.querySelector("video");
 
 function loadVideo() {
-  if (!document.body.contains(mainHome)) return;
-  videoWrapper.innerHTML = `<video autoplay muted playsinline> <source src="${homeVideos[count].src}" type="video/mp4"/> </video>`;
-  const video = document.querySelector("video");
+  video.setAttribute("src", `${homeVideos[count].src}`);
   count++;
   if (count === homeVideos.length) {
     count = 0;
   }
-  video.addEventListener("ended", (e) => {
-    loadVideo(count);
-  });
+  // countNext++;
+  // if (countNext === homeVideos.length) {
+  //   countNext = 0;
+  // }
 }
+
+video.addEventListener("ended", (e) => {
+  loadVideo();
+});
 
 loadVideo();
