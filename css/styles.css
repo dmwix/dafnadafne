@@ -260,7 +260,7 @@ a {
   display: block;
   flex-grow: 2;
   margin: 0 1.5em;
-  background: no-repeat center/9% url(/images/loading.gif);
+  background: no-repeat center/2em url(/images/loading.gif);
 }
 
 @media screen and (min-width: 480px) {
@@ -566,7 +566,7 @@ button {
   height: 100%;
   justify-content: center;
   width: auto;
-  background: no-repeat center/9% url(/images/loading.gif);
+  background: no-repeat center/2em url(/images/loading.gif);
 }
 
 #carousel button {
