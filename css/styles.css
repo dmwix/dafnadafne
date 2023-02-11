@@ -577,6 +577,7 @@ button {
 
 .slide-wrapper {
   align-items: center;
+  justify-content: center;
   display: flex;
   height: 100%;
 }
