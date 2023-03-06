@@ -98,19 +98,31 @@ footer {
   }
 }
 
-.ingles {
-  display: inline-block;
+.locale {
   position: relative;
 }
 
-.ingles::after {
+.locale::after {
   content: "";
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
+.en,
+.es {
+  display: none;
+}
+
+body.loc-en .en {
+  display: block;
+}
+
+body.loc-es .es {
+  display: block;
+}
+
 @media (hover: hover) {
-  .ingles:hover::after {
+  .locale:hover::after {
     background: black;
     content: "";
     height: 100%;
@@ -123,7 +135,7 @@ footer {
     z-index: -1;
   }
 
-  .ingles:hover {
+  .locale:hover {
     color: var(--blanco);
   }
 
@@ -649,12 +661,12 @@ button {
   }
 }
 
-#bio {
+.bio {
   text-align: left;
   order: 2;
 }
 
-#bio a:hover {
+.bio a:hover {
   text-decoration: underline 2px;
   text-underline-offset: 5px;
 }
